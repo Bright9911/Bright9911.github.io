@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Beautiful Hugo</title>
+    <link>https://Bright9911.github.io/posts/</link>
+    <description>Recent content in Posts on Beautiful Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
+    <webMaster>youremail@domain.com (Some Person)</webMaster>
+    <lastBuildDate>Wed, 15 Jun 2022 17:16:02 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>西游记—女儿国</title>
+      <link>https://Bright9911.github.io/posts/%E8%A5%BF%E6%B8%B8%E8%AE%B0%E5%A5%B3%E5%84%BF%E5%9B%BD/</link>
+      <pubDate>Wed, 15 Jun 2022 17:16:02 +0800</pubDate>
+      <author>youremail@domain.com (Some Person)</author>
+      <guid>https://Bright9911.github.io/posts/%E8%A5%BF%E6%B8%B8%E8%AE%B0%E5%A5%B3%E5%84%BF%E5%9B%BD/</guid>
+      <description>女儿国原文节选 第五十四回　法性西来逢女国　心猿定计脱烟花
+三藏道：“敢烦陛下相同贫僧送他三人出城，待我嘱付他们几句，教他好生西去，我却回来，与陛下永受荣华，无挂无牵，方可会鸾交凤友也。”女王不知是计，便传旨摆驾，与三藏并倚香肩，同登凤辇，出西城而去。满城中都盏添净水，炉降真香，一则看女王銮驾，二来看御弟男身。没老没小，尽是粉容娇面、绿鬓云鬟之辈。不多时，大驾出城，到西关之外。
+行者、八戒、沙僧、同心合意，结束整齐，径迎着銮舆，厉声高叫道：“那女王不必远送，我等就此拜别。”长老慢下龙车，对女王拱手道：“陛下请回，让贫僧取经去也。”女王闻言，大惊失色，扯住唐僧道：“御弟哥哥，我愿将一国之富，招你为夫，明日高登宝位，即位称君，我愿为君之后，喜筵通皆吃了，如何却又变卦？”
+八戒听说，发起个风来，把嘴乱扭，耳朵乱摇，闯至驾前，嚷道：“我们和尚家和你这粉骷髅做甚夫妻！放我师父走路！”那女王见他那等撒泼弄丑，唬得魂飞魄散，跌入辇驾之中。沙僧却把三藏抢出人丛，伏侍上马。
+只见那路旁闪出一个女子，喝道：“唐御弟，那里走！我和你耍风月儿去来！”沙僧骂道：“贼辈无知！”掣宝杖劈头就打。那女子弄阵旋风，呜的一声，把唐僧摄将去了，无影无踪，不知下落何处。咦！正是：脱得烟花网，又遇风月魔。毕竟不知那女子是人是怪，老师父的性命得死得生，且听下回分解。</description>
+    </item>
+    
+    <item>
+      <title>Second_post</title>
+      <link>https://Bright9911.github.io/posts/second_post/</link>
+      <pubDate>Wed, 15 Jun 2022 15:03:58 +0800</pubDate>
+      <author>youremail@domain.com (Some Person)</author>
+      <guid>https://Bright9911.github.io/posts/second_post/</guid>
+      <description>Spark   导⼊pyspark.sql，创建spark session
+from pyspark import SparkConf from pyspark.sql import SparkSession import pyspark.sql.functions as f from pyspark.sql.functions import array_contains spark = SparkSession.builder.config(conf=SparkConf()).getOrCreate()   读取 yelp_academic_dataset_business.json ⽂件，创建DataFrame
+chushi = spark.read.json(&amp;#39;file:///usr/local/src/yelp_academic_dataset_business.json&amp;#39;)   分割数据集中 categories ，剔除数据集中缺少城市信息的数据
+import pyspark.sql.functions as f chushitype = f.split(chushi[&amp;#34;categories&amp;#34;],&amp;#39;,&amp;#39;) fenge = chushi.withColumn(&amp;#34;categories&amp;#34;,chushitype) chuli = fenge.dropna(subset=[&amp;#39;city&amp;#39;])   显示数据集数据50条
+chuli.show(50)   找出 Las Vegas(城市) 中所有 Burgers（汉堡店，类型） （20分），将结果按照星级降序排序，显示前50条 结果
+cityLs = chuli.filter(chuli[&amp;#34;city&amp;#34;] == &amp;#34;Las Vegas&amp;#34;) hb = cityLs.</description>
+    </item>
+    
+    <item>
+      <title>First_post</title>
+      <link>https://Bright9911.github.io/posts/first_post/</link>
+      <pubDate>Wed, 15 Jun 2022 15:02:22 +0800</pubDate>
+      <author>youremail@domain.com (Some Person)</author>
+      <guid>https://Bright9911.github.io/posts/first_post/</guid>
+      <description>keras-image-recognition keras 图像识别
+python版本 Python 3.4.5
+keras 版本 2.2.2
+tensoflow 版本 1.9.0
+os linux
+训练/测试数据下载 链接：https://pan.baidu.com/s/1f1N01Qv5N6UouiOJS4ZCDg 提取码：ycks
+链接：https://pan.baidu.com/s/1BSPDaqoQv_7kQifA9rbzMA 提取码：k7ej
+下载完成后需要放到downloads 目录下面解压
+使用keras + tensorflow + cpu 进行图像识别 识别的类型有三种：猫，狗，马 需要安装依赖包
+pip install -r requirements.txt
+模型的可视化需要安装graphviz
+sudo apt-get install graphviz 或者 sudo yum install graphviz
+运行项目 cd spiders/recognition/train
+python train.py
+识别图像 cd spiders/prediction
+python prediction.py -i ./data/20181128094323.jpg -m ../classify.model
+更多介绍 https://blog.csdn.net/lucky404/article/details/84581885</description>
+    </item>
+    
+  </channel>
+</rss>
