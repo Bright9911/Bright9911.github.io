@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://Bright9911.github.io/</loc>
-    <lastmod>2025-05-23T10:23:18+08:00</lastmod>
+    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ar"
@@ -15,8 +15,11 @@
                 href="https://Bright9911.github.io/"
                 />
   </url><url>
+    <loc>https://Bright9911.github.io/p/new/</loc>
+    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+  </url><url>
     <loc>https://Bright9911.github.io/post/</loc>
-    <lastmod>2025-05-23T10:23:18+08:00</lastmod>
+    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ar"
@@ -87,10 +90,10 @@
                 href="https://Bright9911.github.io/tags/"
                 />
   </url><url>
-    <loc>https://Bright9911.github.io/tags/themes/</loc>
+    <loc>https://Bright9911.github.io/categories/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://Bright9911.github.io/categories/themes/</loc>
+    <loc>https://Bright9911.github.io/tags/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/p/placeholder-text/</loc>
