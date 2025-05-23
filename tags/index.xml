@@ -7,60 +7,36 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright>
-        <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://Bright9911.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Css</title>
-        <link>https://Bright9911.github.io/tags/css/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <lastBuildDate>Fri, 23 May 2025 14:53:41 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Github</title>
+        <link>https://Bright9911.github.io/tags/github/</link>
+        <pubDate>Fri, 23 May 2025 14:53:41 +0800</pubDate>
         
-        <guid>https://Bright9911.github.io/tags/css/</guid>
+        <guid>https://Bright9911.github.io/tags/github/</guid>
         <description></description>
         </item>
         <item>
-        <title>Html</title>
-        <link>https://Bright9911.github.io/tags/html/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Hugo</title>
+        <link>https://Bright9911.github.io/tags/hugo/</link>
+        <pubDate>Fri, 23 May 2025 14:53:41 +0800</pubDate>
         
-        <guid>https://Bright9911.github.io/tags/html/</guid>
+        <guid>https://Bright9911.github.io/tags/hugo/</guid>
         <description></description>
         </item>
         <item>
         <title>Markdown</title>
         <link>https://Bright9911.github.io/tags/markdown/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <pubDate>Fri, 23 May 2025 14:53:41 +0800</pubDate>
         
         <guid>https://Bright9911.github.io/tags/markdown/</guid>
         <description></description>
         </item>
         <item>
-        <title>Themes</title>
-        <link>https://Bright9911.github.io/tags/themes/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Redis</title>
+        <link>https://Bright9911.github.io/tags/redis/</link>
+        <pubDate>Fri, 23 May 2025 10:23:18 +0800</pubDate>
         
-        <guid>https://Bright9911.github.io/tags/themes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Tag With Whitespaces</title>
-        <link>https://Bright9911.github.io/tags/tag-with-whitespaces/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://Bright9911.github.io/tags/tag-with-whitespaces/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Text</title>
-        <link>https://Bright9911.github.io/tags/text/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://Bright9911.github.io/tags/text/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Emoji</title>
-        <link>https://Bright9911.github.io/tags/emoji/</link>
-        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://Bright9911.github.io/tags/emoji/</guid>
+        <guid>https://Bright9911.github.io/tags/redis/</guid>
         <description></description>
         </item>
         
