@@ -2,21 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://Bright9911.github.io/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://Bright9911.github.io/ar/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://Bright9911.github.io/"
-                />
-  </url><url>
     <loc>https://Bright9911.github.io/categories/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ar"
@@ -29,28 +16,28 @@
                 />
   </url><url>
     <loc>https://Bright9911.github.io/categories/github/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/tags/github/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/categories/hugo/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/tags/hugo/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/tags/markdown/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/post/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/tags/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ar"
@@ -63,36 +50,52 @@
                 />
   </url><url>
     <loc>https://Bright9911.github.io/categories/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2025-05-23T14:53:41+08:00</lastmod>
+    <lastmod>2025-05-23T17:31:54+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/categories/redis/</loc>
-    <lastmod>2025-05-23T10:23:18+08:00</lastmod>
+    <lastmod>2025-05-23T15:48:13+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/tags/redis/</loc>
-    <lastmod>2025-05-23T10:23:18+08:00</lastmod>
+    <lastmod>2025-05-23T15:48:13+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2025-05-23T10:23:18+08:00</lastmod>
+    <lastmod>2025-05-23T15:48:13+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/p/test-chinese/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://Bright9911.github.io/categories/test/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-23T14:32:32+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/categories/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-23T14:32:32+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/page/</loc>
-    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-23T17:49:35+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/archives/</loc>
-    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-23T14:32:32+08:00</lastmod>
+  </url><url>
+    <loc>https://Bright9911.github.io/</loc>
+    <lastmod>2025-05-23T14:32:32+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ar"
+                href="https://Bright9911.github.io/ar/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://Bright9911.github.io/"
+                />
+  </url><url>
+    <loc>https://Bright9911.github.io/categories/test/</loc>
+    <lastmod>2025-05-23T14:32:32+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/%E5%85%B3%E4%BA%8E/</loc>
+    <lastmod>2025-05-23T14:32:32+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/search/</loc>
+    <lastmod>2025-05-23T14:32:32+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/</loc>
+    <lastmod>2025-05-23T17:49:35+08:00</lastmod>
   </url>
 </urlset>
