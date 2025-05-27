@@ -7,16 +7,16 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright>
-        <lastBuildDate>Fri, 23 May 2025 15:48:13 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/redis/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 27 May 2025 12:08:47 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/redis/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Redis的使用</title>
         <link>https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
         <pubDate>Fri, 23 May 2025 10:23:18 +0800</pubDate>
         
         <guid>https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-        <description>&lt;img src="https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Redis的使用" /&gt;&lt;h2 id=&#34;下载并解压&#34;&gt;下载并解压
+        <description>&lt;img src="https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Redis的使用" /&gt;&lt;h2 id=&#34;1下载并解压&#34;&gt;1、下载并解压
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/tporadowski/redis/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/tporadowski/redis/releases&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;启动redis服务器&#34;&gt;启动Redis服务器
+&lt;h2 id=&#34;2启动redis服务器&#34;&gt;2、启动Redis服务器
 &lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -26,7 +26,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;默认端口为 6379，如果看到类似 Ready to accept connections 的消息，说明 Redis 服务已成功启动。&lt;/p&gt;
-&lt;h2 id=&#34;测试redis&#34;&gt;测试Redis
+&lt;h2 id=&#34;3测试redis&#34;&gt;3、测试Redis
 &lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -36,7 +36,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;执行 ping 命令，如果返回 PONG，说明 Redis 服务正常运行。&lt;/p&gt;
-&lt;h2 id=&#34;将-redis-注册为-windows-服务可选没做&#34;&gt;将 Redis 注册为 Windows 服务（可选）（没做）
+&lt;h2 id=&#34;4将-redis-注册为-windows-服务可选没做&#34;&gt;4、将 Redis 注册为 Windows 服务（可选）（没做）
 &lt;/h2&gt;&lt;p&gt;在 Redis 安装目录中，运行以下命令将 Redis 注册为 Windows 服务：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -56,7 +56,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;通过 services.msc 查看服务是否安装成功，并可以配置为开机自启动。&lt;/p&gt;
-&lt;h2 id=&#34;报错解决&#34;&gt;报错解决
+&lt;h2 id=&#34;5报错解决&#34;&gt;5、报错解决
 &lt;/h2&gt;&lt;p&gt;当出现以下问题时：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

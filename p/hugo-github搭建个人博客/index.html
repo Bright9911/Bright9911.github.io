@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一、环境准备 1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 二、搭建博客 1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 2、搭建博客 2.1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n">
 <title>Hugo&#43;Github搭建个人博客</title>
 
 <link rel='canonical' href='https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/'>
 
-<link rel="stylesheet" href="/scss/style.min.902578b43aaf1ca6f57d0aaa5332a3acc6057195765cc77648a43fa545df29ec.css"><meta property='og:title' content="Hugo+Github搭建个人博客">
-<meta property='og:description' content="一、环境准备 1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 二、搭建博客 1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n">
+<link rel="stylesheet" href="/scss/style.min.9e410f975099d0853f1214d87ab19b297879fc93f33627004825e2b67bc65422.css"><meta property='og:title' content="Hugo+Github搭建个人博客">
+<meta property='og:description' content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 2、搭建博客 2.1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n">
 <meta property='og:url' content='https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/'>
 <meta property='og:site_name' content='Bright9911'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='markdown' /><meta property='article:tag' content='hugo' /><meta property='article:tag' content='github' /><meta property='article:published_time' content='2025-05-23T14:53:41&#43;08:00'/><meta property='article:modified_time' content='2025-05-23T17:31:54&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-23T14:53:41&#43;08:00'/><meta property='article:modified_time' content='2025-05-27T12:08:47&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
 <meta name="twitter:title" content="Hugo+Github搭建个人博客">
-<meta name="twitter:description" content="一、环境准备 1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 二、搭建博客 1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 2、搭建博客 2.1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
     </head>
     <body class="
@@ -205,29 +205,6 @@
         
         <li class="menu-bottom-section">
             <ol class="menu">
-                    
-                        <li id="i18n-switch">  
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
-                                
-                                    <option value="https://Bright9911.github.io/" selected>中文</option>
-                                
-                                    <option value="https://Bright9911.github.io/ar/" >عربي</option>
-                                
-                            </select>
-                        </li>
-                    
-                
 
                 
                     <li id="dark-mode-toggle">
@@ -276,26 +253,27 @@
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
-    <li><a href="#一环境准备">一、环境准备</a>
-      <ol>
-        <li><a href="#1git下载">1、Git下载</a></li>
-        <li><a href="#2hugo下载">2、Hugo下载</a></li>
-      </ol>
+  <ul>
+    <li><a href="#1环境准备">1、环境准备</a>
+      <ul>
+        <li><a href="#11git下载">1.1、Git下载</a></li>
+        <li><a href="#12hugo下载">1.2、Hugo下载</a></li>
+      </ul>
     </li>
-    <li><a href="#二搭建博客">二、搭建博客</a>
-      <ol>
-        <li><a href="#1创建博客">1、创建博客</a></li>
-        <li><a href="#2配置主题">2、配置主题</a></li>
-      </ol>
+    <li><a href="#2搭建博客">2、搭建博客</a>
+      <ul>
+        <li><a href="#21创建博客">2.1、创建博客</a></li>
+        <li><a href="#22配置主题">2.2、配置主题</a></li>
+        <li><a href="#23发布文章">2.3、发布文章</a></li>
+      </ul>
     </li>
-    <li><a href="#三github部署">三、Github部署</a>
-      <ol>
-        <li><a href="#1常规部署">1、常规部署</a></li>
-        <li><a href="#2github-action自动部署">2、Github Action自动部署</a></li>
-      </ol>
+    <li><a href="#3github部署">3、Github部署</a>
+      <ul>
+        <li><a href="#31常规部署">3.1、常规部署</a></li>
+        <li><a href="#32github-action自动部署">3.2、Github Action自动部署</a></li>
+      </ul>
     </li>
-  </ol>
+  </ul>
 </nav>
         </div>
     </section>
@@ -378,7 +356,7 @@
 
 
                 <time>
-                    2025-05-23 最后更新
+                    2025-05-27 最后更新
                 </time>
             </div></footer>
     
@@ -391,15 +369,15 @@
     <section class="article-content">
     
     
-    <h2 id="一环境准备">一、环境准备
-</h2><h3 id="1git下载">1、Git下载
+    <h2 id="1环境准备">1、环境准备
+</h2><h3 id="11git下载">1.1、Git下载
 </h3><ul>
 <li>前往<a class="link" href="https://git-scm.com/"  target="_blank" rel="noopener"
     >Git</a>官网，下载安装程序</li>
 <li>一直点下一步，默认安装即可</li>
 </ul>
 <img src="1.png" alt="image-20250523164313875" style="zoom:80%;" />
-<h3 id="2hugo下载">2、Hugo下载
+<h3 id="12hugo下载">1.2、Hugo下载
 </h3><ul>
 <li>前往<a class="link" href="https://github.com/gohugoio/hugo/tags"  target="_blank" rel="noopener"
     >Tags · gohugoio/hugo</a>下载对应版本</li>
@@ -409,8 +387,8 @@
 <li>Windows版本：<strong>hugo_extended_xxxxx_windows_amd64.zip</strong></li>
 </ul>
 <img src="3.png" alt="hugo版本" style="zoom:80%;" />
-<h2 id="二搭建博客">二、搭建博客
-</h2><h3 id="1创建博客">1、创建博客
+<h2 id="2搭建博客">2、搭建博客
+</h2><h3 id="21创建博客">2.1、创建博客
 </h3><ul>
 <li>
 <p>（1）在<strong>hugo.exe</strong>所在文件夹的地址栏敲打cmd，然后Enter唤起命令行</p>
@@ -427,7 +405,7 @@
 <p><strong>（hugo默认是没有主题的，需要进行主题配置）</strong></p>
 </li>
 </ul>
-<h3 id="2配置主题">2、配置主题
+<h3 id="22配置主题">2.2、配置主题
 </h3><ul>
 <li>（1）前往【<a class="link" href="https://themes.gohugo.io/"  target="_blank" rel="noopener"
     >Hugo Themes</a>】，查找自己喜欢的主题，进行下载</li>
@@ -443,8 +421,63 @@
 <ul>
 <li>（5）再次启动hugo服务，查看主题，具体主题配置修改 <strong>hugo.yaml</strong>，这里不细说，感兴趣可自行查找相关文章</li>
 </ul>
-<h2 id="三github部署">三、Github部署
-</h2><h3 id="1常规部署">1、常规部署
+<h3 id="23发布文章">2.3、发布文章
+</h3><ul>
+<li>（1）使用以下命令生成文章（文章名无所谓，可以修改）</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo.exe new content post/<span class="o">{</span>文章名<span class="o">}</span>/index.md
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>（2）生成文章之后，在<code>content/post/{文章名字}/index.md</code>中编写文章</p>
+</li>
+<li>
+<p>（3）文章开头配置（自行修改）</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">title = &#39;{文章名}&#39;
+</span></span><span class="line"><span class="cl">date = 2025-05-23T14:53:41+08:00
+</span></span><span class="line"><span class="cl">draft = true
+</span></span><span class="line"><span class="cl">categories = [
+</span></span><span class="line"><span class="cl">    &#34;hugo&#34;,
+</span></span><span class="line"><span class="cl">    &#34;github&#34;,
+</span></span><span class="line"><span class="cl">    &#34;笔记&#34;,
+</span></span><span class="line"><span class="cl">]
+</span></span><span class="line"><span class="cl">image = &#34;the-creative-exchange-d2zvqp3fpro-unsplash.jpg&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>（4）图片引入格式如下</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;4.png&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;hugo版本&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;zoom:80%;&#34;</span> <span class="p">/&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3github部署">3、Github部署
+</h2><h3 id="31常规部署">3.1、常规部署
 </h3><ul>
 <li>
 <p>（1）前往【<a class="link" href="https://github.com/"  target="_blank" rel="noopener"
@@ -506,7 +539,7 @@
 <li>（5）上传成功后访问 <strong>https://{github用户名}.github.io</strong>，成功搭建属于自己的Hugo博客</li>
 </ul>
 <img src="4.png" alt="hugo版本" style="zoom:80%;" />
-<h3 id="2github-action自动部署">2、Github Action自动部署
+<h3 id="32github-action自动部署">3.2、Github Action自动部署
 </h3><ul>
 <li>（1）Github创建一个新的仓库，用于存放Hugo的主文件</li>
 <li>（2）前往<code>Setttings -&gt; Developer Settings -&gt; Personal access tokens</code>，创建一个token(classic)</li>
@@ -660,16 +693,6 @@
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/markdown/">Markdown</a>
-        
-            <a href="/tags/hugo/">Hugo</a>
-        
-            <a href="/tags/github/">Github</a>
-        
-    </section>
-
 
     <section class="article-lastmod">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -681,7 +704,7 @@
 
 
         <span>
-            最后更新于 2025-05-23 最后更新
+            最后更新于 2025-05-27 最后更新
         </span>
     </section></footer>
 
@@ -697,6 +720,30 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/stack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/">
+        
+        
+            <div class="article-image">
+                <img src="/p/stack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.46f61e8ea6a2df8fc5bf1d24a17c44a6_hu_57b7cab9514860c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Stack主题自定义修改"
+                        
+                        data-hash="md5-RvYejqai34/Fvx0koXxEpg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Stack主题自定义修改</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
@@ -892,6 +939,135 @@
     initTocHide()
 </script>
 
+
+<style>
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-image: url(https://Bright9911.github.io/icons/backTop.svg);
+    }
+</style>
+
+<script>
+    
+
+    function initScrollTop() {
+        let rightSideBar = document.querySelector(".right-sidebar");
+        if (!rightSideBar) {
+            return;
+        }
+        
+        let btn = document.createElement("div");
+        btn.id = "backTopBtn";
+        btn.onclick = backToTop
+        rightSideBar.appendChild(btn)
+        
+        window.onscroll = function() {
+            
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    }
+
+    
+
+    function backToTop(){
+        window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+
+    initScrollTop();
+</script>
+
+
+<style>
+    .highlight {
+         
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+    .code-show {
+        max-height: none !important;
+    }
+
+    .code-more-box {
+        width: 100%;
+        padding-top: 78px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .code-more-btn {
+        display: block;
+        margin: auto;
+        width: 44px;
+        height: 22px;
+        background: #f0f0f5;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+
+    .code-more-img {
+        cursor: pointer !important;
+        display: block;
+        margin: auto;
+        width: 22px;
+        height: 16px;
+        margin-top: -5px;
+    }
+</style>
+
+<script>
+  function initCodeMoreBox() {
+    let codeBlocks = document.querySelectorAll(".highlight");
+    if (!codeBlocks) {
+      return;
+    }
+    codeBlocks.forEach(codeBlock => {
+      
+      if (codeBlock.scrollHeight <= codeBlock.clientHeight) {
+        return;
+      }
+      
+      
+      let codeMoreBox = document.createElement('div');
+      codeMoreBox.classList.add('code-more-box');
+      
+      let codeMoreBtn = document.createElement('span');
+      codeMoreBtn.classList.add('code-more-btn');
+      codeMoreBtn.addEventListener('click', () => {
+        codeBlock.classList.add('code-show');
+        codeMoreBox.style.display = 'none';
+        
+        window.dispatchEvent(new Event('resize'))
+      })
+      
+      let img = document.createElement('img');
+      img.classList.add('code-more-img');
+      img.src = "https://Bright9911.github.io/icons/codeMore.svg"
+      
+      codeMoreBtn.appendChild(img);
+      codeMoreBox.appendChild(codeMoreBtn);
+      codeBlock.appendChild(codeMoreBox)
+    })
+  }
+  
+  initCodeMoreBox();
+</script>
 
     </body>
 </html>
