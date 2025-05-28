@@ -7,20 +7,30 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright>
-        <lastBuildDate>Wed, 28 May 2025 11:57:32 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 28 May 2025 14:43:50 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【Hugo】文章浏览量统计</title>
         <link>https://Bright9911.github.io/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/</link>
         <pubDate>Wed, 28 May 2025 07:46:55 +0800</pubDate>
         
         <guid>https://Bright9911.github.io/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/</guid>
-        <description>&lt;img src="https://Bright9911.github.io/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/2077.jpg" alt="Featured image of post 【Hugo】文章浏览量统计" /&gt;&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;img src="https://Bright9911.github.io/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/2077.jpg" alt="Featured image of post 【Hugo】文章浏览量统计" /&gt;&lt;blockquote class=&#34;alert-note&#34;&gt;
+&lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;博客文章统计组件个人找到了两个，分别是&lt;a class=&#34;link&#34; href=&#34;https://busuanzi.ibruce.info/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;li&gt;
+&lt;p&gt;博客文章统计组件个人找到了两个，分别是&lt;a class=&#34;link&#34; href=&#34;https://busuanzi.ibruce.info/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;strong&gt;不蒜子&lt;/strong&gt;&lt;/a&gt;，以及&lt;a class=&#34;link&#34; href=&#34;https://cn.vercount.one/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;strong&gt;vercount&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;不蒜子&lt;/strong&gt;比较老，但很稳定，到现在仍然可以使用，没有停服&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;vercount&lt;/strong&gt;则比较新，并做了一些代码优化&lt;/li&gt;
-&lt;li&gt;两种使用都基本一样，差别不大，看自己喜好，下面的教程是以&lt;strong&gt;vercount&lt;/strong&gt;来举例，用不蒜子的话，就把对应的脚本和元素标签替换一下就好&lt;/li&gt;
+    &gt;&lt;strong&gt;vercount&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;不蒜子&lt;/strong&gt;比较老，但很稳定，到现在仍然可以使用，没有停服&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;vercount&lt;/strong&gt;则比较新，并做了一些代码优化&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;两种使用都基本一样，差别不大，看自己喜好，下面的教程是以&lt;strong&gt;vercount&lt;/strong&gt;来举例，用不蒜子的话，就把对应的脚本和元素标签替换一下就好&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;1基本引入&#34;&gt;1、基本引入
 &lt;/h2&gt;&lt;ul&gt;
