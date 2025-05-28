@@ -10,7 +10,7 @@
 <meta property='og:description' content="1、下载并解压 https://github.com/tporadowski/redis/releases\n2、启动Redis服务器 1 .\\redis-server.exe redis.windows.conf 默认端口为 6379，如果看到类似 Ready to accept connections 的消息，说明 Redis 服务已成功启动。\n3、测试Redis 1 .\\redis-cli.exe -h 127.0.0.1 -p 6379 执行 ping 命令，如果返回 PONG，说明 Redis 服务正常运行。\n">
 <meta property='og:url' content='https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/'>
 <meta property='og:site_name' content='Bright9911'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-23T10:23:18&#43;08:00'/><meta property='article:modified_time' content='2025-05-27T12:08:47&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-23T10:23:18&#43;08:00'/><meta property='article:modified_time' content='2025-05-28T11:57:32&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg' />
 <meta name="twitter:title" content="Redis的使用">
 <meta name="twitter:description" content="1、下载并解压 https://github.com/tporadowski/redis/releases\n2、启动Redis服务器 1 .\\redis-server.exe redis.windows.conf 默认端口为 6379，如果看到类似 Ready to accept connections 的消息，说明 Redis 服务已成功启动。\n3、测试Redis 1 .\\redis-cli.exe -h 127.0.0.1 -p 6379 执行 ping 命令，如果返回 PONG，说明 Redis 服务正常运行。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg' />
@@ -257,14 +257,19 @@
     <li><a href="#1下载并解压">1、下载并解压</a></li>
     <li><a href="#2启动redis服务器">2、启动Redis服务器</a></li>
     <li><a href="#3测试redis">3、测试Redis</a></li>
-    <li><a href="#4将-redis-注册为-windows-服务可选没做">4、将 Redis 注册为 Windows 服务（可选）（没做）</a></li>
-    <li><a href="#5报错解决">5、报错解决</a>
+    <li><a href="#4将-redis-注册为-windows-服务可选">4、将 Redis 注册为 Windows 服务（可选）</a></li>
+    <li><a href="#5报错解决">5、报错解决</a></li>
+    <li><a href="#6redis-常用命令总结">6、Redis 常用命令总结</a>
       <ul>
-        <li>
-          <ul>
-            <li></li>
-          </ul>
-        </li>
+        <li><a href="#61连接与服务器相关命令">6.1、连接与服务器相关命令</a></li>
+        <li><a href="#62键key相关命令">6.2、键（Key）相关命令</a></li>
+        <li><a href="#63字符串string类型命令">6.3、字符串（String）类型命令</a></li>
+        <li><a href="#64哈希hash类型命令">6.4、哈希（Hash）类型命令</a></li>
+        <li><a href="#65列表list类型命令">6.5、列表（List）类型命令</a></li>
+        <li><a href="#66集合set类型命令">6.6、集合（Set）类型命令</a></li>
+        <li><a href="#67有序集合sorted-set类型命令">6.7、有序集合（Sorted Set）类型命令</a></li>
+        <li><a href="#68事务相关命令">6.8、事务相关命令</a></li>
+        <li><a href="#69持久化相关命令">6.9、持久化相关命令</a></li>
       </ul>
     </li>
   </ul>
@@ -346,9 +351,16 @@
 
 
                 <time>
-                    2025-05-27 最后更新
+                    2025-05-28 最后更新
                 </time>
-            </div></footer>
+            </div>
+        <div id="viewCount">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+            <time class="article-time--reading">
+                <span id="vercount_value_page_pv">loading... </span>次
+            </time>
+        </div>
+    </footer>
     
 
     
@@ -382,7 +394,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>执行 ping 命令，如果返回 PONG，说明 Redis 服务正常运行。</p>
-<h2 id="4将-redis-注册为-windows-服务可选没做">4、将 Redis 注册为 Windows 服务（可选）（没做）
+<h2 id="4将-redis-注册为-windows-服务可选">4、将 Redis 注册为 Windows 服务（可选）
 </h2><p>在 Redis 安装目录中，运行以下命令将 Redis 注册为 Windows 服务：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -414,8 +426,8 @@
 </span></span><span class="line"><span class="cl">(error) MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk. Commands that may modify the data set are disabled, because this instance is configured to report errors during writes if RDB snapshotting fails (stop-writes-on-bgsave-error option). Please check the Redis logs for details about the RDB error.
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="临时解决方法">临时解决方法：
-</h5><div class="highlight"><div class="chroma">
+</div><p><strong>临时解决方法：</strong></p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -423,8 +435,8 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CONFIG SET stop-writes-on-bgsave-error no
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h5 id="持久解决方法">持久解决方法：
-</h5><p>修改Redis配置文件</p>
+</div><p><strong>持久解决方法：</strong></p>
+<p>修改Redis配置文件</p>
 <p>找到 Redis 配置文件 redis.conf（通常位于 Redis 安装目录或 /etc/redis/redis.conf）。</p>
 <p>使用文本编辑器打开 redis.conf 文件，找到 stop-writes-on-bgsave-error 选项，并将其设置为 no：</p>
 <div class="highlight"><div class="chroma">
@@ -436,6 +448,174 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>保存文件并重启 Redis 服务。</p>
+<h2 id="6redis-常用命令总结">6、Redis 常用命令总结
+</h2><h3 id="61连接与服务器相关命令">6.1、连接与服务器相关命令
+</h3><ul>
+<li><strong>连接命令</strong>
+<ul>
+<li><code>redis - cli</code>：启动 Redis 客户端，用于与 Redis 服务器交互。</li>
+</ul>
+</li>
+<li><strong>服务器信息和状态命令</strong>
+<ul>
+<li><code>INFO</code>：提供 Redis 服务器的详细信息和统计指标。</li>
+<li><code>DBSIZE</code>：返回当前数据库中键值对的数量。</li>
+</ul>
+</li>
+<li><strong>服务器配置命令</strong>
+<ul>
+<li><code>CONFIG GET </code>：获取 Redis 服务器指定配置项的值。</li>
+<li><code>CONFIG SET  </code>：设置 Redis 服务器指定配置项的值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="62键key相关命令">6.2、键（Key）相关命令
+</h3><ul>
+<li><strong>键的基本操作命令</strong>
+<ul>
+<li><code>DEL key1 [key2 ...]</code>：删除一个或多个键。</li>
+<li><code>EXISTS key</code>：检查键是否存在。</li>
+<li><code>EXPIRE key seconds</code>：为键设置过期时间，以秒为单位。</li>
+<li><code>TTL key</code>：查看键的剩余生存时间。</li>
+<li><code>RENAME key newkey</code>：将键重命名。</li>
+<li><code>RENAME NX key newkey</code>：只有在新键不存在时，才会将键重命名。</li>
+</ul>
+</li>
+<li><strong>键的遍历命令</strong>
+<ul>
+<li><code>KEYS pattern</code>：查找所有符合给定模式的键。</li>
+<li><code>SCAN cursor [MATCH pattern] [COUNT count]</code>：迭代地遍历数据库中的键。</li>
+</ul>
+</li>
+</ul>
+<h3 id="63字符串string类型命令">6.3、字符串（String）类型命令
+</h3><ul>
+<li><strong>基本赋值和获取命令</strong>
+<ul>
+<li><code>SET key value</code>：将键值对存储到 Redis 中。</li>
+<li><code>GET key</code>：获取指定键的值。</li>
+<li><code>GETSET key value</code>：将键的旧值返回，并设置新值。</li>
+</ul>
+</li>
+<li><strong>字符串操作命令</strong>
+<ul>
+<li><code>APPEND key value</code>：将值追加到指定键的字符串值后面。</li>
+<li><code>STRLEN key</code>：获取指定键的字符串值的长度。</li>
+<li><code>INCR key</code>：将键的数值值增加 1。</li>
+<li><code>INCRBY key increment</code>：将键的数值值增加指定的增量。</li>
+<li><code>DECR key</code>：将键的数值值减 1。</li>
+<li><code>DECRBY key decrement</code>：将键的数值值减少指定的减量。</li>
+</ul>
+</li>
+</ul>
+<h3 id="64哈希hash类型命令">6.4、哈希（Hash）类型命令
+</h3><ul>
+<li><strong>哈希的基本操作命令</strong>
+<ul>
+<li><code>HSET key field value</code>：将哈希表中字段的值设置为指定的值。</li>
+<li><code>HGET key field</code>：获取哈希表中指定字段的值。</li>
+<li><code>HSETNX key field value</code>：只有在字段不存在时，才将哈希表中字段的值设置为指定的值。</li>
+<li><code>HMSET key field1 value1 field2 value2 ...</code>：同时将多个字段值设置到哈希表中。</li>
+<li><code>HMGET key field1 [field2 ...]</code>：获取哈希表中多个字段的值。</li>
+<li><code>HDEL key field1 [field2 ...]</code>：删除哈希表中的一个或多个字段。</li>
+</ul>
+</li>
+<li><strong>哈希的其他命令</strong>
+<ul>
+<li><code>HEXISTS key field</code>：检查哈希表中指定字段是否存在。</li>
+<li><code>HLEN key</code>：获取哈希表中字段 - 值对的数量。</li>
+<li><code>HKEYS key</code>：获取哈希表中所有的字段。</li>
+<li><code>HVALS key</code>：获取哈希表中所有的值。</li>
+<li><code>HGETALL key</code>：获取哈希表中所有的字段和值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="65列表list类型命令">6.5、列表（List）类型命令
+</h3><ul>
+<li><strong>列表的基本操作命令</strong>
+<ul>
+<li><code>LPUSH key value1 [value2 ...]</code>：将一个或多个值插入到列表头部。</li>
+<li><code>RPUSH key value1 [value2 ...]</code>：将一个或多个值插入到列表尾部。</li>
+<li><code>LPOP key</code>：移出并获取列表的第一个元素。</li>
+<li><code>RPOP key</code>：移出并获取列表的最后一个元素。</li>
+<li><code>RPOPLPUSH source destination</code>：移出并获取 source 列表的最后一个元素，然后将其添加到 destination 列表的头部。</li>
+</ul>
+</li>
+<li><strong>列表的其他命令</strong>
+<ul>
+<li><code>LRANGE key start end</code>：获取列表中指定区间内的元素。</li>
+<li><code>LINDEX key index</code>：获取列表中指定位置的元素。</li>
+<li><code>LLEN key</code>：获取列表的长度。</li>
+<li><code>LREM key count value</code>：根据参数 count 的值，移除列表中与 value 相等的元素。</li>
+</ul>
+</li>
+</ul>
+<h3 id="66集合set类型命令">6.6、集合（Set）类型命令
+</h3><ul>
+<li><strong>集合的基本操作命令</strong>
+<ul>
+<li><code>SADD key member1 [member2 ...]</code>：将一个或多个成员添加到集合中。</li>
+<li><code>SREM key member1 [member2 ...]</code>：移除集合中的一个或多个成员。</li>
+<li><code>SMEMBERS key</code>：获取集合中的所有成员。</li>
+<li><code>SISMEMBER key member</code>：判断成员是否是集合中的元素。</li>
+</ul>
+</li>
+<li><strong>集合的其他命令</strong>
+<ul>
+<li><code>SCARD key</code>：获取集合中元素的数量。</li>
+<li><code>SPOP key [count]</code>：移除并返回集合中的一个或多个随机元素。</li>
+<li><code>SRANDMEMBER key [count]</code>：返回集合中的一个或多个随机元素。</li>
+</ul>
+</li>
+</ul>
+<h3 id="67有序集合sorted-set类型命令">6.7、有序集合（Sorted Set）类型命令
+</h3><ul>
+<li><strong>有序集合的基本操作命令</strong>
+<ul>
+<li><code>ZADD key score1 member1 [score2 member2 ...]</code>：将成员及其分数添加到有序集合中。</li>
+<li><code>ZREM key member1 [member2 ...]</code>：移除有序集合中的一个或多个成员。</li>
+<li><code>ZSCORE key member</code>：获取有序集合中成员的分数。</li>
+<li><code>ZRANGE key start end [WITHSCORES]</code>：获取有序集合中指定区间内的成员，按照分数从小到大排序。</li>
+<li><code>ZREVRANGE key start end [WITHSCORES]</code>：与 ZRANGE 类似，但成员是按照分数从大到小排序。</li>
+</ul>
+</li>
+<li><strong>有序集合的其他命令</strong>
+<ul>
+<li><code>ZCARD key</code>：获取有序集合中元素的数量。</li>
+<li><code>ZCOUNT key min max</code>：计算有序集合中分数在指定区间内的成员数量。</li>
+<li><code>ZINCRBY key increment member</code>：将有序集合中成员的分数增加指定的步长。</li>
+</ul>
+</li>
+</ul>
+<h3 id="68事务相关命令">6.8、事务相关命令
+</h3><ul>
+<li><strong>事务开始和执行命令</strong>
+<ul>
+<li><code>MULTI</code>：开始一个事务。</li>
+<li><code>EXEC</code>：执行事务中的所有命令。</li>
+</ul>
+</li>
+<li><strong>事务控制命令</strong>
+<ul>
+<li><code>DISCARD</code>：放弃事务中所有的命令操作。</li>
+<li><code>WATCH key1 [key2 ...]</code>：在执行事务之前，监视一个或多个键。</li>
+</ul>
+</li>
+</ul>
+<h3 id="69持久化相关命令">6.9、持久化相关命令
+</h3><ul>
+<li><strong>持久化方式控制命令</strong>
+<ul>
+<li><code>SAVE</code>：强制 Redis 进行数据持久化操作。</li>
+<li><code>BGSAVE</code>：异步进行数据持久化操作。</li>
+</ul>
+</li>
+<li><strong>持久化状态查询命令</strong>
+<ul>
+<li><code>LASTSAVE</code>：返回上次成功持久化操作的时间戳。</li>
+</ul>
+</li>
+</ul>
 
 </section>
 
@@ -453,7 +633,7 @@
 
 
         <span>
-            最后更新于 2025-05-27 最后更新
+            最后更新于 2025-05-28 最后更新
         </span>
     </section></footer>
 
@@ -472,15 +652,111 @@
             
                 
 <article class="has-image">
-    <a href="/p/%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/">
+    <a href="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">
         
         
             <div class="article-image">
-                <img src="/p/%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/6b951400bb98fd5fcd57d2c9599df286.7cd09a879ed8744e75e174bab0c937af_hu_eee817a63ee3812c.jpg" 
+                <img src="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46.b19eefbbc0dd033a15afee46324fd9e5_hu_aa070e38a06c2020.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 修改博客背景并引入动态背景"
+                        alt="Featured image of post 【Laravel】扫码登录"
+                        
+                        data-hash="md5-sZ7vu8DdAzoVr&#43;5GMk/Z5Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Laravel】扫码登录</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/">
+        
+        
+            <div class="article-image">
+                <img src="/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/93314e48ec9513292e4b1e8ca1c73c9d.a72b4a2735b73ddb57dda52073156655_hu_688442116e624bec.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Laravel】验证码登录"
+                        
+                        data-hash="md5-pytKJzW3PdtX3aUgcxVmVQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Laravel】验证码登录</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/">
+        
+        
+            <div class="article-image">
+                <img src="/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/9ad3bf3c4aadf61bd96eebfc1f7f577e.2cbbb500aba2e4aab12e331969ffa85a_hu_ff82cd5f5ff03a5d.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Laravel】邮件发送"
+                        
+                        data-hash="md5-LLu1AKui5KqxLjMZaf&#43;oWg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Laravel】邮件发送</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/2077.a3585811714968d323afd0b16cfc6f48_hu_a8017fc742100d25.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Hugo】文章浏览量统计"
+                        
+                        data-hash="md5-o1hYEXFJaNMjr9CxbPxvSA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Hugo】文章浏览量统计</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/6b951400bb98fd5fcd57d2c9599df286.7cd09a879ed8744e75e174bab0c937af_hu_eee817a63ee3812c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Hugo】修改博客背景并引入动态背景"
                         
                         data-hash="md5-fNCah57YdE514XS6sMk3rw==">
                 
@@ -488,55 +764,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">修改博客背景并引入动态背景</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/stack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/">
-        
-        
-            <div class="article-image">
-                <img src="/p/stack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.46f61e8ea6a2df8fc5bf1d24a17c44a6_hu_57b7cab9514860c.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Stack主题自定义修改"
-                        
-                        data-hash="md5-RvYejqai34/Fvx0koXxEpg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Stack主题自定义修改</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
-        
-        
-            <div class="article-image">
-                <img src="/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.60116b1ccfc8632e9a65f7d51df3efc2_hu_c1cfd6b8275d624a.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Hugo&#43;Github搭建个人博客"
-                        
-                        data-hash="md5-YBFrHM/IYy6aZffVHfPvwg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Hugo&#43;Github搭建个人博客</h2>
+            <h2 class="article-title">【Hugo】修改博客背景并引入动态背景</h2>
         </div>
     </a>
 </article>
@@ -849,6 +1077,30 @@
 
 
 <script src=https://Bright9911.github.io/background/sakura.js></script>
+
+
+
+<script defer src="https://cn.vercount.one/js"></script>
+
+<script>
+    function showHideView() {
+        
+        let viewCounts = document.querySelectorAll("#viewCount");
+        if (viewCounts) {
+            
+            let article =  document.querySelector(".article-page");
+            if (!article) {
+                viewCounts.forEach(ele => {
+                    ele.style.display = 'none';
+                });
+            }
+        }
+    }
+    
+    showHideView();
+</script>
+
+
 
     </body>
 </html>

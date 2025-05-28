@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="使用手机扫码登录系统 安装二维码生成库 1 composer require simplesoftwareio/simple-qrcode web.php 1 2 3 4 5 6 7 8 9 // 扫码 // 生成二维码 Route::get(&#39;/login/qr&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;generateQrCode&#39;]); // 扫码绑定 Route::get(&#39;/auth/scan/{token}&#39;, [App\\Http\\Controllers\\Auth\\ScanLoginController::class, &#39;bindScanLogin&#39;]); // 确认登录 Route::get(&#39;/auth/confirm/{token}&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;confirmLogin&#39;]); // 检查 Token 是否绑定成功 Route::get(&#39;/auth/check/{token}&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;checkToken&#39;]); Controllers/Auth/ScanLoginController.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 &lt;?php namespace App\\Http\\Controllers\\Auth; use App\\Http\\Controllers\\Controller; use Illuminate\\Support\\Facades\\Auth; use Illuminate\\Support\\Facades\\Cache; class ScanLoginController extends Controller { // 扫码绑定 public function bindScanLogin($token) { // 验证Token是否有效 $scanInfo = Cache::get(&#39;scan_login_token_&#39; . $token); if (!$scanInfo) { \\Log::error(&#39;扫码绑定失败：Token无效或已过期，Token: &#39; . $token); return &#39;二维码已过期或无效&#39;; } // 如果用户未登录，则提示用户登录 if (!Auth::check()) { \\Log::info(&#39;扫码绑定：用户未登录，Token: &#39; . $token); return redirect()-&gt;guest(&#39;/login&#39;); } // 绑定扫码登录 Cache::put(&#39;scan_login_token_&#39; . $token, [ &#39;user_id&#39; =&gt; Auth::user()-&gt;id, &#39;expired_at&#39; =&gt; $scanInfo[&#39;expired_at&#39;] ], $scanInfo[&#39;expired_at&#39;]); \\Log::info(&#39;扫码绑定成功，Token: &#39; . $token . &#39;，User ID: &#39; . Auth::user()-&gt;id); return &#39;扫码绑定成功，请在设备上确认登录&#39;; } } 在Controllers/Auth/LoginController.php中加上 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 use SimpleSoftwareIO\\QrCode\\Facades\\QrCode; use Illuminate\\Support\\Str; // 生成二维码 public function generateQrCode() { $token = Str::random(32); $expiredAt = now()-&gt;addMinutes(5); // 存储Token到缓存 \\Cache::put(&#39;scan_login_token_&#39; . $token, [ &#39;expired_at&#39; =&gt; $expiredAt ], $expiredAt); // 记录 Token 到会话中 session([&#39;scan_login_token&#39; =&gt; $token]); // 生成二维码（SVG 格式） $qrCode = QrCode::size(300)-&gt;generate(url(&#39;/auth/scan/&#39; . $token)); // 添加正确的 Data URI 前缀 $qrcodeDataUri = &#39;data:image/svg+xml;base64,&#39; . base64_encode($qrCode); return view(&#39;login.qr&#39;, [&#39;qrcode&#39; =&gt; $qrcodeDataUri]); } // 确认登录 public function confirmLogin($token) { // 验证Token是否有效 $scanInfo = \\Cache::get(&#39;scan_login_token_&#39; . $token); if (!$scanInfo || !isset($scanInfo[&#39;user_id&#39;])) { return redirect(&#39;/login&#39;)-&gt;withErrors(&#39;登录已过期或无效&#39;); } // 登录用户 Auth::loginUsingId($scanInfo[&#39;user_id&#39;]); // 清除缓存 \\Cache::forget(&#39;scan_login_token_&#39; . $token); return redirect(&#39;/home&#39;); } // 检查Token public function checkToken($token) { $scanInfo = \\Cache::get(&#39;scan_login_token_&#39; . $token); if ($scanInfo &amp;&amp; isset($scanInfo[&#39;user_id&#39;])) { return response()-&gt;json([&#39;success&#39; =&gt; true]); } return response()-&gt;json([&#39;success&#39; =&gt; false]); } resources/views/login/qr.blade.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;扫码登录&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=&#34;text-align: center; margin-top: 50px;&#34;&gt; &lt;h2&gt;扫码登录&lt;/h2&gt; &lt;img src=&#34;{{ $qrcode }}&#34; alt=&#34;扫码登录&#34;&gt; &lt;p&gt;请使用手机扫描二维码完成登录&lt;/p&gt; &lt;/div&gt; &lt;script&gt; // 每隔 5 秒检查一次 Token 是否绑定成功 setInterval(function() { var token = &#34;{{ session(&#39;scan_login_token&#39;) }}&#34;; fetch(&#34;{{ url(&#39;http://10.11.201.116:8000/auth/check&#39;) }}/&#34; + token) .then(response =&gt; response.json()) .then(data =&gt; { if (data.success) { window.location.href = &#34;{{ url(&#39;/auth/confirm&#39;) }}/&#34; + token; } }); }, 5000); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 在config/app.php中 1 2 3 4 5 6 7 8 9 &#39;providers&#39; =&gt; [ // ... SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider::class, ], &#39;aliases&#39; =&gt; [ // ... &#39;QrCode&#39; =&gt; SimpleSoftwareIO\\QrCode\\Facades\\QrCode::class, ], 在.env中 1 APP_URL=http://10.11.201.116:8000 启动项目 1 2 3 4 php artisan serve --host 0.0.0.0 --port 8000 // 在以下路径访问 http://10.11.201.116:8000/login/qr ">
+<title>【Laravel】扫码登录</title>
+
+<link rel='canonical' href='https://Bright9911.github.io/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/'>
+
+<link rel="stylesheet" href="/scss/style.min.226704aaf746539ea3f22dbbc5e4f12952c1e9c008dcbd86289868f6234d4a96.css"><meta property='og:title' content="【Laravel】扫码登录">
+<meta property='og:description' content="使用手机扫码登录系统 安装二维码生成库 1 composer require simplesoftwareio/simple-qrcode web.php 1 2 3 4 5 6 7 8 9 // 扫码 // 生成二维码 Route::get(&#39;/login/qr&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;generateQrCode&#39;]); // 扫码绑定 Route::get(&#39;/auth/scan/{token}&#39;, [App\\Http\\Controllers\\Auth\\ScanLoginController::class, &#39;bindScanLogin&#39;]); // 确认登录 Route::get(&#39;/auth/confirm/{token}&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;confirmLogin&#39;]); // 检查 Token 是否绑定成功 Route::get(&#39;/auth/check/{token}&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;checkToken&#39;]); Controllers/Auth/ScanLoginController.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 &lt;?php namespace App\\Http\\Controllers\\Auth; use App\\Http\\Controllers\\Controller; use Illuminate\\Support\\Facades\\Auth; use Illuminate\\Support\\Facades\\Cache; class ScanLoginController extends Controller { // 扫码绑定 public function bindScanLogin($token) { // 验证Token是否有效 $scanInfo = Cache::get(&#39;scan_login_token_&#39; . $token); if (!$scanInfo) { \\Log::error(&#39;扫码绑定失败：Token无效或已过期，Token: &#39; . $token); return &#39;二维码已过期或无效&#39;; } // 如果用户未登录，则提示用户登录 if (!Auth::check()) { \\Log::info(&#39;扫码绑定：用户未登录，Token: &#39; . $token); return redirect()-&gt;guest(&#39;/login&#39;); } // 绑定扫码登录 Cache::put(&#39;scan_login_token_&#39; . $token, [ &#39;user_id&#39; =&gt; Auth::user()-&gt;id, &#39;expired_at&#39; =&gt; $scanInfo[&#39;expired_at&#39;] ], $scanInfo[&#39;expired_at&#39;]); \\Log::info(&#39;扫码绑定成功，Token: &#39; . $token . &#39;，User ID: &#39; . Auth::user()-&gt;id); return &#39;扫码绑定成功，请在设备上确认登录&#39;; } } 在Controllers/Auth/LoginController.php中加上 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 use SimpleSoftwareIO\\QrCode\\Facades\\QrCode; use Illuminate\\Support\\Str; // 生成二维码 public function generateQrCode() { $token = Str::random(32); $expiredAt = now()-&gt;addMinutes(5); // 存储Token到缓存 \\Cache::put(&#39;scan_login_token_&#39; . $token, [ &#39;expired_at&#39; =&gt; $expiredAt ], $expiredAt); // 记录 Token 到会话中 session([&#39;scan_login_token&#39; =&gt; $token]); // 生成二维码（SVG 格式） $qrCode = QrCode::size(300)-&gt;generate(url(&#39;/auth/scan/&#39; . $token)); // 添加正确的 Data URI 前缀 $qrcodeDataUri = &#39;data:image/svg+xml;base64,&#39; . base64_encode($qrCode); return view(&#39;login.qr&#39;, [&#39;qrcode&#39; =&gt; $qrcodeDataUri]); } // 确认登录 public function confirmLogin($token) { // 验证Token是否有效 $scanInfo = \\Cache::get(&#39;scan_login_token_&#39; . $token); if (!$scanInfo || !isset($scanInfo[&#39;user_id&#39;])) { return redirect(&#39;/login&#39;)-&gt;withErrors(&#39;登录已过期或无效&#39;); } // 登录用户 Auth::loginUsingId($scanInfo[&#39;user_id&#39;]); // 清除缓存 \\Cache::forget(&#39;scan_login_token_&#39; . $token); return redirect(&#39;/home&#39;); } // 检查Token public function checkToken($token) { $scanInfo = \\Cache::get(&#39;scan_login_token_&#39; . $token); if ($scanInfo &amp;&amp; isset($scanInfo[&#39;user_id&#39;])) { return response()-&gt;json([&#39;success&#39; =&gt; true]); } return response()-&gt;json([&#39;success&#39; =&gt; false]); } resources/views/login/qr.blade.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;扫码登录&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=&#34;text-align: center; margin-top: 50px;&#34;&gt; &lt;h2&gt;扫码登录&lt;/h2&gt; &lt;img src=&#34;{{ $qrcode }}&#34; alt=&#34;扫码登录&#34;&gt; &lt;p&gt;请使用手机扫描二维码完成登录&lt;/p&gt; &lt;/div&gt; &lt;script&gt; // 每隔 5 秒检查一次 Token 是否绑定成功 setInterval(function() { var token = &#34;{{ session(&#39;scan_login_token&#39;) }}&#34;; fetch(&#34;{{ url(&#39;http://10.11.201.116:8000/auth/check&#39;) }}/&#34; + token) .then(response =&gt; response.json()) .then(data =&gt; { if (data.success) { window.location.href = &#34;{{ url(&#39;/auth/confirm&#39;) }}/&#34; + token; } }); }, 5000); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 在config/app.php中 1 2 3 4 5 6 7 8 9 &#39;providers&#39; =&gt; [ // ... SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider::class, ], &#39;aliases&#39; =&gt; [ // ... &#39;QrCode&#39; =&gt; SimpleSoftwareIO\\QrCode\\Facades\\QrCode::class, ], 在.env中 1 APP_URL=http://10.11.201.116:8000 启动项目 1 2 3 4 php artisan serve --host 0.0.0.0 --port 8000 // 在以下路径访问 http://10.11.201.116:8000/login/qr ">
+<meta property='og:url' content='https://Bright9911.github.io/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/'>
+<meta property='og:site_name' content='Bright9911'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-28T11:22:56&#43;08:00'/><meta property='article:modified_time' content='2025-05-28T11:57:32&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46.jpg' />
+<meta name="twitter:title" content="【Laravel】扫码登录">
+<meta name="twitter:description" content="使用手机扫码登录系统 安装二维码生成库 1 composer require simplesoftwareio/simple-qrcode web.php 1 2 3 4 5 6 7 8 9 // 扫码 // 生成二维码 Route::get(&#39;/login/qr&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;generateQrCode&#39;]); // 扫码绑定 Route::get(&#39;/auth/scan/{token}&#39;, [App\\Http\\Controllers\\Auth\\ScanLoginController::class, &#39;bindScanLogin&#39;]); // 确认登录 Route::get(&#39;/auth/confirm/{token}&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;confirmLogin&#39;]); // 检查 Token 是否绑定成功 Route::get(&#39;/auth/check/{token}&#39;, [App\\Http\\Controllers\\Auth\\LoginController::class, &#39;checkToken&#39;]); Controllers/Auth/ScanLoginController.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 &lt;?php namespace App\\Http\\Controllers\\Auth; use App\\Http\\Controllers\\Controller; use Illuminate\\Support\\Facades\\Auth; use Illuminate\\Support\\Facades\\Cache; class ScanLoginController extends Controller { // 扫码绑定 public function bindScanLogin($token) { // 验证Token是否有效 $scanInfo = Cache::get(&#39;scan_login_token_&#39; . $token); if (!$scanInfo) { \\Log::error(&#39;扫码绑定失败：Token无效或已过期，Token: &#39; . $token); return &#39;二维码已过期或无效&#39;; } // 如果用户未登录，则提示用户登录 if (!Auth::check()) { \\Log::info(&#39;扫码绑定：用户未登录，Token: &#39; . $token); return redirect()-&gt;guest(&#39;/login&#39;); } // 绑定扫码登录 Cache::put(&#39;scan_login_token_&#39; . $token, [ &#39;user_id&#39; =&gt; Auth::user()-&gt;id, &#39;expired_at&#39; =&gt; $scanInfo[&#39;expired_at&#39;] ], $scanInfo[&#39;expired_at&#39;]); \\Log::info(&#39;扫码绑定成功，Token: &#39; . $token . &#39;，User ID: &#39; . Auth::user()-&gt;id); return &#39;扫码绑定成功，请在设备上确认登录&#39;; } } 在Controllers/Auth/LoginController.php中加上 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 use SimpleSoftwareIO\\QrCode\\Facades\\QrCode; use Illuminate\\Support\\Str; // 生成二维码 public function generateQrCode() { $token = Str::random(32); $expiredAt = now()-&gt;addMinutes(5); // 存储Token到缓存 \\Cache::put(&#39;scan_login_token_&#39; . $token, [ &#39;expired_at&#39; =&gt; $expiredAt ], $expiredAt); // 记录 Token 到会话中 session([&#39;scan_login_token&#39; =&gt; $token]); // 生成二维码（SVG 格式） $qrCode = QrCode::size(300)-&gt;generate(url(&#39;/auth/scan/&#39; . $token)); // 添加正确的 Data URI 前缀 $qrcodeDataUri = &#39;data:image/svg+xml;base64,&#39; . base64_encode($qrCode); return view(&#39;login.qr&#39;, [&#39;qrcode&#39; =&gt; $qrcodeDataUri]); } // 确认登录 public function confirmLogin($token) { // 验证Token是否有效 $scanInfo = \\Cache::get(&#39;scan_login_token_&#39; . $token); if (!$scanInfo || !isset($scanInfo[&#39;user_id&#39;])) { return redirect(&#39;/login&#39;)-&gt;withErrors(&#39;登录已过期或无效&#39;); } // 登录用户 Auth::loginUsingId($scanInfo[&#39;user_id&#39;]); // 清除缓存 \\Cache::forget(&#39;scan_login_token_&#39; . $token); return redirect(&#39;/home&#39;); } // 检查Token public function checkToken($token) { $scanInfo = \\Cache::get(&#39;scan_login_token_&#39; . $token); if ($scanInfo &amp;&amp; isset($scanInfo[&#39;user_id&#39;])) { return response()-&gt;json([&#39;success&#39; =&gt; true]); } return response()-&gt;json([&#39;success&#39; =&gt; false]); } resources/views/login/qr.blade.php 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;title&gt;扫码登录&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=&#34;text-align: center; margin-top: 50px;&#34;&gt; &lt;h2&gt;扫码登录&lt;/h2&gt; &lt;img src=&#34;{{ $qrcode }}&#34; alt=&#34;扫码登录&#34;&gt; &lt;p&gt;请使用手机扫描二维码完成登录&lt;/p&gt; &lt;/div&gt; &lt;script&gt; // 每隔 5 秒检查一次 Token 是否绑定成功 setInterval(function() { var token = &#34;{{ session(&#39;scan_login_token&#39;) }}&#34;; fetch(&#34;{{ url(&#39;http://10.11.201.116:8000/auth/check&#39;) }}/&#34; + token) .then(response =&gt; response.json()) .then(data =&gt; { if (data.success) { window.location.href = &#34;{{ url(&#39;/auth/confirm&#39;) }}/&#34; + token; } }); }, 5000); &lt;/script&gt; &lt;/body&gt; &lt;/html&gt; 在config/app.php中 1 2 3 4 5 6 7 8 9 &#39;providers&#39; =&gt; [ // ... SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider::class, ], &#39;aliases&#39; =&gt; [ // ... &#39;QrCode&#39; =&gt; SimpleSoftwareIO\\QrCode\\Facades\\QrCode::class, ], 在.env中 1 APP_URL=http://10.11.201.116:8000 启动项目 1 2 3 4 php artisan serve --host 0.0.0.0 --port 8000 // 在以下路径访问 http://10.11.201.116:8000/login/qr "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://Bright9911.github.io/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_2921f5624f4a6c6d.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🤨</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Bright9911</a></h1>
+            <h2 class="site-description">君子不器</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://www.bilibili.com/'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1747969392943" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3324" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M306.005333 117.632L444.330667 256h135.296l138.368-138.325333a42.666667 42.666667 0 1 1 60.373333 60.373333l-78.037333 77.952L789.333333 256A149.333333 149.333333 0 0 1 938.666667 405.333333v341.333334a149.333333 149.333333 0 0 1-149.333334 149.333333h-554.666666A149.333333 149.333333 0 0 1 85.333333 746.666667v-341.333334A149.333333 149.333333 0 0 1 234.666667 256h88.96L245.632 177.962667a42.666667 42.666667 0 0 1 60.373333-60.373334zM789.333333 341.333333h-554.666666a64 64 0 0 0-63.701334 57.856L170.666667 405.333333v341.333334a64 64 0 0 0 57.856 63.701333L234.666667 810.666667h554.666666a64 64 0 0 0 63.701334-57.813334L853.333333 746.666667v-341.333334A64 64 0 0 0 789.333333 341.333333zM341.333333 469.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v85.333333a42.666667 42.666667 0 1 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666666-42.666667z m341.333334 0a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 1 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667z" p-id="3325"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/Bright9911'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1747969535548" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2307" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M850.346667 155.008a42.666667 42.666667 0 0 0-22.741334-23.509333c-8.704-3.754667-85.717333-33.322667-200.32 39.168H396.714667c-114.773333-72.618667-191.701333-42.922667-200.32-39.168a42.88 42.88 0 0 0-22.741334 23.466666c-26.197333 66.218667-18.048 136.448-7.850666 176.896C134.272 374.016 128 413.098667 128 469.333333c0 177.877333 127.104 227.882667 226.730667 246.272a189.568 189.568 0 0 0-13.013334 46.549334A44.373333 44.373333 0 0 0 341.333333 768v38.613333c-19.498667-4.138667-41.002667-11.946667-55.168-26.112C238.08 732.416 188.330667 682.666667 128 682.666667v85.333333c25.002667 0 65.365333 40.362667 97.834667 72.832 51.029333 51.029333 129.066667 55.253333 153.386666 55.253333 3.114667 0 5.376-0.085333 6.528-0.128A42.666667 42.666667 0 0 0 426.666667 853.333333v-82.090666c4.266667-24.746667 20.224-49.621333 27.946666-56.362667a42.666667 42.666667 0 0 0-23.125333-74.581333C293.333333 624.554667 213.333333 591.488 213.333333 469.333333c0-53.12 5.632-70.741333 31.573334-99.285333 11.008-12.117333 14.08-29.568 7.978666-44.8-4.821333-11.904-18.773333-65.450667-6.485333-117.546667 20.650667-1.578667 59.904 4.565333 113.706667 40.96C367.104 253.44 375.466667 256 384 256h256a42.666667 42.666667 0 0 0 23.936-7.338667c54.016-36.522667 92.970667-41.770667 113.664-41.130666 12.330667 52.224-1.578667 105.770667-6.4 117.674666a42.666667 42.666667 0 0 0 8.021333 44.928C805.077333 398.464 810.666667 416.085333 810.666667 469.333333c0 122.581333-79.957333 155.52-218.069334 170.922667a42.666667 42.666667 0 0 0-23.125333 74.709333c19.797333 17.066667 27.861333 32.469333 27.861333 53.034667v128h85.333334v-128c0-20.437333-3.925333-38.101333-9.770667-53.12C769.92 695.765333 896 643.712 896 469.333333c0-56.362667-6.272-95.530667-37.76-137.514666 10.197333-40.405333 18.261333-110.506667-7.893333-176.810667z" fill="" p-id="2308"></path></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页 | Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E-about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于 | About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档 | Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索 | Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5-links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接 | Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#使用手机扫码登录系统">使用手机扫码登录系统</a>
+      <ul>
+        <li><a href="#安装二维码生成库">安装二维码生成库</a></li>
+        <li><a href="#webphp">web.php</a></li>
+        <li><a href="#controllersauthscanlogincontrollerphp">Controllers/Auth/ScanLoginController.php</a></li>
+        <li><a href="#在controllersauthlogincontrollerphp中加上">在Controllers/Auth/LoginController.php中加上</a></li>
+        <li><a href="#resourcesviewsloginqrbladephp">resources/views/login/qr.blade.php</a></li>
+        <li><a href="#在configappphp中">在config/app.php中</a></li>
+        <li><a href="#在env中">在.env中</a></li>
+        <li><a href="#启动项目">启动项目</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">
+                <img src="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46_hu_b9836eaebf1c0b2.jpg"
+                        srcset="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46_hu_b9836eaebf1c0b2.jpg 800w, /p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46_hu_cd20f049d2835826.jpg 1600w"
+                        width="800" 
+                        height="477" 
+                        loading="lazy"
+                        alt="Featured image of post 【Laravel】扫码登录" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/laravel/" >
+                Laravel
+            </a>
+        
+            <a href="/categories/%E7%AC%94%E8%AE%B0/" >
+                笔记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">【Laravel】扫码登录</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-05-28 发布</time>
+            </div>
+        
+
+        <div class="article-lastmod">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time>
+                    2025-05-28 最后更新
+                </time>
+            </div>
+        <div id="viewCount">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+            <time class="article-time--reading">
+                <span id="vercount_value_page_pv">loading... </span>次
+            </time>
+        </div>
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="使用手机扫码登录系统">使用手机扫码登录系统
+</h2><h3 id="安装二维码生成库">安装二维码生成库
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">composer require simplesoftwareio/simple-qrcode
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="webphp">web.php
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// 扫码
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 生成二维码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/login/qr&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">App\Http\Controllers\Auth\LoginController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;generateQrCode&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 扫码绑定
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/auth/scan/{token}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">App\Http\Controllers\Auth\ScanLoginController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;bindScanLogin&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 确认登录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/auth/confirm/{token}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">App\Http\Controllers\Auth\LoginController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;confirmLogin&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 检查 Token 是否绑定成功
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/auth/check/{token}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">App\Http\Controllers\Auth\LoginController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;checkToken&#39;</span><span class="p">]);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="controllersauthscanlogincontrollerphp">Controllers/Auth/ScanLoginController.php
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nx">App\Http\Controllers\Auth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Cache</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ScanLoginController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 扫码绑定
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">bindScanLogin</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 验证Token是否有效
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$scanInfo</span> <span class="o">=</span> <span class="nx">Cache</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;scan_login_token_&#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$scanInfo</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">\Log</span><span class="o">::</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;扫码绑定失败：Token无效或已过期，Token: &#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s1">&#39;二维码已过期或无效&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 如果用户未登录，则提示用户登录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">Auth</span><span class="o">::</span><span class="na">check</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">\Log</span><span class="o">::</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;扫码绑定：用户未登录，Token: &#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">guest</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 绑定扫码登录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">Cache</span><span class="o">::</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;scan_login_token_&#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">,</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;user_id&#39;</span> <span class="o">=&gt;</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;expired_at&#39;</span> <span class="o">=&gt;</span> <span class="nv">$scanInfo</span><span class="p">[</span><span class="s1">&#39;expired_at&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span> <span class="nv">$scanInfo</span><span class="p">[</span><span class="s1">&#39;expired_at&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nx">\Log</span><span class="o">::</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;扫码绑定成功，Token: &#39;</span> <span class="o">.</span> <span class="nv">$token</span> <span class="o">.</span> <span class="s1">&#39;，User ID: &#39;</span> <span class="o">.</span> <span class="nx">Auth</span><span class="o">::</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;扫码绑定成功，请在设备上确认登录&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="在controllersauthlogincontrollerphp中加上">在Controllers/Auth/LoginController.php中加上
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">SimpleSoftwareIO\QrCode\Facades\QrCode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nx">Illuminate\Support\Str</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 生成二维码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">generateQrCode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$token</span> <span class="o">=</span> <span class="nx">Str</span><span class="o">::</span><span class="na">random</span><span class="p">(</span><span class="mi">32</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$expiredAt</span> <span class="o">=</span> <span class="nx">now</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">addMinutes</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 存储Token到缓存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">\Cache</span><span class="o">::</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;scan_login_token_&#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">,</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;expired_at&#39;</span> <span class="o">=&gt;</span> <span class="nv">$expiredAt</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span> <span class="nv">$expiredAt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 记录 Token 到会话中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">session</span><span class="p">([</span><span class="s1">&#39;scan_login_token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$token</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 生成二维码（SVG 格式）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$qrCode</span> <span class="o">=</span> <span class="nx">QrCode</span><span class="o">::</span><span class="na">size</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">generate</span><span class="p">(</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;/auth/scan/&#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 添加正确的 Data URI 前缀
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$qrcodeDataUri</span> <span class="o">=</span> <span class="s1">&#39;data:image/svg+xml;base64,&#39;</span> <span class="o">.</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nv">$qrCode</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">&#39;login.qr&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;qrcode&#39;</span> <span class="o">=&gt;</span> <span class="nv">$qrcodeDataUri</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 确认登录
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">confirmLogin</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 验证Token是否有效
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$scanInfo</span> <span class="o">=</span> <span class="nx">\Cache</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;scan_login_token_&#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$scanInfo</span> <span class="o">||</span> <span class="o">!</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$scanInfo</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">withErrors</span><span class="p">(</span><span class="s1">&#39;登录已过期或无效&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 登录用户
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">Auth</span><span class="o">::</span><span class="na">loginUsingId</span><span class="p">(</span><span class="nv">$scanInfo</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 清除缓存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">\Cache</span><span class="o">::</span><span class="na">forget</span><span class="p">(</span><span class="s1">&#39;scan_login_token_&#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/home&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 检查Token
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span> <span class="k">function</span> <span class="nf">checkToken</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$scanInfo</span> <span class="o">=</span> <span class="nx">\Cache</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;scan_login_token_&#39;</span> <span class="o">.</span> <span class="nv">$token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nv">$scanInfo</span> <span class="o">&amp;&amp;</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$scanInfo</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">([</span><span class="s1">&#39;success&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">([</span><span class="s1">&#39;success&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="resourcesviewsloginqrbladephp">resources/views/login/qr.blade.php
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>扫码登录<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; margin-top: 50px;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>扫码登录<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;{{ $qrcode }}&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;扫码登录&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>请使用手机扫描二维码完成登录<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 每隔 5 秒检查一次 Token 是否绑定成功
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">token</span> <span class="o">=</span> <span class="s2">&#34;{{ session(&#39;scan_login_token&#39;) }}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fetch</span><span class="p">(</span><span class="s2">&#34;{{ url(&#39;http://10.11.201.116:8000/auth/check&#39;) }}/&#34;</span> <span class="o">+</span> <span class="nx">token</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&#34;{{ url(&#39;/auth/confirm&#39;) }}/&#34;</span> <span class="o">+</span> <span class="nx">token</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span> <span class="mi">5000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="在configappphp中">在config/app.php中
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="s1">&#39;providers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">SimpleSoftwareIO\QrCode\QrCodeServiceProvider</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">],</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;aliases&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;QrCode&#39;</span> <span class="o">=&gt;</span> <span class="nx">SimpleSoftwareIO\QrCode\Facades\QrCode</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">],</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="在env中">在.env中
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">APP_URL</span><span class="o">=</span><span class="nx">http</span><span class="o">://</span><span class="mf">10.11</span><span class="o">.</span><span class="mf">201.116</span><span class="o">:</span><span class="mi">8000</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="启动项目">启动项目
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">php artisan serve --host 0.0.0.0 --port <span class="m">8000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// 在以下路径访问
+</span></span><span class="line"><span class="cl">http://10.11.201.116:8000/login/qr
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2025-05-28 最后更新
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/">
+        
+        
+            <div class="article-image">
+                <img src="/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/93314e48ec9513292e4b1e8ca1c73c9d.a72b4a2735b73ddb57dda52073156655_hu_688442116e624bec.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Laravel】验证码登录"
+                        
+                        data-hash="md5-pytKJzW3PdtX3aUgcxVmVQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Laravel】验证码登录</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/">
+        
+        
+            <div class="article-image">
+                <img src="/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/9ad3bf3c4aadf61bd96eebfc1f7f577e.2cbbb500aba2e4aab12e331969ffa85a_hu_ff82cd5f5ff03a5d.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Laravel】邮件发送"
+                        
+                        data-hash="md5-LLu1AKui5KqxLjMZaf&#43;oWg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Laravel】邮件发送</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/2077.a3585811714968d323afd0b16cfc6f48_hu_a8017fc742100d25.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Hugo】文章浏览量统计"
+                        
+                        data-hash="md5-o1hYEXFJaNMjr9CxbPxvSA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Hugo】文章浏览量统计</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/6b951400bb98fd5fcd57d2c9599df286.7cd09a879ed8744e75e174bab0c937af_hu_eee817a63ee3812c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Hugo】修改博客背景并引入动态背景"
+                        
+                        data-hash="md5-fNCah57YdE514XS6sMk3rw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Hugo】修改博客背景并引入动态背景</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.46f61e8ea6a2df8fc5bf1d24a17c44a6_hu_57b7cab9514860c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Hugo】Stack主题自定义修改"
+                        
+                        data-hash="md5-RvYejqai34/Fvx0koXxEpg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Hugo】Stack主题自定义修改</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Bright9911
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+<style>
+    #TableOfContents > ul, ol {
+        ul, ol {
+            display: none;
+        }
+        .open {
+            display: block;
+        }
+    }
+</style>
+
+<script>
+    function initTocHide() {
+        
+        let toc = document.querySelector(".widget--toc");
+        if (!toc) {
+            return;
+        }
+        
+        window.addEventListener('scroll', function() {
+            
+            let openUl = document.querySelectorAll(".open");
+            if (openUl.length > 0) {
+              openUl.forEach((ul) => {
+                ul.classList.remove("open")
+              })
+            }
+            
+            let currentLi = document.querySelector(".active-class");
+            if (!currentLi) {
+                return
+            }
+            
+            if (currentLi.children.length > 1) {
+                currentLi.children[1].classList.add("open")
+            }
+            
+            let ul = currentLi.parentElement;
+            do {
+                ul.classList.add("open");
+                ul = ul.parentElement.parentElement
+            } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+        });
+    }
+    initTocHide()
+</script>
+
+
+<style>
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        background-image: url(https://Bright9911.github.io/icons/backTop.svg);
+    }
+</style>
+
+<script>
+    
+
+    function initScrollTop() {
+        let rightSideBar = document.querySelector(".right-sidebar");
+        if (!rightSideBar) {
+            return;
+        }
+        
+        let btn = document.createElement("div");
+        btn.id = "backTopBtn";
+        btn.onclick = backToTop
+        rightSideBar.appendChild(btn)
+        
+        window.onscroll = function() {
+            
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    }
+
+    
+
+    function backToTop(){
+        window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+
+    initScrollTop();
+</script>
+
+
+
+<style>
+    .highlight {
+         
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+    .code-show {
+        max-height: none !important;
+    }
+
+    .code-more-box {
+        width: 100%;
+        padding-top: 78px;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#fff));
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .code-more-btn {
+        display: block;
+        margin: auto;
+        width: 44px;
+        height: 22px;
+        background: #f0f0f5;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+
+    .code-more-img {
+        cursor: pointer !important;
+        display: block;
+        margin: auto;
+        width: 22px;
+        height: 16px;
+        margin-top: -5px;
+    }
+</style>
+
+<script>
+  function initCodeMoreBox() {
+    let codeBlocks = document.querySelectorAll(".highlight");
+    if (!codeBlocks) {
+      return;
+    }
+    codeBlocks.forEach(codeBlock => {
+      
+      if (codeBlock.scrollHeight <= codeBlock.clientHeight) {
+        return;
+      }
+      
+      
+      let codeMoreBox = document.createElement('div');
+      codeMoreBox.classList.add('code-more-box');
+      
+      let codeMoreBtn = document.createElement('span');
+      codeMoreBtn.classList.add('code-more-btn');
+      codeMoreBtn.addEventListener('click', () => {
+        codeBlock.classList.add('code-show');
+        codeMoreBox.style.display = 'none';
+        
+        window.dispatchEvent(new Event('resize'))
+      })
+      
+      let img = document.createElement('img');
+      img.classList.add('code-more-img');
+      img.src = "https://Bright9911.github.io/icons/codeMore.svg"
+      
+      codeMoreBtn.appendChild(img);
+      codeMoreBox.appendChild(codeMoreBtn);
+      codeBlock.appendChild(codeMoreBox)
+    })
+  }
+  
+  initCodeMoreBox();
+</script>
+
+
+
+
+
+
+<script src=https://Bright9911.github.io/background/sakura.js></script>
+
+
+
+<script defer src="https://cn.vercount.one/js"></script>
+
+<script>
+    function showHideView() {
+        
+        let viewCounts = document.querySelectorAll("#viewCount");
+        if (viewCounts) {
+            
+            let article =  document.querySelector(".article-page");
+            if (!article) {
+                viewCounts.forEach(ele => {
+                    ele.style.display = 'none';
+                });
+            }
+        }
+    }
+    
+    showHideView();
+</script>
+
+
+
+    </body>
+</html>

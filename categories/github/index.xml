@@ -7,13 +7,13 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright>
-        <lastBuildDate>Tue, 27 May 2025 12:26:24 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/github/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Hugo&#43;Github搭建个人博客</title>
-        <link>https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+        <lastBuildDate>Wed, 28 May 2025 11:57:32 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/github/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【Hugo】Hugo&#43;Github搭建个人博客</title>
+        <link>https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
         <pubDate>Fri, 23 May 2025 14:53:41 +0800</pubDate>
         
-        <guid>https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-        <description>&lt;img src="https://Bright9911.github.io/p/hugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post Hugo&#43;Github搭建个人博客" /&gt;&lt;h2 id=&#34;1环境准备&#34;&gt;1、环境准备
+        <guid>https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+        <description>&lt;img src="https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post 【Hugo】Hugo&#43;Github搭建个人博客" /&gt;&lt;h2 id=&#34;1环境准备&#34;&gt;1、环境准备
 &lt;/h2&gt;&lt;h3 id=&#34;11git下载&#34;&gt;1.1、Git下载
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;前往&lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
