@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright>
-        <lastBuildDate>Thu, 29 May 2025 10:54:40 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 29 May 2025 16:43:16 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【Hugo】文章添加评论功能</title>
         <link>https://Bright9911.github.io/p/hugo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/</link>
         <pubDate>Wed, 28 May 2025 08:10:04 +0800</pubDate>
@@ -50,20 +50,11 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;填写以下信息：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Repository&lt;/strong&gt; ：&lt;code&gt;Bright9911/blog-comments&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Repository id&lt;/strong&gt; ：在 Giscus 配置页面自动生成或从仓库 URL 中获取。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Category&lt;/strong&gt; ：选择 “Discussions”。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Category id&lt;/strong&gt; ：在 Giscus 配置页面自动生成。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Mapping&lt;/strong&gt; ：选择 &lt;code&gt;pathname&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Reactions enabled&lt;/strong&gt; ：启用（填写数字 &lt;code&gt;1&lt;/code&gt;）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Metadata&lt;/strong&gt; ：禁用（填写数字 &lt;code&gt;0&lt;/code&gt;）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Theme&lt;/strong&gt; ：选择 &lt;code&gt;light&lt;/code&gt; 或 &lt;code&gt;dark&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Language&lt;/strong&gt; ：选择 &lt;code&gt;zh-CN&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;仓库名字：&lt;code&gt;Bright9911/blog-comments&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Discussion 分类：&lt;strong&gt;Genenal&lt;/strong&gt; 或 &lt;strong&gt;announcements&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;页面会生成一段代码，类似如下：&lt;/p&gt;
+&lt;p&gt;然后页面会生成一段代码，类似如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
