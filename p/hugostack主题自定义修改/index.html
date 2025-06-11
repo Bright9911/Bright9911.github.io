@@ -10,7 +10,7 @@
 <meta property='og:description' content="1、修改字体 （1）前往【100font】，下载自己想要的字体，字体文件为 fusion-pixel-10px-monospaced-zh_hans.ttf （2）把字体文件放入assets/font下(文件夹自己创建) （3）将以下代码修改并复制到layouts/partials/footer/custom.html文件中(文件不存在就自己创建) 1 2 3 4 5 6 7 8 9 10 11 &lt;style&gt; @font-face { font-family: &#39;字体名&#39;; src: url({{ (resources.Get &#34;font/字体文件名&#34;).Permalink }}) format(&#39;truetype&#39;); } :root { --base-font-family: &#39;字体名&#39;; --code-font-family: &#39;字体名&#39;; } &lt;/style&gt; （4）这样博客字体就修改好了 2、修改鼠标样式 （1）准备好鼠标样式图片(默认，指针，文本…)，图片大小建议控制在 32px 左右，将图片放入static/mouse文件夹下（文件夹自己创建）\n">
 <meta property='og:url' content='https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/'>
 <meta property='og:site_name' content='Bright9911'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-27T11:20:48&#43;08:00'/><meta property='article:modified_time' content='2025-05-28T14:43:50&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-27T11:20:48&#43;08:00'/><meta property='article:modified_time' content='2025-06-11T17:19:11&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.jpg' />
 <meta name="twitter:title" content="【Hugo】Stack主题自定义修改">
 <meta name="twitter:description" content="1、修改字体 （1）前往【100font】，下载自己想要的字体，字体文件为 fusion-pixel-10px-monospaced-zh_hans.ttf （2）把字体文件放入assets/font下(文件夹自己创建) （3）将以下代码修改并复制到layouts/partials/footer/custom.html文件中(文件不存在就自己创建) 1 2 3 4 5 6 7 8 9 10 11 &lt;style&gt; @font-face { font-family: &#39;字体名&#39;; src: url({{ (resources.Get &#34;font/字体文件名&#34;).Permalink }}) format(&#39;truetype&#39;); } :root { --base-font-family: &#39;字体名&#39;; --code-font-family: &#39;字体名&#39;; } &lt;/style&gt; （4）这样博客字体就修改好了 2、修改鼠标样式 （1）准备好鼠标样式图片(默认，指针，文本…)，图片大小建议控制在 32px 左右，将图片放入static/mouse文件夹下（文件夹自己创建）\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.jpg' />
@@ -265,6 +265,7 @@
     <li><a href="#7macos风格的代码块">7、macOS风格的代码块</a></li>
     <li><a href="#8自定义md引用块颜色模板">8、自定义MD引用块颜色模板</a></li>
     <li><a href="#9代码块过长折叠展开">9、代码块过长折叠&amp;展开</a></li>
+    <li><a href="#更多参考">更多参考</a></li>
   </ul>
 </nav>
         </div>
@@ -344,14 +345,14 @@
 
 
                 <time>
-                    2025-05-28 最后更新
+                    2025-06-11 最后更新
                 </time>
             </div>
         
             <footer class="article-wordcount">
                 <div>  
                     <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1749624866816" class="icon" viewBox="0 0 1048 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2435" width="16.375" height="16" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M310.598543 86.182563a200.962621 200.962621 0 0 0-200.962621 200.938241v430.595876a200.962621 200.962621 0 0 0 200.962621 200.987001h430.620256a200.962621 200.962621 0 0 0 200.962621-200.962621V287.096424a200.962621 200.962621 0 0 0-200.962621-200.962621H310.598543m0-86.158183h430.620256A287.096424 287.096424 0 0 1 1028.339603 287.120804v430.620256a287.096424 287.096424 0 0 1-287.096424 287.096424H310.598543A287.072044 287.072044 0 0 1 23.526499 717.74106V287.096424C23.526499 128.53026 152.056759 0.04876 310.598543 0.04876v-0.04876z" p-id="2436" fill="#8a8a8a"></path><path d="M489.009857 680.830056V360.942812h-141.402791a36.911004 36.911004 0 1 1-0.097519-73.846388H704.332175a36.911004 36.911004 0 1 1 0 73.846388h-141.402791v319.862864a36.911004 36.911004 0 1 1-73.822008 0h-0.07314z" p-id="2437" fill="#8a8a8a"></path></svg>
-                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 2936</span>
+                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 3054</span>
                 </div>
             </footer>
         
@@ -1281,7 +1282,41 @@ alert-error
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="更多参考">更多参考
+</h2><blockquote class="alert-tip">
+<p><a class="link" href="https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top"  target="_blank" rel="noopener"
+    >Hugo博客 | stack主题修改第一站</a><a class="link" href="https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top"  target="_blank" rel="noopener"
+    >   </a><a class="link" href="https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top"  target="_blank" rel="noopener"
+    >（</a><a class="link" href="https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top"  target="_blank" rel="noopener"
+    >修改样式</a><a class="link" href="https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top"  target="_blank" rel="noopener"
+    >）</a></p>
+<p><a class="link" href="https://hyrtee.github.io/2023/start-blog/"  target="_blank" rel="noopener"
+    >hugo+Stack 搭建个人博客</a><a class="link" href="https://hyrtee.github.io/2023/start-blog/"  target="_blank" rel="noopener"
+    >   </a><a class="link" href="https://hyrtee.github.io/2023/start-blog/"  target="_blank" rel="noopener"
+    >（</a><a class="link" href="https://hyrtee.github.io/2023/start-blog/"  target="_blank" rel="noopener"
+    >让百度、谷歌搜索</a><a class="link" href="https://hyrtee.github.io/2023/start-blog/"  target="_blank" rel="noopener"
+    >到你</a><a class="link" href="https://hyrtee.github.io/2023/start-blog/"  target="_blank" rel="noopener"
+    >）</a></p>
+<p><a class="link" href="https://oxidane-uni.github.io/p/%e4%bd%bf%e7%94%a8-hugo-%e5%af%b9%e5%8d%9a%e5%ae%a2%e7%9a%84%e9%87%8d%e5%bb%ba%e4%b8%8e-stack-%e4%b8%bb%e9%a2%98%e4%bc%98%e5%8c%96%e8%ae%b0%e5%bd%95/"  target="_blank" rel="noopener"
+    >使用 Hugo 对博客的重建与 Stack 主题优化记录</a><a class="link" href="https://oxidane-uni.github.io/p/%e4%bd%bf%e7%94%a8-hugo-%e5%af%b9%e5%8d%9a%e5%ae%a2%e7%9a%84%e9%87%8d%e5%bb%ba%e4%b8%8e-stack-%e4%b8%bb%e9%a2%98%e4%bc%98%e5%8c%96%e8%ae%b0%e5%bd%95/"  target="_blank" rel="noopener"
+    >   </a><a class="link" href="https://oxidane-uni.github.io/p/%e4%bd%bf%e7%94%a8-hugo-%e5%af%b9%e5%8d%9a%e5%ae%a2%e7%9a%84%e9%87%8d%e5%bb%ba%e4%b8%8e-stack-%e4%b8%bb%e9%a2%98%e4%bc%98%e5%8c%96%e8%ae%b0%e5%bd%95/"  target="_blank" rel="noopener"
+    >（</a><a class="link" href="https://oxidane-uni.github.io/p/%e4%bd%bf%e7%94%a8-hugo-%e5%af%b9%e5%8d%9a%e5%ae%a2%e7%9a%84%e9%87%8d%e5%bb%ba%e4%b8%8e-stack-%e4%b8%bb%e9%a2%98%e4%bc%98%e5%8c%96%e8%ae%b0%e5%bd%95/"  target="_blank" rel="noopener"
+    >优化布局</a><a class="link" href="https://oxidane-uni.github.io/p/%e4%bd%bf%e7%94%a8-hugo-%e5%af%b9%e5%8d%9a%e5%ae%a2%e7%9a%84%e9%87%8d%e5%bb%ba%e4%b8%8e-stack-%e4%b8%bb%e9%a2%98%e4%bc%98%e5%8c%96%e8%ae%b0%e5%bd%95/"  target="_blank" rel="noopener"
+    >）</a></p>
+<p><a class="link" href="https://weiqifun.com/posts/2024/10/hugo&#43;stack%e4%b8%bb%e9%a2%98%e7%be%8e%e5%8c%96/"  target="_blank" rel="noopener"
+    >Hugo Stack 主题美化</a><a class="link" href="https://weiqifun.com/posts/2024/10/hugo&#43;stack%e4%b8%bb%e9%a2%98%e7%be%8e%e5%8c%96/"  target="_blank" rel="noopener"
+    >   </a><a class="link" href="https://weiqifun.com/posts/2024/10/hugo&#43;stack%e4%b8%bb%e9%a2%98%e7%be%8e%e5%8c%96/"  target="_blank" rel="noopener"
+    >（</a><a class="link" href="https://weiqifun.com/posts/2024/10/hugo&#43;stack%e4%b8%bb%e9%a2%98%e7%be%8e%e5%8c%96/"  target="_blank" rel="noopener"
+    >文章统计字数</a><a class="link" href="https://weiqifun.com/posts/2024/10/hugo&#43;stack%e4%b8%bb%e9%a2%98%e7%be%8e%e5%8c%96/"  target="_blank" rel="noopener"
+    >）</a></p>
+<p><a class="link" href="https://www.blain.top/p/renovation/"  target="_blank" rel="noopener"
+    >小白hugo博客装修笔记（1）</a><a class="link" href="https://www.blain.top/p/renovation/"  target="_blank" rel="noopener"
+    >（</a><a class="link" href="https://www.blain.top/p/renovation/"  target="_blank" rel="noopener"
+    >运行时长、文字统计</a><a class="link" href="https://www.blain.top/p/renovation/"  target="_blank" rel="noopener"
+    >）</a></p>
+<p><a class="link" href="https://jianyesc.com/"  target="_blank" rel="noopener"
+    >剑夜の个人空间</a></p>
+</blockquote>
 </section>
 
 
@@ -1298,7 +1333,7 @@ alert-error
 
 
         <span>
-            最后更新于 2025-05-28 最后更新
+            最后更新于 2025-06-11 最后更新
         </span>
     </section></footer>
 
@@ -1542,7 +1577,7 @@ alert-error
             <span id="runningdays" class="running-days"></span>
         </section>
 
-        <p style="font-size: 13px;margin: 0px;">发布了 9 篇文章 | 共 14.9K 字</p>
+        <p style="font-size: 13px;margin: 0px;">发布了 9 篇文章 | 共 15.0K 字</p>
 
 
         <section class="powerby" style="font-size: 13px;">
