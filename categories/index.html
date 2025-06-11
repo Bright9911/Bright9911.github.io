@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://Bright9911.github.io/categories/'>
 
-<link rel="stylesheet" href="/scss/style.min.226704aaf746539ea3f22dbbc5e4f12952c1e9c008dcbd86289868f6234d4a96.css"><meta property='og:title' content="Categories">
+<link rel="stylesheet" href="/scss/style.min.f82aa7cda34b321645759925b5e125ddc1fa9d5a440de876b6d3399371203f65.css"><meta property='og:title' content="Categories">
 <meta property='og:description' content="君子不器">
 <meta property='og:url' content='https://Bright9911.github.io/categories/'>
 <meta property='og:site_name' content='Bright9911'>
@@ -445,8 +445,86 @@
     </section>
     
     <section class="powerby">
-        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <section class="running-time" style="font-size: 13px;">
+            本博客已稳定运行
+            <span id="runningdays" class="running-days"></span>
+        </section>
+
+        <p style="font-size: 13px;margin: 0px;">发布了 9 篇文章 | 共 14.9K 字</p>
+
+
+        <section class="powerby" style="font-size: 13px;">
+            <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.27.0">Stack</a></b> <a>由Jimmy设计</a>
+        </section>
+
     </section>
 </footer>
 
@@ -683,6 +761,22 @@
 
 
 
+
+
+
+<script>
+    let s1 = '2025-5-23'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + "天" + hours + "小时" + minutes + "分钟";
+    document.getElementById('runningdays').innerHTML = result;
+</script>
 
     </body>
 </html>
