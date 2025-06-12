@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head>
+
+<head>
 	<meta name="generator" content="Hugo 0.147.8"><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="君子不器">
 <title>Pager 2 - Bright9911</title>
@@ -11,13 +12,44 @@
 <meta property='og:description' content="君子不器">
 <meta property='og:url' content='https://Bright9911.github.io/'>
 <meta property='og:site_name' content='Bright9911'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-06-12T14:29:07&#43;08:00 '/>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-06-12T16:02:43&#43;08:00 '/>
 <meta name="twitter:title" content="Bright9911">
 <meta name="twitter:description" content="君子不器"><link rel="alternate" type="application/rss&#43;xml" href="https://Bright9911.github.io/index.xml">
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    </head>
-    <body class="">
+</head>
+<style>
+    #content_progress {
+         
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        height: 3px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none;
+        background-color: transparent;
+        color: #0085a1;
+    }
+
+    #content_progress::-webkit-progress-bar {
+        background-color: transparent;
+    }
+
+    #content_progress::-webkit-progress-value {
+        background-color: #0085a1;
+    }
+
+    #content_progress::-moz-progress-bar {
+        background-color: #0085a1;
+    }
+</style>
+
+
+<body class="">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -350,7 +382,8 @@
     </aside>
 
 
-            <main class="main full-width">
+<progress id="content_progress" value="0"></progress>
+        <main class="main full-width">
     
     
     
@@ -451,7 +484,7 @@
             <footer class="article-wordcount">
                 <div>  
                     <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1749624866816" class="icon" viewBox="0 0 1048 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2435" width="16.375" height="16" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M310.598543 86.182563a200.962621 200.962621 0 0 0-200.962621 200.938241v430.595876a200.962621 200.962621 0 0 0 200.962621 200.987001h430.620256a200.962621 200.962621 0 0 0 200.962621-200.962621V287.096424a200.962621 200.962621 0 0 0-200.962621-200.962621H310.598543m0-86.158183h430.620256A287.096424 287.096424 0 0 1 1028.339603 287.120804v430.620256a287.096424 287.096424 0 0 1-287.096424 287.096424H310.598543A287.072044 287.072044 0 0 1 23.526499 717.74106V287.096424C23.526499 128.53026 152.056759 0.04876 310.598543 0.04876v-0.04876z" p-id="2436" fill="#8a8a8a"></path><path d="M489.009857 680.830056V360.942812h-141.402791a36.911004 36.911004 0 1 1-0.097519-73.846388H704.332175a36.911004 36.911004 0 1 1 0 73.846388h-141.402791v319.862864a36.911004 36.911004 0 1 1-73.822008 0h-0.07314z" p-id="2437" fill="#8a8a8a"></path></svg>
-                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 3088</span>
+                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 3100</span>
                 </div>
             </footer>
         
@@ -767,7 +800,7 @@
             <span id="runningdays" class="running-days"></span>
         </section>
 
-        <p style="font-size: 13px;margin: 0px;">发布了 9 篇文章 | 共 15.0K 字</p>
+        <p style="font-size: 13px;margin: 0px;">发布了 9 篇文章 | 共 15.1K 字</p>
 
 
         <section class="powerby" style="font-size: 13px;">
@@ -777,9 +810,9 @@
     </section>
 </footer>
 
-            </main>
-        </div>
-        <script 
+        </main>
+    </div>
+    <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
@@ -1026,5 +1059,21 @@
     document.getElementById('runningdays').innerHTML = result;
 </script>
 
-    </body>
+    
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var winHeight = window.innerHeight,
+            docHeight = document.documentElement.scrollHeight,
+            progressBar = document.querySelector('#content_progress');
+        progressBar.max = docHeight - winHeight;
+        progressBar.value = window.scrollY;
+
+        document.addEventListener('scroll', function () {
+            progressBar.max = document.documentElement.scrollHeight - window.innerHeight;
+            progressBar.value = window.scrollY;
+        });
+    });
+</script>
+
 </html>

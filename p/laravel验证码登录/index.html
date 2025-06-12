@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
+
+<head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1、安装验证码扩展包 首先需要安装mews/captcha验证码扩展包，执行命令：\n1 composer require mews/captcha 2、修改登录视图 在（login.blade.php）表单中添加验证码输入框和验证码图片区域：\n">
 <title>【Laravel】验证码登录</title>
 
@@ -16,8 +17,39 @@
     <meta name="twitter:image" content='https://Bright9911.github.io/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/93314e48ec9513292e4b1e8ca1c73c9d.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    </head>
-    <body class="
+</head>
+<style>
+    #content_progress {
+         
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        height: 3px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none;
+        background-color: transparent;
+        color: #0085a1;
+    }
+
+    #content_progress::-webkit-progress-bar {
+        background-color: transparent;
+    }
+
+    #content_progress::-webkit-progress-value {
+        background-color: #0085a1;
+    }
+
+    #content_progress::-moz-progress-bar {
+        background-color: #0085a1;
+    }
+</style>
+
+
+<body class="
     article-page
     ">
     <script>
@@ -272,7 +304,8 @@
     </aside>
 
 
-            <main class="main full-width">
+<progress id="content_progress" value="0"></progress>
+        <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
@@ -1247,7 +1280,7 @@
             <span id="runningdays" class="running-days"></span>
         </section>
 
-        <p style="font-size: 13px;margin: 0px;">发布了 9 篇文章 | 共 15.0K 字</p>
+        <p style="font-size: 13px;margin: 0px;">发布了 9 篇文章 | 共 15.1K 字</p>
 
 
         <section class="powerby" style="font-size: 13px;">
@@ -1336,9 +1369,9 @@
                 href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
             >
 
-            </main>
-        </div>
-        <script 
+        </main>
+    </div>
+    <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
@@ -1585,5 +1618,21 @@
     document.getElementById('runningdays').innerHTML = result;
 </script>
 
-    </body>
+    
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var winHeight = window.innerHeight,
+            docHeight = document.documentElement.scrollHeight,
+            progressBar = document.querySelector('#content_progress');
+        progressBar.max = docHeight - winHeight;
+        progressBar.value = window.scrollY;
+
+        document.addEventListener('scroll', function () {
+            progressBar.max = document.documentElement.scrollHeight - window.innerHeight;
+            progressBar.value = window.scrollY;
+        });
+    });
+</script>
+
 </html>
