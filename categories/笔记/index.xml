@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright>
-        <lastBuildDate>Wed, 11 Jun 2025 17:19:11 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 12 Jun 2025 14:29:07 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【Laravel】扫码登录</title>
         <link>https://Bright9911.github.io/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/</link>
         <pubDate>Wed, 28 May 2025 11:22:56 +0800</pubDate>
@@ -3187,6 +3187,8 @@ alert-error
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;更多参考&#34;&gt;更多参考
 &lt;/h2&gt;&lt;blockquote class=&#34;alert-tip&#34;&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://huuuuuuo.github.io/post/hugo%e6%b7%bb%e5%8a%a0%e5%a4%a9%e6%b0%94%e9%a2%84%e6%8a%a5/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo：添加天气预报 | Blog&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo博客 | stack主题修改第一站&lt;/a&gt;&lt;a class=&#34;link&#34; href=&#34;https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;   &lt;/a&gt;&lt;a class=&#34;link&#34; href=&#34;https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3217,6 +3219,8 @@ alert-error
     &gt;（&lt;/a&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.blain.top/p/renovation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;运行时长、文字统计&lt;/a&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.blain.top/p/renovation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%e9%94%ae%e7%9b%98%e6%a0%b7%e5%bc%8f&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo|在Stack主题上可行的短代码们&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://jianyesc.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;剑夜の个人空间&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</description>

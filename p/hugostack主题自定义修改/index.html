@@ -10,7 +10,7 @@
 <meta property='og:description' content="1、修改字体 （1）前往【100font】，下载自己想要的字体，字体文件为 fusion-pixel-10px-monospaced-zh_hans.ttf （2）把字体文件放入assets/font下(文件夹自己创建) （3）将以下代码修改并复制到layouts/partials/footer/custom.html文件中(文件不存在就自己创建) 1 2 3 4 5 6 7 8 9 10 11 &lt;style&gt; @font-face { font-family: &#39;字体名&#39;; src: url({{ (resources.Get &#34;font/字体文件名&#34;).Permalink }}) format(&#39;truetype&#39;); } :root { --base-font-family: &#39;字体名&#39;; --code-font-family: &#39;字体名&#39;; } &lt;/style&gt; （4）这样博客字体就修改好了 2、修改鼠标样式 （1）准备好鼠标样式图片(默认，指针，文本…)，图片大小建议控制在 32px 左右，将图片放入static/mouse文件夹下（文件夹自己创建）\n">
 <meta property='og:url' content='https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/'>
 <meta property='og:site_name' content='Bright9911'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-27T11:20:48&#43;08:00'/><meta property='article:modified_time' content='2025-06-11T17:19:11&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-27T11:20:48&#43;08:00'/><meta property='article:modified_time' content='2025-06-12T14:29:07&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.jpg' />
 <meta name="twitter:title" content="【Hugo】Stack主题自定义修改">
 <meta name="twitter:description" content="1、修改字体 （1）前往【100font】，下载自己想要的字体，字体文件为 fusion-pixel-10px-monospaced-zh_hans.ttf （2）把字体文件放入assets/font下(文件夹自己创建) （3）将以下代码修改并复制到layouts/partials/footer/custom.html文件中(文件不存在就自己创建) 1 2 3 4 5 6 7 8 9 10 11 &lt;style&gt; @font-face { font-family: &#39;字体名&#39;; src: url({{ (resources.Get &#34;font/字体文件名&#34;).Permalink }}) format(&#39;truetype&#39;); } :root { --base-font-family: &#39;字体名&#39;; --code-font-family: &#39;字体名&#39;; } &lt;/style&gt; （4）这样博客字体就修改好了 2、修改鼠标样式 （1）准备好鼠标样式图片(默认，指针，文本…)，图片大小建议控制在 32px 左右，将图片放入static/mouse文件夹下（文件夹自己创建）\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.jpg' />
@@ -231,6 +231,8 @@
                 
             </ol>
         </li>
+        
+        
     </ol>
 </aside>
 
@@ -300,6 +302,10 @@
                 Stack
             </a>
         
+            <a href="/categories/hugo/" >
+                Hugo
+            </a>
+        
             <a href="/categories/%E7%AC%94%E8%AE%B0/" >
                 笔记
             </a>
@@ -345,14 +351,14 @@
 
 
                 <time>
-                    2025-06-11 最后更新
+                    2025-06-12 最后更新
                 </time>
             </div>
         
             <footer class="article-wordcount">
                 <div>  
                     <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1749624866816" class="icon" viewBox="0 0 1048 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2435" width="16.375" height="16" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M310.598543 86.182563a200.962621 200.962621 0 0 0-200.962621 200.938241v430.595876a200.962621 200.962621 0 0 0 200.962621 200.987001h430.620256a200.962621 200.962621 0 0 0 200.962621-200.962621V287.096424a200.962621 200.962621 0 0 0-200.962621-200.962621H310.598543m0-86.158183h430.620256A287.096424 287.096424 0 0 1 1028.339603 287.120804v430.620256a287.096424 287.096424 0 0 1-287.096424 287.096424H310.598543A287.072044 287.072044 0 0 1 23.526499 717.74106V287.096424C23.526499 128.53026 152.056759 0.04876 310.598543 0.04876v-0.04876z" p-id="2436" fill="#8a8a8a"></path><path d="M489.009857 680.830056V360.942812h-141.402791a36.911004 36.911004 0 1 1-0.097519-73.846388H704.332175a36.911004 36.911004 0 1 1 0 73.846388h-141.402791v319.862864a36.911004 36.911004 0 1 1-73.822008 0h-0.07314z" p-id="2437" fill="#8a8a8a"></path></svg>
-                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 3054</span>
+                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 3088</span>
                 </div>
             </footer>
         
@@ -1284,6 +1290,8 @@ alert-error
 </div>
 </div><h2 id="更多参考">更多参考
 </h2><blockquote class="alert-tip">
+<p><a class="link" href="https://huuuuuuo.github.io/post/hugo%e6%b7%bb%e5%8a%a0%e5%a4%a9%e6%b0%94%e9%a2%84%e6%8a%a5/"  target="_blank" rel="noopener"
+    >Hugo：添加天气预报 | Blog</a></p>
 <p><a class="link" href="https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top"  target="_blank" rel="noopener"
     >Hugo博客 | stack主题修改第一站</a><a class="link" href="https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top"  target="_blank" rel="noopener"
     >   </a><a class="link" href="https://munlelee.github.io/post/hugo%e5%8d%9a%e5%ae%a2-stack%e4%b8%bb%e9%a2%98%e4%bf%ae%e6%94%b9%e7%ac%ac%e4%b8%80%e7%ab%99/#top"  target="_blank" rel="noopener"
@@ -1314,6 +1322,8 @@ alert-error
     >（</a><a class="link" href="https://www.blain.top/p/renovation/"  target="_blank" rel="noopener"
     >运行时长、文字统计</a><a class="link" href="https://www.blain.top/p/renovation/"  target="_blank" rel="noopener"
     >）</a></p>
+<p><a class="link" href="https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%e9%94%ae%e7%9b%98%e6%a0%b7%e5%bc%8f"  target="_blank" rel="noopener"
+    >Hugo|在Stack主题上可行的短代码们</a></p>
 <p><a class="link" href="https://jianyesc.com/"  target="_blank" rel="noopener"
     >剑夜の个人空间</a></p>
 </blockquote>
@@ -1333,7 +1343,7 @@ alert-error
 
 
         <span>
-            最后更新于 2025-06-11 最后更新
+            最后更新于 2025-06-12 最后更新
         </span>
     </section></footer>
 
@@ -1349,78 +1359,6 @@ alert-error
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">
-        
-        
-            <div class="article-image">
-                <img src="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46.b19eefbbc0dd033a15afee46324fd9e5_hu_aa070e38a06c2020.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 【Laravel】扫码登录"
-                        
-                        data-hash="md5-sZ7vu8DdAzoVr&#43;5GMk/Z5Q==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Laravel】扫码登录</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/">
-        
-        
-            <div class="article-image">
-                <img src="/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/93314e48ec9513292e4b1e8ca1c73c9d.a72b4a2735b73ddb57dda52073156655_hu_688442116e624bec.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 【Laravel】验证码登录"
-                        
-                        data-hash="md5-pytKJzW3PdtX3aUgcxVmVQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Laravel】验证码登录</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/">
-        
-        
-            <div class="article-image">
-                <img src="/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/9ad3bf3c4aadf61bd96eebfc1f7f577e.2cbbb500aba2e4aab12e331969ffa85a_hu_ff82cd5f5ff03a5d.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 【Laravel】邮件发送"
-                        
-                        data-hash="md5-LLu1AKui5KqxLjMZaf&#43;oWg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Laravel】邮件发送</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="has-image">
@@ -1465,6 +1403,78 @@ alert-error
 
         <div class="article-details">
             <h2 class="article-title">【Hugo】文章浏览量统计</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/6b951400bb98fd5fcd57d2c9599df286.7cd09a879ed8744e75e174bab0c937af_hu_eee817a63ee3812c.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Hugo】修改博客背景并引入动态背景"
+                        
+                        data-hash="md5-fNCah57YdE514XS6sMk3rw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Hugo】修改博客背景并引入动态背景</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.60116b1ccfc8632e9a65f7d51df3efc2_hu_c1cfd6b8275d624a.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Hugo】Hugo&#43;Github搭建个人博客"
+                        
+                        data-hash="md5-YBFrHM/IYy6aZffVHfPvwg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Hugo】Hugo&#43;Github搭建个人博客</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">
+        
+        
+            <div class="article-image">
+                <img src="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46.b19eefbbc0dd033a15afee46324fd9e5_hu_aa070e38a06c2020.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Laravel】扫码登录"
+                        
+                        data-hash="md5-sZ7vu8DdAzoVr&#43;5GMk/Z5Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Laravel】扫码登录</h2>
         </div>
     </a>
 </article>
