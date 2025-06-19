@@ -6,8 +6,7 @@
         <description>Recent content in Stack on Bright9911</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>Bright9911</copyright>
-        <lastBuildDate>Thu, 12 Jun 2025 16:02:43 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/stack/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>Bright9911</copyright><atom:link href="https://Bright9911.github.io/categories/stack/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【Hugo】Stack主题自定义修改</title>
         <link>https://Bright9911.github.io/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/</link>
         <pubDate>Tue, 27 May 2025 11:20:48 +0800</pubDate>
@@ -922,6 +921,8 @@ alert-error
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;更多参考&#34;&gt;更多参考
 &lt;/h2&gt;&lt;blockquote class=&#34;alert-tip&#34;&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://thirdshire.com/hugo-stack-renovation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://thirdshire.com/hugo-stack-renovation&lt;/a&gt;    （主题样式修改，私信气泡）&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://huuuuuuo.github.io/post/hugo%e9%98%85%e8%af%bb%e8%bf%9b%e5%ba%a6%e6%9d%a1/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo：阅读进度条 | Blog&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://huuuuuuo.github.io/post/hugo%e6%b7%bb%e5%8a%a0%e5%a4%a9%e6%b0%94%e9%a2%84%e6%8a%a5/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

@@ -6,8 +6,7 @@
         <description>Recent content in Mail on Bright9911</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>Bright9911</copyright>
-        <lastBuildDate>Wed, 28 May 2025 11:57:32 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/mail/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>Bright9911</copyright><atom:link href="https://Bright9911.github.io/categories/mail/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【Laravel】邮件发送</title>
         <link>https://Bright9911.github.io/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/</link>
         <pubDate>Wed, 28 May 2025 11:08:31 +0800</pubDate>

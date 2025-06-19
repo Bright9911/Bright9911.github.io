@@ -7,85 +7,77 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright>
-        <lastBuildDate>Thu, 12 Jun 2025 16:02:43 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Laravel</title>
-        <link>https://Bright9911.github.io/categories/laravel/</link>
-        <pubDate>Wed, 28 May 2025 11:22:56 +0800</pubDate>
-        
-        <guid>https://Bright9911.github.io/categories/laravel/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>笔记</title>
-        <link>https://Bright9911.github.io/categories/%E7%AC%94%E8%AE%B0/</link>
-        <pubDate>Wed, 28 May 2025 11:22:56 +0800</pubDate>
-        
-        <guid>https://Bright9911.github.io/categories/%E7%AC%94%E8%AE%B0/</guid>
-        <description></description>
-        </item>
-        <item>
+        <lastBuildDate>Thu, 19 Jun 2025 16:22:05 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Captcha</title>
         <link>https://Bright9911.github.io/categories/captcha/</link>
-        <pubDate>Wed, 28 May 2025 11:18:07 +0800</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://Bright9911.github.io/categories/captcha/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Mail</title>
-        <link>https://Bright9911.github.io/categories/mail/</link>
-        <pubDate>Wed, 28 May 2025 11:08:31 +0800</pubDate>
-        
-        <guid>https://Bright9911.github.io/categories/mail/</guid>
-        <description></description>
+        <description>&lt;img src="https://img2.baidu.com/it/u=609104281,1313608792&amp;fm=253&amp;fmt=auto?w=700&amp;h=280" alt="Featured image of post Captcha" /&gt;</description>
         </item>
         <item>
         <title>Comment</title>
         <link>https://Bright9911.github.io/categories/comment/</link>
-        <pubDate>Wed, 28 May 2025 08:10:04 +0800</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://Bright9911.github.io/categories/comment/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Hugo</title>
-        <link>https://Bright9911.github.io/categories/hugo/</link>
-        <pubDate>Wed, 28 May 2025 08:10:04 +0800</pubDate>
-        
-        <guid>https://Bright9911.github.io/categories/hugo/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Stack</title>
-        <link>https://Bright9911.github.io/categories/stack/</link>
-        <pubDate>Tue, 27 May 2025 11:20:48 +0800</pubDate>
-        
-        <guid>https://Bright9911.github.io/categories/stack/</guid>
-        <description></description>
+        <description>&lt;img src="https://img0.baidu.com/it/u=3635024945,4251865148&amp;fm=253&amp;fmt=auto?w=508&amp;h=500" alt="Featured image of post Comment" /&gt;</description>
         </item>
         <item>
         <title>Github</title>
         <link>https://Bright9911.github.io/categories/github/</link>
-        <pubDate>Fri, 23 May 2025 14:53:41 +0800</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://Bright9911.github.io/categories/github/</guid>
-        <description></description>
+        <description>&lt;img src="https://img0.baidu.com/it/u=4250781143,740449692&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=792&amp;h=500" alt="Featured image of post Github" /&gt;</description>
+        </item>
+        <item>
+        <title>Hugo</title>
+        <link>https://Bright9911.github.io/categories/hugo/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://Bright9911.github.io/categories/hugo/</guid>
+        <description>&lt;img src="https://images.hugoboss.com/is/image/hugobossdm/HUGO_1?%24large%24&amp;align=0,-1&amp;fit=crop,1&amp;ts=1651128863210&amp;wid=825&amp;hei=534" alt="Featured image of post Hugo" /&gt;</description>
+        </item>
+        <item>
+        <title>Laravel</title>
+        <link>https://Bright9911.github.io/categories/laravel/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://Bright9911.github.io/categories/laravel/</guid>
+        <description>&lt;img src="https://www.itcast.cn/files/image/202206/20220610151605980.png" alt="Featured image of post Laravel" /&gt;</description>
+        </item>
+        <item>
+        <title>Mail</title>
+        <link>https://Bright9911.github.io/categories/mail/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://Bright9911.github.io/categories/mail/</guid>
+        <description>&lt;img src="https://img0.baidu.com/it/u=3248015852,1660608789&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=500&amp;h=500" alt="Featured image of post Mail" /&gt;</description>
         </item>
         <item>
         <title>Redis</title>
         <link>https://Bright9911.github.io/categories/redis/</link>
-        <pubDate>Fri, 23 May 2025 08:23:18 +0800</pubDate>
-        
-        <guid>https://Bright9911.github.io/categories/redis/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Test</title>
-        <link>https://Bright9911.github.io/categories/test/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://Bright9911.github.io/categories/test/</guid>
-        <description>&lt;img src="https://Bright9911.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
+        <guid>https://Bright9911.github.io/categories/redis/</guid>
+        <description>&lt;img src="https://img1.baidu.com/it/u=1696534481,3796147682&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=500" alt="Featured image of post Redis" /&gt;</description>
+        </item>
+        <item>
+        <title>Stack</title>
+        <link>https://Bright9911.github.io/categories/stack/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://Bright9911.github.io/categories/stack/</guid>
+        <description>&lt;img src="https://Bright9911.github.io/categories/stack/stack-logo.png" alt="Featured image of post Stack" /&gt;</description>
+        </item>
+        <item>
+        <title>笔记</title>
+        <link>https://Bright9911.github.io/categories/%E7%AC%94%E8%AE%B0/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://Bright9911.github.io/categories/%E7%AC%94%E8%AE%B0/</guid>
+        <description>&lt;img src="https://img0.baidu.com/it/u=2487774147,2635586928&amp;fm=253&amp;fmt=auto?w=800&amp;h=800" alt="Featured image of post 笔记" /&gt;</description>
         </item>
         
     </channel>
