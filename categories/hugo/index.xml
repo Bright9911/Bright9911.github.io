@@ -1437,6 +1437,8 @@ alert-error
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;更多参考&#34;&gt;更多参考
 &lt;/h2&gt;&lt;blockquote class=&#34;alert-tip&#34;&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nan0in27.cn/p/hugo%e5%9b%be%e7%89%87%e7%82%b9%e5%87%bb%e6%94%be%e5%a4%a7/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo图片点击放大&lt;/a&gt;   （实现不了）&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://thirdshire.com/hugo-stack-renovation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://thirdshire.com/hugo-stack-renovation&lt;/a&gt;    （主题样式修改，私信气泡）&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://huuuuuuo.github.io/post/hugo%e9%98%85%e8%af%bb%e8%bf%9b%e5%ba%a6%e6%9d%a1/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1492,17 +1494,44 @@ alert-error
     &gt;Git&lt;/a&gt;官网，下载安装程序&lt;/li&gt;
 &lt;li&gt;一直点下一步，默认安装即可&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;1.png&#34; alt=&#34;image-20250523164313875&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;1.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;1.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;12hugo下载&#34;&gt;1.2、Hugo下载
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;前往&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/tags&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Tags · gohugoio/hugo&lt;/a&gt;下载对应版本&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;2.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;2.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;2.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Windows版本：&lt;strong&gt;hugo_extended_xxxxx_windows_amd64.zip&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;3.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;3.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;3.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;2搭建博客&#34;&gt;2、搭建博客
 &lt;/h2&gt;&lt;h3 id=&#34;21创建博客&#34;&gt;2.1、创建博客
 &lt;/h3&gt;&lt;ul&gt;
@@ -1528,12 +1557,30 @@ alert-error
 &lt;li&gt;（2）这边以【&lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack/tags&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Stack主题&lt;/a&gt;】为例，将下载好的主题解压，放到&lt;code&gt;/themes&lt;/code&gt;文件夹中（这里我的网站名称是dev，从上一步创建博客的第2步中的xxx得来）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;7.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;7.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;7.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;（3）将&lt;code&gt;exampleSite&lt;/code&gt;样例数据中的 &lt;strong&gt;Content&lt;/strong&gt; 和 &lt;strong&gt;hugo.yaml&lt;/strong&gt; 复制到主文件夹中，并删掉&lt;code&gt;hugo.toml&lt;/code&gt;和&lt;code&gt;content/post/rich-content&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;（4）修改 &lt;strong&gt;hugo.yaml&lt;/strong&gt; 中的 &lt;strong&gt;theme&lt;/strong&gt;，将他修改为跟主题文件夹同名&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;8.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;8.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;8.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;（5）再次启动hugo服务，查看主题，具体主题配置修改 &lt;strong&gt;hugo.yaml&lt;/strong&gt;，这里不细说，感兴趣可自行查找相关文章&lt;/li&gt;
 &lt;/ul&gt;
@@ -1655,22 +1702,58 @@ alert-error
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push    // 如果是团队协作，需要先新建分支，再上传合并
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;img src=&#34;git.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:100%;&#34; /&gt;
+&lt;/div&gt;&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;git.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;git.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;（5）上传成功后访问 &lt;strong&gt;https://{github用户名}.github.io&lt;/strong&gt;，成功搭建属于自己的Hugo博客&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;4.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;4.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;4.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;32github-action自动部署&#34;&gt;3.2、Github Action自动部署
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;（1）Github创建一个新的仓库，用于存放Hugo的主文件&lt;/li&gt;
 &lt;li&gt;（2）前往&lt;code&gt;Setttings -&amp;gt; Developer Settings -&amp;gt; Personal access tokens&lt;/code&gt;，创建一个token(classic)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;5.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;5.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;5.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;（3）token选择永不过期，并勾选 &lt;strong&gt;repo&lt;/strong&gt; 和 &lt;strong&gt;workflow&lt;/strong&gt; 选项&lt;/li&gt;
 &lt;li&gt;（4）为保证安全，将生成的token，保存的仓库的变量中，前往&lt;code&gt;Settings -&amp;gt; Secrets and variables -&amp;gt; Actions&lt;/code&gt;中设置&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img src=&#34;6.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;&lt;a data-fancybox=&#34;gallery&#34; href=&#34;6.png#style=width:80%25&#34;&gt;
+    &lt;img src=&#34;6.png#style=width:80%25&#34;
+        
+        
+        
+        loading=&#34;lazy&#34;
+        alt=&#34;alt text&#34;
+        
+    &gt;
+&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;（5）在hugo主文件创建一个&lt;code&gt;.github/workflows/hugo_deploy.yaml&lt;/code&gt;文件，将以下内容复制进去，想具体了解更多，可查看【&lt;a class=&#34;link&#34; href=&#34;https://docs.github.com/zh/actions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Github Action文档&lt;/a&gt;】&lt;/li&gt;

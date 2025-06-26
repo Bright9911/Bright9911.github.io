@@ -2,18 +2,24 @@
 <html lang="zh-cn" dir="ltr">
 
 <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 2、搭建博客 2.1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip ">
 <title>【Hugo】Hugo&#43;Github搭建个人博客</title>
 
 <link rel='canonical' href='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/'>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
 <link rel="stylesheet" href="/scss/style.min.4c3c8379a8647e92dbb486fb19a18dd7fb12d4971c2595570ffe3fa32661460b.css"><meta property='og:title' content="【Hugo】Hugo+Github搭建个人博客">
-<meta property='og:description' content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 2、搭建博客 2.1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n">
+<meta property='og:description' content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip ">
 <meta property='og:url' content='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/'>
 <meta property='og:site_name' content='Bright9911'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-23T14:53:41&#43;08:00'/><meta property='article:modified_time' content='2025-06-26T10:16:51&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-23T14:53:41&#43;08:00'/><meta property='article:modified_time' content='2025-06-26T14:16:44&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
 <meta name="twitter:title" content="【Hugo】Hugo+Github搭建个人博客">
-<meta name="twitter:description" content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip 2、搭建博客 2.1、创建博客 （1）在hugo.exe所在文件夹的地址栏敲打cmd，然后Enter唤起命令行\n"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip "><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -437,17 +443,44 @@
     >Git</a>官网，下载安装程序</li>
 <li>一直点下一步，默认安装即可</li>
 </ul>
-<img src="1.png" alt="image-20250523164313875" style="zoom:80%;" />
+<p><a data-fancybox="gallery" href="1.png#style=width:80%25">
+    <img src="1.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <h3 id="12hugo下载">1.2、Hugo下载
 </h3><ul>
 <li>前往<a class="link" href="https://github.com/gohugoio/hugo/tags"  target="_blank" rel="noopener"
     >Tags · gohugoio/hugo</a>下载对应版本</li>
 </ul>
-<img src="2.png" alt="hugo版本" style="zoom:80%;" />
+<p><a data-fancybox="gallery" href="2.png#style=width:80%25">
+    <img src="2.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <ul>
 <li>Windows版本：<strong>hugo_extended_xxxxx_windows_amd64.zip</strong></li>
 </ul>
-<img src="3.png" alt="hugo版本" style="zoom:80%;" />
+<p><a data-fancybox="gallery" href="3.png#style=width:80%25">
+    <img src="3.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <h2 id="2搭建博客">2、搭建博客
 </h2><h3 id="21创建博客">2.1、创建博客
 </h3><ul>
@@ -473,12 +506,30 @@
 <li>（2）这边以【<a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack/tags"  target="_blank" rel="noopener"
     >Stack主题</a>】为例，将下载好的主题解压，放到<code>/themes</code>文件夹中（这里我的网站名称是dev，从上一步创建博客的第2步中的xxx得来）</li>
 </ul>
-<img src="7.png" alt="hugo版本" style="zoom:80%;" />
+<p><a data-fancybox="gallery" href="7.png#style=width:80%25">
+    <img src="7.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <ul>
 <li>（3）将<code>exampleSite</code>样例数据中的 <strong>Content</strong> 和 <strong>hugo.yaml</strong> 复制到主文件夹中，并删掉<code>hugo.toml</code>和<code>content/post/rich-content</code></li>
 <li>（4）修改 <strong>hugo.yaml</strong> 中的 <strong>theme</strong>，将他修改为跟主题文件夹同名</li>
 </ul>
-<img src="8.png" alt="hugo版本" style="zoom:80%;" />
+<p><a data-fancybox="gallery" href="8.png#style=width:80%25">
+    <img src="8.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <ul>
 <li>（5）再次启动hugo服务，查看主题，具体主题配置修改 <strong>hugo.yaml</strong>，这里不细说，感兴趣可自行查找相关文章</li>
 </ul>
@@ -600,22 +651,58 @@
 </span></span><span class="line"><span class="cl">git push    // 如果是团队协作，需要先新建分支，再上传合并
 </span></span></code></pre></td></tr></table>
 </div>
-</div><img src="git.png" alt="hugo版本" style="zoom:100%;" />
+</div><p><a data-fancybox="gallery" href="git.png#style=width:80%25">
+    <img src="git.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <ul>
 <li>（5）上传成功后访问 <strong>https://{github用户名}.github.io</strong>，成功搭建属于自己的Hugo博客</li>
 </ul>
-<img src="4.png" alt="hugo版本" style="zoom:80%;" />
+<p><a data-fancybox="gallery" href="4.png#style=width:80%25">
+    <img src="4.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <h3 id="32github-action自动部署">3.2、Github Action自动部署
 </h3><ul>
 <li>（1）Github创建一个新的仓库，用于存放Hugo的主文件</li>
 <li>（2）前往<code>Setttings -&gt; Developer Settings -&gt; Personal access tokens</code>，创建一个token(classic)</li>
 </ul>
-<img src="5.png" alt="hugo版本" style="zoom:80%;" />
+<p><a data-fancybox="gallery" href="5.png#style=width:80%25">
+    <img src="5.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <ul>
 <li>（3）token选择永不过期，并勾选 <strong>repo</strong> 和 <strong>workflow</strong> 选项</li>
 <li>（4）为保证安全，将生成的token，保存的仓库的变量中，前往<code>Settings -&gt; Secrets and variables -&gt; Actions</code>中设置</li>
 </ul>
-<img src="6.png" alt="hugo版本" style="zoom:80%;" />
+<p><a data-fancybox="gallery" href="6.png#style=width:80%25">
+    <img src="6.png#style=width:80%25"
+        
+        
+        
+        loading="lazy"
+        alt="alt text"
+        
+    >
+</a></p>
 <ul>
 <li>（5）在hugo主文件创建一个<code>.github/workflows/hugo_deploy.yaml</code>文件，将以下内容复制进去，想具体了解更多，可查看【<a class="link" href="https://docs.github.com/zh/actions"  target="_blank" rel="noopener"
     >Github Action文档</a>】</li>
