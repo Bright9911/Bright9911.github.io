@@ -1655,7 +1655,8 @@ alert-error
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push    // 如果是团队协作，需要先新建分支，再上传合并
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
+&lt;/div&gt;&lt;img src=&#34;git.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:100%;&#34; /&gt;
+&lt;ul&gt;
 &lt;li&gt;（5）上传成功后访问 &lt;strong&gt;https://{github用户名}.github.io&lt;/strong&gt;，成功搭建属于自己的Hugo博客&lt;/li&gt;
 &lt;/ul&gt;
 &lt;img src=&#34;4.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
