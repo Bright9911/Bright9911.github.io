@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright>
-        <lastBuildDate>Thu, 26 Jun 2025 17:56:58 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 01 Jul 2025 10:27:51 +0800</lastBuildDate><atom:link href="https://Bright9911.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Captcha</title>
         <link>https://Bright9911.github.io/categories/captcha/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -22,6 +22,14 @@
         
         <guid>https://Bright9911.github.io/categories/comment/</guid>
         <description>&lt;img src="https://img0.baidu.com/it/u=3635024945,4251865148&amp;fm=253&amp;fmt=auto?w=508&amp;h=500" alt="Featured image of post Comment" /&gt;</description>
+        </item>
+        <item>
+        <title>Docker</title>
+        <link>https://Bright9911.github.io/categories/docker/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://Bright9911.github.io/categories/docker/</guid>
+        <description>&lt;img src="https://Bright9911.github.io/categories/docker/docker.png" alt="Featured image of post Docker" /&gt;</description>
         </item>
         <item>
         <title>Github</title>
@@ -78,6 +86,14 @@
         
         <guid>https://Bright9911.github.io/categories/%E7%AC%94%E8%AE%B0/</guid>
         <description>&lt;img src="https://img0.baidu.com/it/u=2487774147,2635586928&amp;fm=253&amp;fmt=auto?w=800&amp;h=800" alt="Featured image of post 笔记" /&gt;</description>
+        </item>
+        <item>
+        <title>拓展</title>
+        <link>https://Bright9911.github.io/categories/%E6%8B%93%E5%B1%95/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://Bright9911.github.io/categories/%E6%8B%93%E5%B1%95/</guid>
+        <description>&lt;img src="https://Bright9911.github.io/categories/%E6%8B%93%E5%B1%95/expand.png" alt="Featured image of post 拓展" /&gt;</description>
         </item>
         
     </channel>

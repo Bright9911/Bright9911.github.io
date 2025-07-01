@@ -2,10 +2,10 @@
 <html lang="zh-cn" dir="ltr">
 
 <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1、下载并解压 https://github.com/tporadowski/redis/releases\n2、启动Redis服务器 1 .\\redis-server.exe redis.windows.conf 默认端口为 6379，如果看到类似 Ready to accept connections 的消息，说明 Redis 服务已成功启动。\n3、测试Redis 1 .\\redis-cli.exe -h 127.0.0.1 -p 6379 执行 ping 命令，如果返回 PONG，说明 Redis 服务正常运行。\n">
-<title>Redis的使用</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1 docker的使用 一、基础 1、镜像 1 2 3 4 5 6 7 8 9 10 11 12 13 14 &#34;https://hub.littlediary.cn&#34; &#34;registry-mirrors&#34;: [ &#34;https://registry.docker-cn.com&#34;, &#34;http://hub-mirror.c.163.com&#34;, &#34;https://dockerhub.azk8s.cn&#34;, &#34;https://mirror.ccs.tencentyun.com&#34;, &#34;https://registry.cn-hangzhou.aliyuncs.com&#34;, &#34;https://docker.mirrors.ustc.edu.cn&#34;, &#34;https://docker.m.daocloud.io&#34;, &#34;https://noohub.ru&#34;, &#34;https://huecker.io&#34;, &#34;https://dockerhub.timeweb.cloud&#34; ] 2、进入容器 1 docker exec -it php-fpm bash 3、清除缓存 1 docker system prune -a 二 1、构建项目 1 docker-compose up --build 2、重新构建项目 1 2 3 4 5 6 7 8 # 清理旧镜像缓存（重要！） docker builder prune --force # 重新构建 docker build -t laravel52-app . # 运行容器 docker run -it -p 8000:8000 laravel52-app 三、启动 1、启动第一个docker项目 1 2 docker build -t hello-docker . docker run hello-docker 2、启动默认教程的容器 1 docker run -d -p 8090:80 docker/getting-started 3、启动laravel项目 1 php artisan serve --host=0.0.0.0 2 docker运行laravel5全流程 1、拉取 PHP 7.0.0 镜像 1 docker pull php:7.0-cli 2、运行容器 1 docker run -itd --name my-php-container -p 8000:8000 php:7.0-cli 3、进入容器进行操作 1 docker exec -it my-php-container bash 4、（额外）启动、停止、删除容器 1 docker run/stop/rm my-php-container 5、（额外）保存更改 如果在容器中进行了配置更改或安装了额外的软件包，可以将容器保存为新的镜像。\n">
+<title>【拓展】Docker</title>
 
-<link rel='canonical' href='https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/'>
+<link rel='canonical' href='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95docker/'>
 
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -13,14 +13,14 @@
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 
-<link rel="stylesheet" href="/scss/style.min.4c3c8379a8647e92dbb486fb19a18dd7fb12d4971c2595570ffe3fa32661460b.css"><meta property='og:title' content="Redis的使用">
-<meta property='og:description' content="1、下载并解压 https://github.com/tporadowski/redis/releases\n2、启动Redis服务器 1 .\\redis-server.exe redis.windows.conf 默认端口为 6379，如果看到类似 Ready to accept connections 的消息，说明 Redis 服务已成功启动。\n3、测试Redis 1 .\\redis-cli.exe -h 127.0.0.1 -p 6379 执行 ping 命令，如果返回 PONG，说明 Redis 服务正常运行。\n">
-<meta property='og:url' content='https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/'>
+<link rel="stylesheet" href="/scss/style.min.4c3c8379a8647e92dbb486fb19a18dd7fb12d4971c2595570ffe3fa32661460b.css"><meta property='og:title' content="【拓展】Docker">
+<meta property='og:description' content="1 docker的使用 一、基础 1、镜像 1 2 3 4 5 6 7 8 9 10 11 12 13 14 &#34;https://hub.littlediary.cn&#34; &#34;registry-mirrors&#34;: [ &#34;https://registry.docker-cn.com&#34;, &#34;http://hub-mirror.c.163.com&#34;, &#34;https://dockerhub.azk8s.cn&#34;, &#34;https://mirror.ccs.tencentyun.com&#34;, &#34;https://registry.cn-hangzhou.aliyuncs.com&#34;, &#34;https://docker.mirrors.ustc.edu.cn&#34;, &#34;https://docker.m.daocloud.io&#34;, &#34;https://noohub.ru&#34;, &#34;https://huecker.io&#34;, &#34;https://dockerhub.timeweb.cloud&#34; ] 2、进入容器 1 docker exec -it php-fpm bash 3、清除缓存 1 docker system prune -a 二 1、构建项目 1 docker-compose up --build 2、重新构建项目 1 2 3 4 5 6 7 8 # 清理旧镜像缓存（重要！） docker builder prune --force # 重新构建 docker build -t laravel52-app . # 运行容器 docker run -it -p 8000:8000 laravel52-app 三、启动 1、启动第一个docker项目 1 2 docker build -t hello-docker . docker run hello-docker 2、启动默认教程的容器 1 docker run -d -p 8090:80 docker/getting-started 3、启动laravel项目 1 php artisan serve --host=0.0.0.0 2 docker运行laravel5全流程 1、拉取 PHP 7.0.0 镜像 1 docker pull php:7.0-cli 2、运行容器 1 docker run -itd --name my-php-container -p 8000:8000 php:7.0-cli 3、进入容器进行操作 1 docker exec -it my-php-container bash 4、（额外）启动、停止、删除容器 1 docker run/stop/rm my-php-container 5、（额外）保存更改 如果在容器中进行了配置更改或安装了额外的软件包，可以将容器保存为新的镜像。\n">
+<meta property='og:url' content='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95docker/'>
 <meta property='og:site_name' content='Bright9911'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-23T08:23:18&#43;08:00'/><meta property='article:modified_time' content='2025-06-11T16:54:43&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg' />
-<meta name="twitter:title" content="Redis的使用">
-<meta name="twitter:description" content="1、下载并解压 https://github.com/tporadowski/redis/releases\n2、启动Redis服务器 1 .\\redis-server.exe redis.windows.conf 默认端口为 6379，如果看到类似 Ready to accept connections 的消息，说明 Redis 服务已成功启动。\n3、测试Redis 1 .\\redis-cli.exe -h 127.0.0.1 -p 6379 执行 ping 命令，如果返回 PONG，说明 Redis 服务正常运行。\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://Bright9911.github.io/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-07-01T09:42:46&#43;08:00'/><meta property='article:modified_time' content='2025-07-01T10:27:51&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95docker/1.jpg' />
+<meta name="twitter:title" content="【拓展】Docker">
+<meta name="twitter:description" content="1 docker的使用 一、基础 1、镜像 1 2 3 4 5 6 7 8 9 10 11 12 13 14 &#34;https://hub.littlediary.cn&#34; &#34;registry-mirrors&#34;: [ &#34;https://registry.docker-cn.com&#34;, &#34;http://hub-mirror.c.163.com&#34;, &#34;https://dockerhub.azk8s.cn&#34;, &#34;https://mirror.ccs.tencentyun.com&#34;, &#34;https://registry.cn-hangzhou.aliyuncs.com&#34;, &#34;https://docker.mirrors.ustc.edu.cn&#34;, &#34;https://docker.m.daocloud.io&#34;, &#34;https://noohub.ru&#34;, &#34;https://huecker.io&#34;, &#34;https://dockerhub.timeweb.cloud&#34; ] 2、进入容器 1 docker exec -it php-fpm bash 3、清除缓存 1 docker system prune -a 二 1、构建项目 1 docker-compose up --build 2、重新构建项目 1 2 3 4 5 6 7 8 # 清理旧镜像缓存（重要！） docker builder prune --force # 重新构建 docker build -t laravel52-app . # 运行容器 docker run -it -p 8000:8000 laravel52-app 三、启动 1、启动第一个docker项目 1 2 docker build -t hello-docker . docker run hello-docker 2、启动默认教程的容器 1 docker run -d -p 8090:80 docker/getting-started 3、启动laravel项目 1 php artisan serve --host=0.0.0.0 2 docker运行laravel5全流程 1、拉取 PHP 7.0.0 镜像 1 docker pull php:7.0-cli 2、运行容器 1 docker run -itd --name my-php-container -p 8000:8000 php:7.0-cli 3、进入容器进行操作 1 docker exec -it my-php-container bash 4、（额外）启动、停止、删除容器 1 docker run/stop/rm my-php-container 5、（额外）保存更改 如果在容器中进行了配置更改或安装了额外的软件包，可以将容器保存为新的镜像。\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95docker/1.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
 </head>
@@ -331,22 +331,42 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#1下载并解压">1、下载并解压</a></li>
-    <li><a href="#2启动redis服务器">2、启动Redis服务器</a></li>
-    <li><a href="#3测试redis">3、测试Redis</a></li>
-    <li><a href="#4将-redis-注册为-windows-服务可选">4、将 Redis 注册为 Windows 服务（可选）</a></li>
-    <li><a href="#5报错解决">5、报错解决</a></li>
-    <li><a href="#6redis-常用命令总结">6、Redis 常用命令总结</a>
+    <li><a href="#1-docker的使用">1 docker的使用</a>
       <ul>
-        <li><a href="#61连接与服务器相关命令">6.1、连接与服务器相关命令</a></li>
-        <li><a href="#62键key相关命令">6.2、键（Key）相关命令</a></li>
-        <li><a href="#63字符串string类型命令">6.3、字符串（String）类型命令</a></li>
-        <li><a href="#64哈希hash类型命令">6.4、哈希（Hash）类型命令</a></li>
-        <li><a href="#65列表list类型命令">6.5、列表（List）类型命令</a></li>
-        <li><a href="#66集合set类型命令">6.6、集合（Set）类型命令</a></li>
-        <li><a href="#67有序集合sorted-set类型命令">6.7、有序集合（Sorted Set）类型命令</a></li>
-        <li><a href="#68事务相关命令">6.8、事务相关命令</a></li>
-        <li><a href="#69持久化相关命令">6.9、持久化相关命令</a></li>
+        <li><a href="#一基础">一、基础</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#二">二</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#三启动">三、启动</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#2-docker运行laravel5全流程">2 docker运行laravel5全流程</a>
+      <ul>
+        <li><a href="#1拉取-php-700-镜像">1、拉取 PHP 7.0.0 镜像</a></li>
+        <li><a href="#2运行容器">2、运行容器</a></li>
+        <li><a href="#3进入容器进行操作">3、进入容器进行操作</a></li>
+        <li><a href="#4额外启动停止删除容器">4、（额外）启动、停止、删除容器</a></li>
+        <li><a href="#5额外保存更改">5、（额外）保存更改</a></li>
+        <li><a href="#6配置环境">6、配置环境</a>
+          <ul>
+            <li><a href="#1在宿主机上下载-composer-安装脚本">1、在宿主机上下载 Composer 安装脚本</a></li>
+            <li><a href="#2将脚本复制到容器">2、将脚本复制到容器</a></li>
+            <li><a href="#3在容器中安装-composer">3、在容器中安装 Composer</a></li>
+            <li><a href="#4安装必要php拓展">4、安装必要php拓展</a></li>
+          </ul>
+        </li>
+        <li><a href="#7文件复制进容器">7、文件复制进容器</a></li>
+        <li><a href="#8运行项目">8、运行项目</a></li>
       </ul>
     </li>
   </ul>
@@ -364,13 +384,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/">
-                <img src="/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash_hu_c86b681f3fee94ff.jpg"
-                        srcset="/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash_hu_c86b681f3fee94ff.jpg 800w, /p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash_hu_bea442a1395058f4.jpg 1600w"
+            <a href="/p/%E6%8B%93%E5%B1%95docker/">
+                <img src="/p/%E6%8B%93%E5%B1%95docker/1_hu_22a30d848d442004.jpg"
+                        srcset="/p/%E6%8B%93%E5%B1%95docker/1_hu_22a30d848d442004.jpg 800w, /p/%E6%8B%93%E5%B1%95docker/1_hu_dc180289fc018c0f.jpg 1600w"
                         width="800" 
-                        height="534" 
+                        height="450" 
                         loading="lazy"
-                        alt="Featured image of post Redis的使用" />
+                        alt="Featured image of post 【拓展】Docker" />
                 
             </a>
         </div>
@@ -380,12 +400,16 @@
     
     <header class="article-category">
         
-            <a href="/categories/redis/" style="background-color: ; color: #fff;">
-                Redis
+            <a href="/categories/docker/" style="background-color: ; color: #fff;">
+                Docker
             </a>
         
             <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background-color: ; color: #fff;">
                 笔记
+            </a>
+        
+            <a href="/categories/%E6%8B%93%E5%B1%95/" style="background-color: ; color: #fff;">
+                拓展
             </a>
         
     </header>
@@ -393,7 +417,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/redis%E7%9A%84%E4%BD%BF%E7%94%A8/">Redis的使用</a>
+            <a href="/p/%E6%8B%93%E5%B1%95docker/">【拓展】Docker</a>
         </h2>
     
         
@@ -415,7 +439,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-05-23 发布</time>
+                <time class="article-time--published">2025-07-01 发布</time>
             </div>
         
 
@@ -429,14 +453,14 @@
 
 
                 <time>
-                    2025-06-11 最后更新
+                    2025-07-01 最后更新
                 </time>
             </div>
         
             <footer class="article-wordcount">
                 <div>  
                     <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1749624866816" class="icon" viewBox="0 0 1048 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2435" width="16.375" height="16" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M310.598543 86.182563a200.962621 200.962621 0 0 0-200.962621 200.938241v430.595876a200.962621 200.962621 0 0 0 200.962621 200.987001h430.620256a200.962621 200.962621 0 0 0 200.962621-200.962621V287.096424a200.962621 200.962621 0 0 0-200.962621-200.962621H310.598543m0-86.158183h430.620256A287.096424 287.096424 0 0 1 1028.339603 287.120804v430.620256a287.096424 287.096424 0 0 1-287.096424 287.096424H310.598543A287.072044 287.072044 0 0 1 23.526499 717.74106V287.096424C23.526499 128.53026 152.056759 0.04876 310.598543 0.04876v-0.04876z" p-id="2436" fill="#8a8a8a"></path><path d="M489.009857 680.830056V360.942812h-141.402791a36.911004 36.911004 0 1 1-0.097519-73.846388H704.332175a36.911004 36.911004 0 1 1 0 73.846388h-141.402791v319.862864a36.911004 36.911004 0 1 1-73.822008 0h-0.07314z" p-id="2437" fill="#8a8a8a"></path></svg>
-                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 2109</span>
+                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 699</span>
                 </div>
             </footer>
         
@@ -459,252 +483,383 @@
     <section class="article-content">
     
     
-    <h2 id="1下载并解压">1、下载并解压
-</h2><p><a class="link" href="https://github.com/tporadowski/redis/releases"  target="_blank" rel="noopener"
-    >https://github.com/tporadowski/redis/releases</a></p>
-<h2 id="2启动redis服务器">2、启动Redis服务器
-</h2><div class="highlight"><div class="chroma">
+    <h2 id="1-docker的使用">1 docker的使用
+</h2><h3 id="一基础">一、基础
+</h3><h5 id="1镜像">1、镜像
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;https://hub.littlediary.cn&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  &#34;registry-mirrors&#34;: [
+</span></span><span class="line"><span class="cl">    &#34;https://registry.docker-cn.com&#34;,
+</span></span><span class="line"><span class="cl">    &#34;http://hub-mirror.c.163.com&#34;,
+</span></span><span class="line"><span class="cl">    &#34;https://dockerhub.azk8s.cn&#34;,
+</span></span><span class="line"><span class="cl">    &#34;https://mirror.ccs.tencentyun.com&#34;,
+</span></span><span class="line"><span class="cl">    &#34;https://registry.cn-hangzhou.aliyuncs.com&#34;,
+</span></span><span class="line"><span class="cl">    &#34;https://docker.mirrors.ustc.edu.cn&#34;,
+</span></span><span class="line"><span class="cl">    &#34;https://docker.m.daocloud.io&#34;,  
+</span></span><span class="line"><span class="cl">    &#34;https://noohub.ru&#34;, 
+</span></span><span class="line"><span class="cl">    &#34;https://huecker.io&#34;,
+</span></span><span class="line"><span class="cl">    &#34;https://dockerhub.timeweb.cloud&#34; 
+</span></span><span class="line"><span class="cl"> ]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="2进入容器">2、进入容器
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.\redis-server.exe redis.windows.conf
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker exec -it php-fpm bash
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>默认端口为 6379，如果看到类似 Ready to accept connections 的消息，说明 Redis 服务已成功启动。</p>
-<h2 id="3测试redis">3、测试Redis
-</h2><div class="highlight"><div class="chroma">
+</div><h5 id="3清除缓存">3、清除缓存
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.\redis-cli.exe -h 127.0.0.1 -p 6379
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker system prune -a
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>执行 ping 命令，如果返回 PONG，说明 Redis 服务正常运行。</p>
-<h2 id="4将-redis-注册为-windows-服务可选">4、将 Redis 注册为 Windows 服务（可选）
-</h2><p>在 Redis 安装目录中，运行以下命令将 Redis 注册为 Windows 服务：</p>
-<div class="highlight"><div class="chroma">
+</div><h3 id="二">二
+</h3><h5 id="1构建项目">1、构建项目
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">redis-server.exe --service-install redis.windows.conf --service-name redisserver1 --loglevel verbose
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker-compose up --build
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>启动服务：</p>
-<div class="highlight"><div class="chroma">
+</div><h5 id="2重新构建项目">2、重新构建项目
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">redis-server.exe --service-start --service-name redisserver1
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 清理旧镜像缓存（重要！）
+</span></span><span class="line"><span class="cl">docker builder prune --force
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 重新构建
+</span></span><span class="line"><span class="cl">docker build -t laravel52-app .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 运行容器
+</span></span><span class="line"><span class="cl">docker run -it -p 8000:8000 laravel52-app
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>通过 services.msc 查看服务是否安装成功，并可以配置为开机自启动。</p>
-<h2 id="5报错解决">5、报错解决
-</h2><p>当出现以下问题时：</p>
-<div class="highlight"><div class="chroma">
+</div><h3 id="三启动">三、启动
+</h3><h5 id="1启动第一个docker项目">1、启动第一个docker项目
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">127.0.0.1:6379&gt; del name
-</span></span><span class="line"><span class="cl">(error) MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk. Commands that may modify the data set are disabled, because this instance is configured to report errors during writes if RDB snapshotting fails (stop-writes-on-bgsave-error option). Please check the Redis logs for details about the RDB error.
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker build -t hello-docker .
+</span></span><span class="line"><span class="cl">docker run hello-docker
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>临时解决方法：</strong></p>
+</div><h5 id="2启动默认教程的容器">2、启动默认教程的容器
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker run -d -p 8090:80 docker/getting-started
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="3启动laravel项目">3、启动laravel项目
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">php artisan serve --host=0.0.0.0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2-docker运行laravel5全流程">2 docker运行laravel5全流程
+</h2><h3 id="1拉取-php-700-镜像">1、拉取 PHP 7.0.0 镜像
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker pull php:7.0-cli
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2运行容器">2、运行容器
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker run -itd --name my-php-container -p 8000:8000 php:7.0-cli
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3进入容器进行操作">3、进入容器进行操作
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker exec -it my-php-container bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4额外启动停止删除容器">4、（额外）启动、停止、删除容器
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker run/stop/rm my-php-container
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="5额外保存更改">5、（额外）保存更改
+</h3><p>如果在容器中进行了配置更改或安装了额外的软件包，可以将容器保存为新的镜像。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CONFIG SET stop-writes-on-bgsave-error no
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker commit my-php-container php:custom-7.0.0
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>持久解决方法：</strong></p>
-<p>修改Redis配置文件</p>
-<p>找到 Redis 配置文件 redis.conf（通常位于 Redis 安装目录或 /etc/redis/redis.conf）。</p>
-<p>使用文本编辑器打开 redis.conf 文件，找到 stop-writes-on-bgsave-error 选项，并将其设置为 no：</p>
+</div><h3 id="6配置环境">6、配置环境
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 替换软件源
+</span></span><span class="line"><span class="cl">echo &gt; /etc/apt/sources.list
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1、echo  &#34;deb [trusted=yes] http://mirrors.tuna.tsinghua.edu.cn/debian buster main contrib non-free&#34; &gt;/etc/apt/sources.list
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2、echo  &#34;deb http://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free&#34; &gt;&gt;/etc/apt/sources.list
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3、echo  &#34;deb http://security.debian.org/debian-security buster/updates main contrib non-free&#34; &gt;&gt;/etc/apt/sources.list
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="1在宿主机上下载-composer-安装脚本">1、在宿主机上下载 Composer 安装脚本
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wget https://install.phpcomposer.com/installer -O composer-setup.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2将脚本复制到容器">2、将脚本复制到容器
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker cp composer-setup.php my_container:/tmp/composer-setup.php
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3在容器中安装-composer">3、在容器中安装 Composer
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docker exec -it my_container bash
+</span></span><span class="line"><span class="cl">php /tmp/composer-setup.php
+</span></span><span class="line"><span class="cl">mv composer.phar /usr/local/bin/composer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="4安装必要php拓展">4、安装必要php拓展
+</h4><p>mongodb拓展版本为1.5.0可以启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 更新软件包
+</span></span><span class="line"><span class="cl">apt-get update
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 下载拓展，要有以下拓展方可运行
+</span></span><span class="line"><span class="cl">PS C:\Users&gt; php -m
+</span></span><span class="line"><span class="cl">[PHP Modules]
+</span></span><span class="line"><span class="cl">bcmath
+</span></span><span class="line"><span class="cl">bz2
+</span></span><span class="line"><span class="cl">calendar
+</span></span><span class="line"><span class="cl">Core
+</span></span><span class="line"><span class="cl">ctype
+</span></span><span class="line"><span class="cl">curl
+</span></span><span class="line"><span class="cl">date
+</span></span><span class="line"><span class="cl">dom
+</span></span><span class="line"><span class="cl">exif
+</span></span><span class="line"><span class="cl">fileinfo
+</span></span><span class="line"><span class="cl">filter
+</span></span><span class="line"><span class="cl">gd
+</span></span><span class="line"><span class="cl">gettext
+</span></span><span class="line"><span class="cl">gmp
+</span></span><span class="line"><span class="cl">hash
+</span></span><span class="line"><span class="cl">iconv
+</span></span><span class="line"><span class="cl">imap
+</span></span><span class="line"><span class="cl">intl
+</span></span><span class="line"><span class="cl">json
+</span></span><span class="line"><span class="cl">ldap
+</span></span><span class="line"><span class="cl">libxml
+</span></span><span class="line"><span class="cl">mbstring
+</span></span><span class="line"><span class="cl">mcrypt
+</span></span><span class="line"><span class="cl">mongodb
+</span></span><span class="line"><span class="cl">mysqli
+</span></span><span class="line"><span class="cl">mysqlnd
+</span></span><span class="line"><span class="cl">openssl
+</span></span><span class="line"><span class="cl">pcre
+</span></span><span class="line"><span class="cl">PDO
+</span></span><span class="line"><span class="cl">pdo_mysql
+</span></span><span class="line"><span class="cl">pdo_sqlite
+</span></span><span class="line"><span class="cl">Phar
+</span></span><span class="line"><span class="cl">Reflection
+</span></span><span class="line"><span class="cl">session
+</span></span><span class="line"><span class="cl">SimpleXML
+</span></span><span class="line"><span class="cl">soap
+</span></span><span class="line"><span class="cl">sockets
+</span></span><span class="line"><span class="cl">SPL
+</span></span><span class="line"><span class="cl">sqlite3
+</span></span><span class="line"><span class="cl">standard
+</span></span><span class="line"><span class="cl">tokenizer
+</span></span><span class="line"><span class="cl">wddx
+</span></span><span class="line"><span class="cl">xml
+</span></span><span class="line"><span class="cl">xmlreader
+</span></span><span class="line"><span class="cl">xmlrpc
+</span></span><span class="line"><span class="cl">xmlwriter
+</span></span><span class="line"><span class="cl">xsl
+</span></span><span class="line"><span class="cl">zip
+</span></span><span class="line"><span class="cl">zlib
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Zend Modules]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="7文件复制进容器">7、文件复制进容器
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">docker</span> <span class="n">cp</span> <span class="s2">&#34;D:\Misc\Docker\code\dns_web\.&#34;</span> <span class="n">my</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">container</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="8运行项目">8、运行项目
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">my</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">container</span> <span class="n">bash</span>
+</span></span><span class="line"><span class="cl"><span class="n">cd</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/...</span>
+</span></span><span class="line"><span class="cl"><span class="n">composer</span> <span class="n">install</span>
+</span></span><span class="line"><span class="cl"><span class="n">php</span> <span class="n">artisan</span> <span class="n">serve</span> <span class="o">--</span><span class="n">host</span><span class="o">=</span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote class="alert-note">
+<p>做出修改后使用以下命令将文件更新 &ndash; <strong>此步骤应由挂载卷来操作，此法不方便</strong></p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">stop-writes-on-bgsave-error no
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">docker</span> <span class="n">cp</span> <span class="s2">&#34;D:/Misc/Docker/code/dns_web/.&#34;</span> <span class="n">my</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">container</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">code</span><span class="o">/</span><span class="n">dns_web</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>保存文件并重启 Redis 服务。</p>
-<h2 id="6redis-常用命令总结">6、Redis 常用命令总结
-</h2><h3 id="61连接与服务器相关命令">6.1、连接与服务器相关命令
-</h3><ul>
-<li><strong>连接命令</strong>
-<ul>
-<li><code>redis - cli</code>：启动 Redis 客户端，用于与 Redis 服务器交互。</li>
-</ul>
-</li>
-<li><strong>服务器信息和状态命令</strong>
-<ul>
-<li><code>INFO</code>：提供 Redis 服务器的详细信息和统计指标。</li>
-<li><code>DBSIZE</code>：返回当前数据库中键值对的数量。</li>
-</ul>
-</li>
-<li><strong>服务器配置命令</strong>
-<ul>
-<li><code>CONFIG GET </code>：获取 Redis 服务器指定配置项的值。</li>
-<li><code>CONFIG SET  </code>：设置 Redis 服务器指定配置项的值。</li>
-</ul>
-</li>
-</ul>
-<h3 id="62键key相关命令">6.2、键（Key）相关命令
-</h3><ul>
-<li><strong>键的基本操作命令</strong>
-<ul>
-<li><code>DEL key1 [key2 ...]</code>：删除一个或多个键。</li>
-<li><code>EXISTS key</code>：检查键是否存在。</li>
-<li><code>EXPIRE key seconds</code>：为键设置过期时间，以秒为单位。</li>
-<li><code>TTL key</code>：查看键的剩余生存时间。</li>
-<li><code>RENAME key newkey</code>：将键重命名。</li>
-<li><code>RENAME NX key newkey</code>：只有在新键不存在时，才会将键重命名。</li>
-</ul>
-</li>
-<li><strong>键的遍历命令</strong>
-<ul>
-<li><code>KEYS pattern</code>：查找所有符合给定模式的键。</li>
-<li><code>SCAN cursor [MATCH pattern] [COUNT count]</code>：迭代地遍历数据库中的键。</li>
-</ul>
-</li>
-</ul>
-<h3 id="63字符串string类型命令">6.3、字符串（String）类型命令
-</h3><ul>
-<li><strong>基本赋值和获取命令</strong>
-<ul>
-<li><code>SET key value</code>：将键值对存储到 Redis 中。</li>
-<li><code>GET key</code>：获取指定键的值。</li>
-<li><code>GETSET key value</code>：将键的旧值返回，并设置新值。</li>
-</ul>
-</li>
-<li><strong>字符串操作命令</strong>
-<ul>
-<li><code>APPEND key value</code>：将值追加到指定键的字符串值后面。</li>
-<li><code>STRLEN key</code>：获取指定键的字符串值的长度。</li>
-<li><code>INCR key</code>：将键的数值值增加 1。</li>
-<li><code>INCRBY key increment</code>：将键的数值值增加指定的增量。</li>
-<li><code>DECR key</code>：将键的数值值减 1。</li>
-<li><code>DECRBY key decrement</code>：将键的数值值减少指定的减量。</li>
-</ul>
-</li>
-</ul>
-<h3 id="64哈希hash类型命令">6.4、哈希（Hash）类型命令
-</h3><ul>
-<li><strong>哈希的基本操作命令</strong>
-<ul>
-<li><code>HSET key field value</code>：将哈希表中字段的值设置为指定的值。</li>
-<li><code>HGET key field</code>：获取哈希表中指定字段的值。</li>
-<li><code>HSETNX key field value</code>：只有在字段不存在时，才将哈希表中字段的值设置为指定的值。</li>
-<li><code>HMSET key field1 value1 field2 value2 ...</code>：同时将多个字段值设置到哈希表中。</li>
-<li><code>HMGET key field1 [field2 ...]</code>：获取哈希表中多个字段的值。</li>
-<li><code>HDEL key field1 [field2 ...]</code>：删除哈希表中的一个或多个字段。</li>
-</ul>
-</li>
-<li><strong>哈希的其他命令</strong>
-<ul>
-<li><code>HEXISTS key field</code>：检查哈希表中指定字段是否存在。</li>
-<li><code>HLEN key</code>：获取哈希表中字段 - 值对的数量。</li>
-<li><code>HKEYS key</code>：获取哈希表中所有的字段。</li>
-<li><code>HVALS key</code>：获取哈希表中所有的值。</li>
-<li><code>HGETALL key</code>：获取哈希表中所有的字段和值。</li>
-</ul>
-</li>
-</ul>
-<h3 id="65列表list类型命令">6.5、列表（List）类型命令
-</h3><ul>
-<li><strong>列表的基本操作命令</strong>
-<ul>
-<li><code>LPUSH key value1 [value2 ...]</code>：将一个或多个值插入到列表头部。</li>
-<li><code>RPUSH key value1 [value2 ...]</code>：将一个或多个值插入到列表尾部。</li>
-<li><code>LPOP key</code>：移出并获取列表的第一个元素。</li>
-<li><code>RPOP key</code>：移出并获取列表的最后一个元素。</li>
-<li><code>RPOPLPUSH source destination</code>：移出并获取 source 列表的最后一个元素，然后将其添加到 destination 列表的头部。</li>
-</ul>
-</li>
-<li><strong>列表的其他命令</strong>
-<ul>
-<li><code>LRANGE key start end</code>：获取列表中指定区间内的元素。</li>
-<li><code>LINDEX key index</code>：获取列表中指定位置的元素。</li>
-<li><code>LLEN key</code>：获取列表的长度。</li>
-<li><code>LREM key count value</code>：根据参数 count 的值，移除列表中与 value 相等的元素。</li>
-</ul>
-</li>
-</ul>
-<h3 id="66集合set类型命令">6.6、集合（Set）类型命令
-</h3><ul>
-<li><strong>集合的基本操作命令</strong>
-<ul>
-<li><code>SADD key member1 [member2 ...]</code>：将一个或多个成员添加到集合中。</li>
-<li><code>SREM key member1 [member2 ...]</code>：移除集合中的一个或多个成员。</li>
-<li><code>SMEMBERS key</code>：获取集合中的所有成员。</li>
-<li><code>SISMEMBER key member</code>：判断成员是否是集合中的元素。</li>
-</ul>
-</li>
-<li><strong>集合的其他命令</strong>
-<ul>
-<li><code>SCARD key</code>：获取集合中元素的数量。</li>
-<li><code>SPOP key [count]</code>：移除并返回集合中的一个或多个随机元素。</li>
-<li><code>SRANDMEMBER key [count]</code>：返回集合中的一个或多个随机元素。</li>
-</ul>
-</li>
-</ul>
-<h3 id="67有序集合sorted-set类型命令">6.7、有序集合（Sorted Set）类型命令
-</h3><ul>
-<li><strong>有序集合的基本操作命令</strong>
-<ul>
-<li><code>ZADD key score1 member1 [score2 member2 ...]</code>：将成员及其分数添加到有序集合中。</li>
-<li><code>ZREM key member1 [member2 ...]</code>：移除有序集合中的一个或多个成员。</li>
-<li><code>ZSCORE key member</code>：获取有序集合中成员的分数。</li>
-<li><code>ZRANGE key start end [WITHSCORES]</code>：获取有序集合中指定区间内的成员，按照分数从小到大排序。</li>
-<li><code>ZREVRANGE key start end [WITHSCORES]</code>：与 ZRANGE 类似，但成员是按照分数从大到小排序。</li>
-</ul>
-</li>
-<li><strong>有序集合的其他命令</strong>
-<ul>
-<li><code>ZCARD key</code>：获取有序集合中元素的数量。</li>
-<li><code>ZCOUNT key min max</code>：计算有序集合中分数在指定区间内的成员数量。</li>
-<li><code>ZINCRBY key increment member</code>：将有序集合中成员的分数增加指定的步长。</li>
-</ul>
-</li>
-</ul>
-<h3 id="68事务相关命令">6.8、事务相关命令
-</h3><ul>
-<li><strong>事务开始和执行命令</strong>
-<ul>
-<li><code>MULTI</code>：开始一个事务。</li>
-<li><code>EXEC</code>：执行事务中的所有命令。</li>
-</ul>
-</li>
-<li><strong>事务控制命令</strong>
-<ul>
-<li><code>DISCARD</code>：放弃事务中所有的命令操作。</li>
-<li><code>WATCH key1 [key2 ...]</code>：在执行事务之前，监视一个或多个键。</li>
-</ul>
-</li>
-</ul>
-<h3 id="69持久化相关命令">6.9、持久化相关命令
-</h3><ul>
-<li><strong>持久化方式控制命令</strong>
-<ul>
-<li><code>SAVE</code>：强制 Redis 进行数据持久化操作。</li>
-<li><code>BGSAVE</code>：异步进行数据持久化操作。</li>
-</ul>
-</li>
-<li><strong>持久化状态查询命令</strong>
-<ul>
-<li><code>LASTSAVE</code>：返回上次成功持久化操作的时间戳。</li>
-</ul>
-</li>
-</ul>
-
+</div>
 </section>
 
 
@@ -721,7 +876,7 @@
 
 
         <span>
-            最后更新于 2025-06-11 最后更新
+            最后更新于 2025-07-01 最后更新
         </span>
     </section></footer>
 
@@ -737,6 +892,30 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E6%8B%93%E5%B1%95redis%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%8B%93%E5%B1%95redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.c514d916917173a48a42e0114b469961_hu_12cb662251854034.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【拓展】Redis的使用"
+                        
+                        data-hash="md5-xRTZFpFxc6SKQuARS0aZYQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【拓展】Redis的使用</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
@@ -829,30 +1008,6 @@
 
         <div class="article-details">
             <h2 class="article-title">【Hugo】文章添加评论功能</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/">
-        
-        
-            <div class="article-image">
-                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/2077.a3585811714968d323afd0b16cfc6f48_hu_a8017fc742100d25.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 【Hugo】文章浏览量统计"
-                        
-                        data-hash="md5-o1hYEXFJaNMjr9CxbPxvSA==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Hugo】文章浏览量统计</h2>
         </div>
     </a>
 </article>
@@ -958,12 +1113,18 @@
         
         
         
+        
+        
+        
+        
+        
+        
         <section class="running-time" style="font-size: 13px;">
             本博客已稳定运行
             <span id="runningdays" class="running-days"></span>
         </section>
 
-        <p style="font-size: 13px;margin: 0px;">发布了 9 篇文章 | 共 15.1K 字</p>
+        <p style="font-size: 13px;margin: 0px;">发布了 10 篇文章 | 共 15.8K 字</p>
  
         <span id="busuanzi_container_site_pv" style='display:none;font-size: 13px;'> 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span> | 
         <span id="busuanzi_container_site_uv" style='display:none;font-size: 13px;'> 总访客数 <span id="busuanzi_value_site_uv"></span> 人</span>
