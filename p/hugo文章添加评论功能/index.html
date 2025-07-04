@@ -1309,6 +1309,346 @@
     });
 </script>
 
+
+
+<style>
+
+     
+     
+    .text-container {
+        position: fixed;
+        height: 100vh;
+        width: 99vw;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 100;
+        pointer-events: none;
+    }
+
+     
+     
+    .char {
+        position: absolute;
+        font-size: 2.8rem;
+        font-weight: bold;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3 ease-in-out;
+        text-shadow: 0 0 15px #ffffff99;
+        will-change: transform;
+        cursor: default;
+        user-select: none;
+        pointer-events: none;
+    }
+
+     
+     
+    .circle-guide {
+        position: absolute;
+        border: 2px dashed #ffffff4d;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 0;
+        transform: opacity 0.5s ease;
+    }
+</style>
+
+<div class="text-container"></div>
+
+<script>
+    
+    
+    const TEXT = "◊◊◊◊◊◊◊" 
+    const BASE_FONT_SIZE = 36 
+    const ROTATE_SPEED = 0.01 
+    const SMOOTHING = 0.15 
+    const RT_SMOOTHING = 0.3 
+    const RAINBOW_SPEED = 0.01 
+
+    
+    
+    const container = document.querySelector('.text-container')
+
+    
+    
+    let circleRotateAngele = 0 
+    const chars = [] 
+    let mouseX = window.innerWidth + 20 
+    let mouseY = window.innerHeight + 20 
+    let isRotate = false 
+    let idTimer = null 
+    let circleGuide = null 
+    let hue = 0 
+
+    
+    
+    document.addEventListener('mousemove', (e) => {
+        
+        
+        mouseX = e.clientX
+        mouseY = e.clientY
+
+        
+        
+        clearTimeout(idTimer)
+
+        
+        
+        if (isRotate) {
+            isRotate = false
+        }
+
+        
+        
+        idTimer = setTimeout(() => {
+            isRotate = true
+        }, 500)
+    })
+
+    
+    
+    window.addEventListener('load', () => {
+        
+        
+        initChars()
+
+        
+        
+        updateChars()
+    })
+
+    
+    
+    document.addEventListener('mouseleave', (e) => {
+        clearTimeout(idTimer)
+        mouseX = window.innerWidth + 20
+        mouseY = window.innerHeight + 20
+    })
+
+    
+    
+    window.addEventListener('resize', () => {
+        mouseX = window.innerWidth + 20
+        mouseY = window.innerHeight + 20
+    })
+
+    
+    
+    function updateCircleGuide() {
+        
+        
+        if (!circleGuide) return
+
+        if (isRotate) {
+            
+            
+
+            
+            
+            const radius = Math.min(220, Math.max(100, TEXT.length * BASE_FONT_SIZE / 2.5))
+
+            
+            
+            circleGuide.style.width = `${radius * 2}px`
+            circleGuide.style.height = `${radius * 2}px`
+
+            
+            
+            circleGuide.style.left = `${mouseX}px`
+            circleGuide.style.top = `${mouseY}px`
+            circleGuide.style.display = 'block'
+        } else { 
+            
+            
+            circleGuide.style.display = 'none'
+        }
+    }
+
+    
+    
+    function initChars() {
+        
+        
+        for (let i = 0; i < TEXT.length; i++) {
+            
+            
+            const char = document.createElement('div')
+            char.className = 'char'
+            char.textContent = TEXT[i]
+            char.style.fontSize = `${BASE_FONT_SIZE}px`
+
+            
+            
+            char.dataset.x = window.innerWidth + 20
+            char.dataset.y = window.innerHeight + 20 
+            char.style.left = `${char.dataset.x}px`
+            char.style.top = `${char.dataset.y}px`
+
+            
+            
+            const setHue = (i / TEXT.length) * 360
+            char.style.color = `hsl(${setHue}, 100%, 75%)`
+            
+            
+            
+            container.appendChild(char)
+            chars.push(char)
+        }
+
+        
+        
+        createCircleGuide()
+    }
+
+    
+    
+    function createCircleGuide() {
+        
+        
+        circleGuide = document.createElement('div')
+        circleGuide.className = 'circle-guide'
+
+        
+        
+        circleGuide.style.display = isRotate ? 'block' : 'none'
+        container.appendChild(circleGuide)
+    }
+
+    
+    
+    function updateChars() {
+        
+        
+        updateCircleGuide()
+        
+        if (isRotate) {
+            
+            
+            
+            
+            
+            circleRotateAngele += ROTATE_SPEED
+            
+            
+            if (circleRotateAngele % 360 === 0) {
+                circleRotateAngele = ROTATE_SPEED
+            }
+
+            
+            
+            const radius = Math.min(220, Math.max(100, TEXT.length * BASE_FONT_SIZE / 2.5))
+
+            
+            
+            chars.forEach((char, index) => {
+                
+                
+                const currentX = parseFloat(char.dataset.x)
+                const currentY = parseFloat(char.dataset.y)
+
+                
+                
+                const angle = (index / chars.length) * Math.PI * 2 + circleRotateAngele
+
+                
+                
+                const circleX = mouseX + Math.cos(angle) * radius
+                const circleY = mouseY + Math.sin(angle) * radius
+
+                
+                
+                const newX = lerp(currentX, circleX, RT_SMOOTHING)
+                const newY = lerp(currentY, circleY, RT_SMOOTHING)
+
+                
+                
+                char.dataset.x = newX
+                char.dataset.y = newY
+                char.style.left = `${newX}px`
+                char.style.top = `${newY}px`
+
+                
+                
+                const wordRotateAngle = angle * (180 / Math.PI) + 90
+                char.style.transform = `translate(-50%, -50%) rotate(${wordRotateAngle}deg)`
+
+                
+                
+                hue = (hue + RAINBOW_SPEED) % 360
+                const charHue = (hue + (index / TEXT.length) * 360) % 360
+                char.style.color = `hsl(${charHue}, 100%, 75%)`
+            })
+        } else {
+            
+            
+            let targetX = mouseX
+            let targetY = mouseY
+
+            
+            
+            chars.forEach((char, index) => {
+                
+                
+                const currentX = parseFloat(char.dataset.x)
+                const currentY = parseFloat(char.dataset.y)
+
+                
+                
+                const newX = lerp(currentX, targetX, SMOOTHING)
+                const newY = lerp(currentY, targetY, SMOOTHING)
+
+                
+                
+                char.dataset.x = newX
+                char.dataset.y = newY
+                char.style.left = `${newX}px`
+                char.style.top = `${newY}px`
+
+                
+                
+                let angle
+                if (index === 0) {
+                    
+                    
+                    angle = Math.atan2(targetY - currentY, targetX - currentX) * 180 / Math.PI + 90
+                } else {
+                    
+                    
+                    const prevChar = chars[index - 1]
+                    const prevX = parseFloat(prevChar.dataset.x)
+                    const prevY = parseFloat(prevChar.dataset.y)
+                    angle = Math.atan2(newY - prevY, newX - prevX) * 180 / Math.PI + 90
+                }
+
+                
+                
+                char.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`
+
+                
+                
+                hue = (hue + RAINBOW_SPEED) % 360
+                const charHue = (hue + (index / TEXT.length) * 360) % 360
+                char.style.color = `hsl(${charHue}, 100%, 75%)`
+                
+                
+                
+                targetX = newX
+                targetY = newY
+            })
+        }
+
+        
+        
+        requestAnimationFrame(updateChars)
+    }
+    
+    
+    
+    function lerp(strat, end, t) {
+        return strat * (1 - t) + end * t
+    }
+</script>
     
 </body>
 <script>
