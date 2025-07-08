@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 
-<link rel="stylesheet" href="/scss/style.min.4c3c8379a8647e92dbb486fb19a18dd7fb12d4971c2595570ffe3fa32661460b.css"><meta property='og:title' content="【拓展】Docker">
+<link rel="stylesheet" href="/scss/style.min.52a5cba27038f28d8a44f11c40137637a9140fd3576412e66fe3813fedccdad6.css"><meta property='og:title' content="【拓展】Docker">
 <meta property='og:description' content="1 docker的使用 一、基础 1、镜像 1 2 3 4 5 6 7 8 9 10 11 12 13 14 &#34;https://hub.littlediary.cn&#34; &#34;registry-mirrors&#34;: [ &#34;https://registry.docker-cn.com&#34;, &#34;http://hub-mirror.c.163.com&#34;, &#34;https://dockerhub.azk8s.cn&#34;, &#34;https://mirror.ccs.tencentyun.com&#34;, &#34;https://registry.cn-hangzhou.aliyuncs.com&#34;, &#34;https://docker.mirrors.ustc.edu.cn&#34;, &#34;https://docker.m.daocloud.io&#34;, &#34;https://noohub.ru&#34;, &#34;https://huecker.io&#34;, &#34;https://dockerhub.timeweb.cloud&#34; ] 2、进入容器 1 docker exec -it php-fpm bash 3、清除缓存 1 docker system prune -a 二 1、构建项目 1 docker-compose up --build 2、重新构建项目 1 2 3 4 5 6 7 8 # 清理旧镜像缓存（重要！） docker builder prune --force # 重新构建 docker build -t laravel52-app . # 运行容器 docker run -it -p 8000:8000 laravel52-app 三、启动 1、启动第一个docker项目 1 2 docker build -t hello-docker . docker run hello-docker 2、启动默认教程的容器 1 docker run -d -p 8090:80 docker/getting-started 3、启动laravel项目 1 php artisan serve --host=0.0.0.0 2 docker运行laravel5全流程 1、拉取 PHP 7.0.0 镜像 1 docker pull php:7.0-cli 2、运行容器 1 docker run -itd --name my-php-container -p 8000:8000 php:7.0-cli 3、进入容器进行操作 1 docker exec -it my-php-container bash 4、（额外）启动、停止、删除容器 1 docker run/stop/rm my-php-container 5、（额外）保存更改 如果在容器中进行了配置更改或安装了额外的软件包，可以将容器保存为新的镜像。\n">
 <meta property='og:url' content='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95docker/'>
 <meta property='og:site_name' content='Bright9911'>
@@ -919,6 +919,30 @@
             
                 
 <article class="has-image">
+    <a href="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/">
+        
+        
+            <div class="article-image">
+                <img src="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/100.3c753040d8260a6b1b106cb959b64e9e_hu_a8a911858cc7446d.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 【Laravel】事件，队列"
+                        
+                        data-hash="md5-PHUwQNgmCmsbEGy5WbZOng==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Laravel】事件，队列</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">
         
         
@@ -984,30 +1008,6 @@
 
         <div class="article-details">
             <h2 class="article-title">【Laravel】邮件发送</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/hugo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/">
-        
-        
-            <div class="article-image">
-                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/1606179652749.8cad20bbb75b352e5290001bbc3cb9cf_hu_8300fa6f38eea17e.jpeg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 【Hugo】文章添加评论功能"
-                        
-                        data-hash="md5-jK0gu7dbNS5SkAAbvDy5zw==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Hugo】文章添加评论功能</h2>
         </div>
     </a>
 </article>
@@ -1119,12 +1119,14 @@
         
         
         
+        
+        
         <section class="running-time" style="font-size: 13px;">
             本博客已稳定运行
             <span id="runningdays" class="running-days"></span>
         </section>
 
-        <p style="font-size: 13px;margin: 0px;">发布了 10 篇文章 | 共 15.8K 字</p>
+        <p style="font-size: 13px;margin: 0px;">发布了 11 篇文章 | 共 17.3K 字</p>
  
         <span id="busuanzi_container_site_pv" style='display:none;font-size: 13px;'> 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span> | 
         <span id="busuanzi_container_site_uv" style='display:none;font-size: 13px;'> 总访客数 <span id="busuanzi_value_site_uv"></span> 人</span>
