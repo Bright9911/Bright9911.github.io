@@ -7,6 +7,28 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Bright9911</copyright><atom:link href="https://Bright9911.github.io/categories/%E6%8B%93%E5%B1%95/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【拓展】PhpStorm</title>
+        <link>https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95phpstorm/</link>
+        <pubDate>Fri, 17 Oct 2025 09:42:46 +0800</pubDate>
+        
+        <guid>https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95phpstorm/</guid>
+        <description>&lt;img src="https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95phpstorm/background.jpg" alt="Featured image of post 【拓展】PhpStorm" /&gt;&lt;h2 id=&#34;key-is-invalid&#34;&gt;key is invalid
+&lt;/h2&gt;&lt;blockquote class=&#34;alert-tip&#34;&gt;
+&lt;p&gt;（一般删除激活文件后，重新下载运行就能解决）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原因如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;激活工具未下载或者没有配置，返回查看教程，激活码无法单独使用，必须配合激活工具一起使用&lt;/li&gt;
+&lt;li&gt;激活工具的路径配置有误，请核对&lt;/li&gt;
+&lt;li&gt;配置完激活工具，未重启IDE开发工具，正常是不用的，避免你在配置的时候就打开了IDE，最好还是重启下，如果工具已经启动，配置完插件之后，请务必重启一下工具再使用激活码&lt;/li&gt;
+&lt;li&gt;登录了账号，如果你登录了自己未授权订阅的账号，请退出，重新激活&lt;/li&gt;
+&lt;li&gt;受到其他激活工具的影响，jetbrains是允许安装多版本的，如果你有安装其他版本的其他激活工具，可能会互相干扰，请核对&lt;/li&gt;
+&lt;li&gt;重启电脑，极少部分电脑重启工具也不会生效插件，必须重启电脑，可以尝试&lt;/li&gt;
+&lt;li&gt;如果重启电脑后还不行，Windows电脑执行uninstall-all-users.vbs，然后再执行install-all-users.vbs，成功后，再次激活尝试，还不行就再重启一次电脑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果是idea，pycharm出现，一般需要重启下电脑，然后重新激活即可，如果不行，请参考&lt;strong&gt;解决方案一&lt;/strong&gt;&lt;/p&gt;</description>
+        </item>
+        <item>
         <title>【拓展】Docker</title>
         <link>https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95docker/</link>
         <pubDate>Tue, 01 Jul 2025 09:42:46 +0800</pubDate>

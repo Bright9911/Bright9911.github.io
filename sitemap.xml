@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://Bright9911.github.io/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/</loc>
-    <lastmod>2025-07-08T15:56:09+08:00</lastmod>
+    <loc>https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95phpstorm/</loc>
+    <lastmod>2025-10-17T11:31:28+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/categories/</loc>
-    <lastmod>2025-07-08T15:56:09+08:00</lastmod>
+    <lastmod>2025-10-17T11:31:28+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/post/</loc>
+    <lastmod>2025-10-17T11:31:28+08:00</lastmod>
+  </url><url>
+    <loc>https://Bright9911.github.io/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/</loc>
     <lastmod>2025-07-08T15:56:09+08:00</lastmod>
   </url><url>
     <loc>https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95docker/</loc>

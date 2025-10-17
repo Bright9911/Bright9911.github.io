@@ -2,10 +2,10 @@
 <html lang="zh-cn" dir="ltr">
 
 <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip ">
-<title>【Hugo】Hugo&#43;Github搭建个人博客</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="key is invalid （一般删除激活文件后，重新下载运行就能解决）\n原因如下：\n激活工具未下载或者没有配置，返回查看教程，激活码无法单独使用，必须配合激活工具一起使用 激活工具的路径配置有误，请核对 配置完激活工具，未重启IDE开发工具，正常是不用的，避免你在配置的时候就打开了IDE，最好还是重启下，如果工具已经启动，配置完插件之后，请务必重启一下工具再使用激活码 登录了账号，如果你登录了自己未授权订阅的账号，请退出，重新激活 受到其他激活工具的影响，jetbrains是允许安装多版本的，如果你有安装其他版本的其他激活工具，可能会互相干扰，请核对 重启电脑，极少部分电脑重启工具也不会生效插件，必须重启电脑，可以尝试 如果重启电脑后还不行，Windows电脑执行uninstall-all-users.vbs，然后再执行install-all-users.vbs，成功后，再次激活尝试，还不行就再重启一次电脑 如果是idea，pycharm出现，一般需要重启下电脑，然后重新激活即可，如果不行，请参考解决方案一\n">
+<title>【拓展】PhpStorm</title>
 
-<link rel='canonical' href='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/'>
+<link rel='canonical' href='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95phpstorm/'>
 
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -13,14 +13,14 @@
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 
-<link rel="stylesheet" href="/scss/style.min.36aa66e04803bff33677780530cea9384b364ab40c2f2cac78c935e02aeb2e78.css"><meta property='og:title' content="【Hugo】Hugo+Github搭建个人博客">
-<meta property='og:description' content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip ">
-<meta property='og:url' content='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/'>
+<link rel="stylesheet" href="/scss/style.min.36aa66e04803bff33677780530cea9384b364ab40c2f2cac78c935e02aeb2e78.css"><meta property='og:title' content="【拓展】PhpStorm">
+<meta property='og:description' content="key is invalid （一般删除激活文件后，重新下载运行就能解决）\n原因如下：\n激活工具未下载或者没有配置，返回查看教程，激活码无法单独使用，必须配合激活工具一起使用 激活工具的路径配置有误，请核对 配置完激活工具，未重启IDE开发工具，正常是不用的，避免你在配置的时候就打开了IDE，最好还是重启下，如果工具已经启动，配置完插件之后，请务必重启一下工具再使用激活码 登录了账号，如果你登录了自己未授权订阅的账号，请退出，重新激活 受到其他激活工具的影响，jetbrains是允许安装多版本的，如果你有安装其他版本的其他激活工具，可能会互相干扰，请核对 重启电脑，极少部分电脑重启工具也不会生效插件，必须重启电脑，可以尝试 如果重启电脑后还不行，Windows电脑执行uninstall-all-users.vbs，然后再执行install-all-users.vbs，成功后，再次激活尝试，还不行就再重启一次电脑 如果是idea，pycharm出现，一般需要重启下电脑，然后重新激活即可，如果不行，请参考解决方案一\n">
+<meta property='og:url' content='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95phpstorm/'>
 <meta property='og:site_name' content='Bright9911'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-05-23T14:53:41&#43;08:00'/><meta property='article:modified_time' content='2025-06-26T17:45:30&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
-<meta name="twitter:title" content="【Hugo】Hugo+Github搭建个人博客">
-<meta name="twitter:description" content="1、环境准备 1.1、Git下载 前往Git官网，下载安装程序 一直点下一步，默认安装即可 1.2、Hugo下载 前往Tags · gohugoio/hugo下载对应版本 Windows版本：hugo_extended_xxxxx_windows_amd64.zip "><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://Bright9911.github.io/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-17T09:42:46&#43;08:00'/><meta property='article:modified_time' content='2025-10-17T11:31:28&#43;08:00'/><meta property='og:image' content='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95phpstorm/background.jpg' />
+<meta name="twitter:title" content="【拓展】PhpStorm">
+<meta name="twitter:description" content="key is invalid （一般删除激活文件后，重新下载运行就能解决）\n原因如下：\n激活工具未下载或者没有配置，返回查看教程，激活码无法单独使用，必须配合激活工具一起使用 激活工具的路径配置有误，请核对 配置完激活工具，未重启IDE开发工具，正常是不用的，避免你在配置的时候就打开了IDE，最好还是重启下，如果工具已经启动，配置完插件之后，请务必重启一下工具再使用激活码 登录了账号，如果你登录了自己未授权订阅的账号，请退出，重新激活 受到其他激活工具的影响，jetbrains是允许安装多版本的，如果你有安装其他版本的其他激活工具，可能会互相干扰，请核对 重启电脑，极少部分电脑重启工具也不会生效插件，必须重启电脑，可以尝试 如果重启电脑后还不行，Windows电脑执行uninstall-all-users.vbs，然后再执行install-all-users.vbs，成功后，再次激活尝试，还不行就再重启一次电脑 如果是idea，pycharm出现，一般需要重启下电脑，然后重新激活即可，如果不行，请参考解决方案一\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://Bright9911.github.io/p/%E6%8B%93%E5%B1%95phpstorm/background.jpg' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
 </head>
@@ -331,23 +331,12 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#1环境准备">1、环境准备</a>
+    <li><a href="#key-is-invalid">key is invalid</a></li>
+    <li><a href="#解决方案一删除注册表与缓存">解决方案一：删除注册表与缓存</a>
       <ul>
-        <li><a href="#11git下载">1.1、Git下载</a></li>
-        <li><a href="#12hugo下载">1.2、Hugo下载</a></li>
-      </ul>
-    </li>
-    <li><a href="#2搭建博客">2、搭建博客</a>
-      <ul>
-        <li><a href="#21创建博客">2.1、创建博客</a></li>
-        <li><a href="#22配置主题">2.2、配置主题</a></li>
-        <li><a href="#23发布文章">2.3、发布文章</a></li>
-      </ul>
-    </li>
-    <li><a href="#3github部署">3、Github部署</a>
-      <ul>
-        <li><a href="#31常规部署">3.1、常规部署</a></li>
-        <li><a href="#32github-action自动部署">3.2、Github Action自动部署</a></li>
+        <li><a href="#删除本地缓存">删除本地缓存</a></li>
+        <li><a href="#删除注册表信息">删除注册表信息</a></li>
+        <li><a href="#删除历史环境变量">删除历史环境变量</a></li>
       </ul>
     </li>
   </ul>
@@ -365,13 +354,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
-                <img src="/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash_hu_4478d0ca4dd8c594.jpg"
-                        srcset="/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash_hu_4478d0ca4dd8c594.jpg 800w, /p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash_hu_8df8f39ac35f88d8.jpg 1600w"
+            <a href="/p/%E6%8B%93%E5%B1%95phpstorm/">
+                <img src="/p/%E6%8B%93%E5%B1%95phpstorm/background_hu_58135d7252963d8c.jpg"
+                        srcset="/p/%E6%8B%93%E5%B1%95phpstorm/background_hu_58135d7252963d8c.jpg 800w, /p/%E6%8B%93%E5%B1%95phpstorm/background_hu_22eea462eb1ea87b.jpg 1600w"
                         width="800" 
-                        height="566" 
+                        height="450" 
                         loading="lazy"
-                        alt="Featured image of post 【Hugo】Hugo&#43;Github搭建个人博客" />
+                        alt="Featured image of post 【拓展】PhpStorm" />
                 
             </a>
         </div>
@@ -381,16 +370,12 @@
     
     <header class="article-category">
         
-            <a href="/categories/hugo/" style="background-color: ; color: #fff;">
-                Hugo
-            </a>
-        
-            <a href="/categories/github/" style="background-color: ; color: #fff;">
-                Github
-            </a>
-        
             <a href="/categories/%E7%AC%94%E8%AE%B0/" style="background-color: ; color: #fff;">
                 笔记
+            </a>
+        
+            <a href="/categories/%E6%8B%93%E5%B1%95/" style="background-color: ; color: #fff;">
+                拓展
             </a>
         
     </header>
@@ -398,7 +383,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">【Hugo】Hugo&#43;Github搭建个人博客</a>
+            <a href="/p/%E6%8B%93%E5%B1%95phpstorm/">【拓展】PhpStorm</a>
         </h2>
     
         
@@ -420,7 +405,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-05-23 发布</time>
+                <time class="article-time--published">2025-10-17 发布</time>
             </div>
         
 
@@ -434,14 +419,14 @@
 
 
                 <time>
-                    2025-06-26 最后更新
+                    2025-10-17 最后更新
                 </time>
             </div>
         
             <footer class="article-wordcount">
                 <div>  
                     <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1749624866816" class="icon" viewBox="0 0 1048 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2435" width="16.375" height="16" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M310.598543 86.182563a200.962621 200.962621 0 0 0-200.962621 200.938241v430.595876a200.962621 200.962621 0 0 0 200.962621 200.987001h430.620256a200.962621 200.962621 0 0 0 200.962621-200.962621V287.096424a200.962621 200.962621 0 0 0-200.962621-200.962621H310.598543m0-86.158183h430.620256A287.096424 287.096424 0 0 1 1028.339603 287.120804v430.620256a287.096424 287.096424 0 0 1-287.096424 287.096424H310.598543A287.072044 287.072044 0 0 1 23.526499 717.74106V287.096424C23.526499 128.53026 152.056759 0.04876 310.598543 0.04876v-0.04876z" p-id="2436" fill="#8a8a8a"></path><path d="M489.009857 680.830056V360.942812h-141.402791a36.911004 36.911004 0 1 1-0.097519-73.846388H704.332175a36.911004 36.911004 0 1 1 0 73.846388h-141.402791v319.862864a36.911004 36.911004 0 1 1-73.822008 0h-0.07314z" p-id="2437" fill="#8a8a8a"></path></svg>
-                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 1865</span>
+                    <span class="article-wordcount--count" style="margin-left: 13px;margin-top: 5px;">字数: 709</span>
                 </div>
             </footer>
         
@@ -464,417 +449,38 @@
     <section class="article-content">
     
     
-    <h2 id="1环境准备">1、环境准备
-</h2><h3 id="11git下载">1.1、Git下载
-</h3><ul>
-<li>前往<a class="link" href="https://git-scm.com/"  target="_blank" rel="noopener"
-    >Git</a>官网，下载安装程序</li>
-<li>一直点下一步，默认安装即可</li>
-</ul>
-<p><a data-fancybox="gallery" href="1.png#style=width:80%25">
-    <img src="1.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
-<h3 id="12hugo下载">1.2、Hugo下载
-</h3><ul>
-<li>前往<a class="link" href="https://github.com/gohugoio/hugo/tags"  target="_blank" rel="noopener"
-    >Tags · gohugoio/hugo</a>下载对应版本</li>
-</ul>
-<p><a data-fancybox="gallery" href="2.png#style=width:80%25">
-    <img src="2.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
-<ul>
-<li>Windows版本：<strong>hugo_extended_xxxxx_windows_amd64.zip</strong></li>
-</ul>
-<p><a data-fancybox="gallery" href="3.png#style=width:80%25">
-    <img src="3.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
-<h2 id="2搭建博客">2、搭建博客
-</h2><h3 id="21创建博客">2.1、创建博客
-</h3><ul>
-<li>
-<p>（1）在<strong>hugo.exe</strong>所在文件夹的地址栏敲打cmd，然后Enter唤起命令行</p>
-</li>
-<li>
-<p>（2）敲打命令<code>hugo new site xxxx</code>创建hugo文件</p>
-</li>
-<li>
-<p>（3）敲打命名<code>cd xxxx</code>切换目录，并把<strong>hugo.exe</strong>复制到刚生成的文件夹中</p>
-</li>
-<li>
-<p>（4）敲打命令<code>hugo server -D</code>启动服务，访问<a class="link" href="http://localhost:1313/"  target="_blank" rel="noopener"
-    >http://localhost:1313</a>，Ctrl+C停止服务</p>
-<p><strong>（hugo默认是没有主题的，需要进行主题配置）</strong></p>
-</li>
-</ul>
-<h3 id="22配置主题">2.2、配置主题
-</h3><ul>
-<li>（1）前往【<a class="link" href="https://themes.gohugo.io/"  target="_blank" rel="noopener"
-    >Hugo Themes</a>】，查找自己喜欢的主题，进行下载</li>
-<li>（2）这边以【<a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack/tags"  target="_blank" rel="noopener"
-    >Stack主题</a>】为例，将下载好的主题解压，放到<code>/themes</code>文件夹中（这里我的网站名称是dev，从上一步创建博客的第2步中的xxx得来）</li>
-</ul>
-<p><a data-fancybox="gallery" href="7.png#style=width:80%25">
-    <img src="7.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
-<ul>
-<li>（3）将<code>exampleSite</code>样例数据中的 <strong>Content</strong> 和 <strong>hugo.yaml</strong> 复制到主文件夹中，并删掉<code>hugo.toml</code>和<code>content/post/rich-content</code></li>
-<li>（4）修改 <strong>hugo.yaml</strong> 中的 <strong>theme</strong>，将他修改为跟主题文件夹同名</li>
-</ul>
-<p><a data-fancybox="gallery" href="8.png#style=width:80%25">
-    <img src="8.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
-<ul>
-<li>（5）再次启动hugo服务，查看主题，具体主题配置修改 <strong>hugo.yaml</strong>，这里不细说，感兴趣可自行查找相关文章</li>
-</ul>
-<h3 id="23发布文章">2.3、发布文章
-</h3><ul>
-<li>（1）使用以下命令生成文章（文章名无所谓，可以修改）</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new content post/<span class="o">{</span>文章名<span class="o">}</span>/index.md
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>
-<p>（2）生成文章之后，在<code>content/post/{文章名字}/index.md</code>中编写文章</p>
-</li>
-<li>
-<p>（3）文章开头配置（自行修改）</p>
-</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">title = &#39;{文章名}&#39;
-</span></span><span class="line"><span class="cl">date = 2025-05-23T14:53:41+08:00
-</span></span><span class="line"><span class="cl">description: 这是一个副标题
-</span></span><span class="line"><span class="cl">draft = true
-</span></span><span class="line"><span class="cl">comments= false
-</span></span><span class="line"><span class="cl">categories = [
-</span></span><span class="line"><span class="cl">    &#34;hugo&#34;,
-</span></span><span class="line"><span class="cl">    &#34;github&#34;,
-</span></span><span class="line"><span class="cl">    &#34;笔记&#34;,
-</span></span><span class="line"><span class="cl">]
-</span></span><span class="line"><span class="cl">image = &#34;the-creative-exchange-d2zvqp3fpro-unsplash.jpg&#34;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>（4）图片引入格式如下</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">&lt;img src=&#34;4.png&#34; alt=&#34;hugo版本&#34; style=&#34;zoom:80%;&#34; /&gt;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="3github部署">3、Github部署
+    <h2 id="key-is-invalid">key is invalid
 </h2><blockquote class="alert-tip">
-<p>【<a class="link" href="https://www.ermao.net/posts/vpn/"  target="_blank" rel="noopener"
-    >推荐机场</a>】</p>
+<p>（一般删除激活文件后，重新下载运行就能解决）</p>
 </blockquote>
-<h3 id="31常规部署">3.1、常规部署
-</h3><ul>
-<li>
-<p>（1）前往【<a class="link" href="https://github.com/"  target="_blank" rel="noopener"
-    >Github官网</a>】，创建仓库 <strong>{github用户名}.github.io</strong></p>
-</li>
-<li>
-<p>（2）前往<code>Setting -&gt; Pages -&gt; Branch</code>选择main分支，然后保存，会自动开启 <strong>https://{github用户名}.github.io</strong> 的地址，这地址也是以后访问博客的地址</p>
-</li>
-<li>
-<p>（3）回到hugo文件中，执行命令<code>hugo -D</code>，会生成 <strong>public</strong> 静态资源文件夹</p>
-</li>
-<li>
-<p>（4）在 <strong>public</strong> 执行以下命令上传到github仓库上，第一次上传可能需要输入账号密码</p>
-</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
-</span></span><span class="line"><span class="cl">git add .
-</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;first commit&#34;</span>
-</span></span><span class="line"><span class="cl">git branch -M main
-</span></span><span class="line"><span class="cl">git remote add origin <span class="o">{</span>你的github仓库地址<span class="o">}</span>
-</span></span><span class="line"><span class="cl">git push -u origin main
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">// 拓展
-</span></span><span class="line"><span class="cl">// 如果最后一行命令有问题可以先关闭ssl
-</span></span><span class="line"><span class="cl">git config --global http.sslVerify <span class="nb">false</span>
-</span></span><span class="line"><span class="cl">git push -u origin main
-</span></span><span class="line"><span class="cl">// 再开启
-</span></span><span class="line"><span class="cl">git config --global http.sslVerify <span class="nb">true</span>
-</span></span><span class="line"><span class="cl">// 如果git add . 之后想取消的，可以执行git reset
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">// 修改之后再上传
-</span></span><span class="line"><span class="cl">git add .
-</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;修改描述&#34;</span>
-</span></span><span class="line"><span class="cl">git push    // 如果是团队协作，需要先新建分支，再上传合并
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><a data-fancybox="gallery" href="git.png#style=width:80%25">
-    <img src="git.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
+<p>原因如下：</p>
 <ul>
-<li>（5）上传成功后访问 <strong>https://{github用户名}.github.io</strong>，成功搭建属于自己的Hugo博客</li>
+<li>激活工具未下载或者没有配置，返回查看教程，激活码无法单独使用，必须配合激活工具一起使用</li>
+<li>激活工具的路径配置有误，请核对</li>
+<li>配置完激活工具，未重启IDE开发工具，正常是不用的，避免你在配置的时候就打开了IDE，最好还是重启下，如果工具已经启动，配置完插件之后，请务必重启一下工具再使用激活码</li>
+<li>登录了账号，如果你登录了自己未授权订阅的账号，请退出，重新激活</li>
+<li>受到其他激活工具的影响，jetbrains是允许安装多版本的，如果你有安装其他版本的其他激活工具，可能会互相干扰，请核对</li>
+<li>重启电脑，极少部分电脑重启工具也不会生效插件，必须重启电脑，可以尝试</li>
+<li>如果重启电脑后还不行，Windows电脑执行uninstall-all-users.vbs，然后再执行install-all-users.vbs，成功后，再次激活尝试，还不行就再重启一次电脑</li>
 </ul>
-<p><a data-fancybox="gallery" href="4.png#style=width:80%25">
-    <img src="4.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
-<h3 id="32github-action自动部署">3.2、Github Action自动部署
-</h3><ul>
-<li>（1）Github创建一个新的仓库，用于存放Hugo的主文件</li>
-<li>（2）前往<code>Setttings -&gt; Developer Settings -&gt; Personal access tokens</code>，创建一个token(classic)</li>
-</ul>
-<p><a data-fancybox="gallery" href="5.png#style=width:80%25">
-    <img src="5.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
-<ul>
-<li>（3）token选择永不过期，并勾选 <strong>repo</strong> 和 <strong>workflow</strong> 选项</li>
-<li>（4）为保证安全，将生成的token，保存的仓库的变量中，前往<code>Settings -&gt; Secrets and variables -&gt; Actions</code>中设置</li>
-</ul>
-<p><a data-fancybox="gallery" href="6.png#style=width:80%25">
-    <img src="6.png#style=width:80%25"
-        
-        
-        
-        loading="lazy"
-        alt="alt text"
-        
-    >
-</a></p>
-<ul>
-<li>（5）在hugo主文件创建一个<code>.github/workflows/hugo_deploy.yaml</code>文件，将以下内容复制进去，想具体了解更多，可查看【<a class="link" href="https://docs.github.com/zh/actions"  target="_blank" rel="noopener"
-    >Github Action文档</a>】</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 代码提交到main分支时触发github action</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">main</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;latest&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build Web</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo -D</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy Web</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-gh-pages@v4</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">with</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">PERSONAL_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.你的token变量名 }}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">EXTERNAL_REPOSITORY</span><span class="p">:</span><span class="w"> </span><span class="l">你的github名/你的仓库名</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">PUBLISH_BRANCH</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">PUBLISH_DIR</span><span class="p">:</span><span class="w"> </span><span class="l">./public</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">commit_message</span><span class="p">:</span><span class="w"> </span><span class="l">auto deploy</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>（6）在hugo主文件创建<code>.gitignore</code>文件，来避免提交不必要的文件</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 自动生成的文件
-</span></span><span class="line"><span class="cl">public
-</span></span><span class="line"><span class="cl">resources
-</span></span><span class="line"><span class="cl">.hugo_build.lock
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># hugo命令
-</span></span><span class="line"><span class="cl">hugo.exe
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>（7）将hugo的主文件上传到仓库，上传成功后会触发Github Action，来自动部署你的静态页面</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
-</span></span><span class="line"><span class="cl">git add .
-</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;first commit&#34;</span>
-</span></span><span class="line"><span class="cl">git branch -M main
-</span></span><span class="line"><span class="cl">git remote add origin <span class="o">{</span>你的github仓库地址<span class="o">}</span>
-</span></span><span class="line"><span class="cl">git push -u origin main
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>（8）之后修改页面只需要执行以下步骤即可</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add .
-</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;修改描述&#34;</span>
-</span></span><span class="line"><span class="cl">git push
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
+<p>如果是idea，pycharm出现，一般需要重启下电脑，然后重新激活即可，如果不行，请参考<strong>解决方案一</strong></p>
+<h2 id="解决方案一删除注册表与缓存">解决方案一：删除注册表与缓存
+</h2><p>如果激活失败，请确保是否安装过一些<strong>vb脚本</strong>，这个会影响jar包的加载，请务必先删除缓存并将软件卸载干净，重新激活，删除方式请参考：</p>
+<h3 id="删除本地缓存">删除本地缓存
+</h3><p>删除用户目录下的jetbrains缓存，一般在AppData目录下，如图所示</p>
+<img src="1.png" alt="hugo版本" style="zoom:80%;" />
+<h3 id="删除注册表信息">删除注册表信息
+</h3><p>Win+R输入regedit，打开注册表，删除如下目录jetbrains文件夹</p>
+<p>&gt; 计算机\HKEY_CURRENT_USER\SOFTWARE\JavaSoft\Prefs\jetbrains</p>
+<img src="2.png" alt="hugo版本" style="zoom:80%;" />
+<h3 id="删除历史环境变量">删除历史环境变量
+</h3><p>请打开你下载的激活工具</p>
+<p>windows系统，双击打开执行下  uninstall-all-users.vbs</p>
+<img src="3.png" alt="hugo版本" style="zoom:80%;" />
+<blockquote class="alert-note">   
+<p>【<a class="link" href="https://ziby0nwxdov.feishu.cn/wiki/OyLBwBd9oiVFTykXrHvcEB91nyb"  target="_blank" rel="noopener"
+    >终极方案</a>】</p>
+</blockquote>
 </section>
 
 
@@ -891,7 +497,7 @@
 
 
         <span>
-            最后更新于 2025-06-26 最后更新
+            最后更新于 2025-10-17 最后更新
         </span>
     </section></footer>
 
@@ -910,23 +516,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/hugo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/">
+    <a href="/p/%E6%8B%93%E5%B1%95docker/">
         
         
             <div class="article-image">
-                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/1606179652749.8cad20bbb75b352e5290001bbc3cb9cf_hu_8300fa6f38eea17e.jpeg" 
+                <img src="/p/%E6%8B%93%E5%B1%95docker/1.9c8a98109bc119e74016c429ceec1886_hu_b4ea7b9c366eb6a5.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 【Hugo】文章添加评论功能"
+                        alt="Featured image of post 【拓展】Docker"
                         
-                        data-hash="md5-jK0gu7dbNS5SkAAbvDy5zw==">
+                        data-hash="md5-nIqYEJvBGedAFsQpzuwYhg==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">【Hugo】文章添加评论功能</h2>
+            <h2 class="article-title">【拓展】Docker</h2>
         </div>
     </a>
 </article>
@@ -934,23 +540,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/">
+    <a href="/p/%E6%8B%93%E5%B1%95redis%E7%9A%84%E4%BD%BF%E7%94%A8/">
         
         
             <div class="article-image">
-                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/2077.a3585811714968d323afd0b16cfc6f48_hu_a8017fc742100d25.jpg" 
+                <img src="/p/%E6%8B%93%E5%B1%95redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.c514d916917173a48a42e0114b469961_hu_12cb662251854034.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 【Hugo】文章浏览量统计"
+                        alt="Featured image of post 【拓展】Redis的使用"
                         
-                        data-hash="md5-o1hYEXFJaNMjr9CxbPxvSA==">
+                        data-hash="md5-xRTZFpFxc6SKQuARS0aZYQ==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">【Hugo】文章浏览量统计</h2>
+            <h2 class="article-title">【拓展】Redis的使用</h2>
         </div>
     </a>
 </article>
@@ -958,23 +564,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/">
+    <a href="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/">
         
         
             <div class="article-image">
-                <img src="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/6b951400bb98fd5fcd57d2c9599df286.7cd09a879ed8744e75e174bab0c937af_hu_eee817a63ee3812c.jpg" 
+                <img src="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/100.3c753040d8260a6b1b106cb959b64e9e_hu_a8a911858cc7446d.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 【Hugo】修改博客背景并引入动态背景"
+                        alt="Featured image of post 【Laravel】事件，队列"
                         
-                        data-hash="md5-fNCah57YdE514XS6sMk3rw==">
+                        data-hash="md5-PHUwQNgmCmsbEGy5WbZOng==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">【Hugo】修改博客背景并引入动态背景</h2>
+            <h2 class="article-title">【Laravel】事件，队列</h2>
         </div>
     </a>
 </article>
@@ -982,23 +588,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/">
+    <a href="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/">
         
         
             <div class="article-image">
-                <img src="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash.46f61e8ea6a2df8fc5bf1d24a17c44a6_hu_57b7cab9514860c.jpg" 
+                <img src="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46.b19eefbbc0dd033a15afee46324fd9e5_hu_aa070e38a06c2020.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 【Hugo】Stack主题自定义修改"
+                        alt="Featured image of post 【Laravel】扫码登录"
                         
-                        data-hash="md5-RvYejqai34/Fvx0koXxEpg==">
+                        data-hash="md5-sZ7vu8DdAzoVr&#43;5GMk/Z5Q==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">【Hugo】Stack主题自定义修改</h2>
+            <h2 class="article-title">【Laravel】扫码登录</h2>
         </div>
     </a>
 </article>
@@ -1006,23 +612,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/%E6%8B%93%E5%B1%95phpstorm/">
+    <a href="/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/">
         
         
             <div class="article-image">
-                <img src="/p/%E6%8B%93%E5%B1%95phpstorm/background.d30737834aaf1a5fac4188f490b075ee_hu_dbf2fc82f343466.jpg" 
+                <img src="/p/laravel%E9%AA%8C%E8%AF%81%E7%A0%81%E7%99%BB%E5%BD%95/93314e48ec9513292e4b1e8ca1c73c9d.a72b4a2735b73ddb57dda52073156655_hu_688442116e624bec.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 【拓展】PhpStorm"
+                        alt="Featured image of post 【Laravel】验证码登录"
                         
-                        data-hash="md5-0wc3g0qvGl&#43;sQYj0kLB17g==">
+                        data-hash="md5-pytKJzW3PdtX3aUgcxVmVQ==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">【拓展】PhpStorm</h2>
+            <h2 class="article-title">【Laravel】验证码登录</h2>
         </div>
     </a>
 </article>
