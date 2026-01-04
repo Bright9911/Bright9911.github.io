@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dir="ltr">
+<html lang="en-us" dir="ltr">
 
 <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1、修改字体 （1）前往【100font】，下载自己想要的字体，字体文件为 fusion-pixel-10px-monospaced-zh_hans.ttf （2）把字体文件放入assets/font下(文件夹自己创建) （3）将以下代码修改并复制到layouts/partials/footer/custom.html文件中(文件不存在就自己创建) 1 2 3 4 5 6 7 8 9 10 11 &lt;style&gt; @font-face { font-family: &#39;字体名&#39;; src: url({{ (resources.Get &#34;font/字体文件名&#34;).Permalink }}) format(&#39;truetype&#39;); } :root { --base-font-family: &#39;字体名&#39;; --code-font-family: &#39;字体名&#39;; } &lt;/style&gt; （4）这样博客字体就修改好了 2、修改鼠标样式 （1）准备好鼠标样式图片(默认，指针，文本…)，图片大小建议控制在 32px 左右，将图片放入static/mouse文件夹下（文件夹自己创建）\n">
@@ -97,7 +97,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_2921f5624f4a6c6d.png" width="300"
+                        <img src="/img/avatar_hu_cee2b3bccd438fc8.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -357,8 +357,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/">
-                <img src="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash_hu_e5aaa5f0b7bd07e9.jpg"
-                        srcset="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash_hu_e5aaa5f0b7bd07e9.jpg 800w, /p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash_hu_c99ba9c80ceee4b3.jpg 1600w"
+                <img src="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash_hu_6c237bc498d55aea.jpg"
+                        srcset="/p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash_hu_6c237bc498d55aea.jpg 800w, /p/hugostack%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9/helena-hertz-wWZzXlDpMog-unsplash_hu_b3dd02b78174f2d7.jpg 1600w"
                         width="800" 
                         height="600" 
                         loading="lazy"
@@ -614,13 +614,13 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># 更新时间：优先读取git时间 -&gt; git时间不存在，就读取本地文件修改时间</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">frontmatter</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">frontmatter</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">lastmod</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="p">:</span><span class="l">git</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="p">:</span><span class="l">fileModTime</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 允许获取Git信息		</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">enableGitInfo</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># 允许获取Git信息		</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">enableGitInfo</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -746,7 +746,7 @@
 </span></span><span class="line"><span class="cl">  <span class="nc">.article-list--compact</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="na">display</span><span class="o">:</span> <span class="ni">grid</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 目前是两列，如需三列，则后面再加一个1fr，以此类推
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="na">grid-template-columns</span><span class="o">:</span> <span class="mi">1</span><span class="kt">fr</span> <span class="mi">1</span><span class="kt">fr</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="na">grid-template-columns</span><span class="o">:</span> <span class="mi">1</span><span class="kt">fr</span> <span class="mi">1</span><span class="kt">fr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="na">background</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="na">box-shadow</span><span class="o">:</span> <span class="ni">none</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="na">gap</span><span class="o">:</span> <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
@@ -831,30 +831,30 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">initTocHide</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 判断是否存在文章目录
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kd">let</span> <span class="nx">toc</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;.widget--toc&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nx">toc</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;.widget--toc&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">toc</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 监听滚动
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;scroll&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">        <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;scroll&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//清除class值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">let</span> <span class="nx">openUl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;.open&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">            <span class="kd">let</span> <span class="nx">openUl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&#34;.open&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nx">openUl</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">              <span class="nx">openUl</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">ul</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">ul</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&#34;open&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">              <span class="p">})</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">// 获取active-class
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">let</span> <span class="nx">currentLi</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;.active-class&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">            <span class="kd">let</span> <span class="nx">currentLi</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;.active-class&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">currentLi</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="k">return</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">// 展示子ul
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="nx">currentLi</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nx">currentLi</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">currentLi</span><span class="p">.</span><span class="nx">children</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;open&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">// 展示父ul
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kd">let</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nx">currentLi</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">            <span class="kd">let</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nx">currentLi</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">            <span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">ul</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;open&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">ul</span> <span class="o">=</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">parentElement</span>
@@ -952,14 +952,14 @@
 </span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 添加返回顶部按钮到右侧边栏
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kd">let</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&#34;div&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">btn</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="s2">&#34;backTopBtn&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">btn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="nx">backToTop</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">rightSideBar</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">btn</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 滚动监听
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nb">window</span><span class="p">.</span><span class="nx">onscroll</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">        <span class="nb">window</span><span class="p">.</span><span class="nx">onscroll</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">// 当网页向下滑动 20px 出现&#34;返回顶部&#34; 按钮
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">&gt;</span> <span class="mi">20</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">&gt;</span> <span class="mi">20</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">btn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&#34;block&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">                <span class="nx">btn</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&#34;none&#34;</span><span class="p">;</span>
@@ -1331,28 +1331,28 @@ alert-error
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">codeBlocks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">codeBlock</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// 校验是否overflow
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="nx">codeBlock</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&lt;=</span> <span class="nx">codeBlock</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="nx">codeBlock</span><span class="p">.</span><span class="nx">scrollHeight</span> <span class="o">&lt;=</span> <span class="nx">codeBlock</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// 元素初始化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// codeMoreBox
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kd">let</span> <span class="nx">codeMoreBox</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">      <span class="c1">// codeMoreBox
+</span></span></span><span class="line"><span class="cl">      <span class="kd">let</span> <span class="nx">codeMoreBox</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">codeMoreBox</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;code-more-box&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// codeMoreBtn
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kd">let</span> <span class="nx">codeMoreBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">      <span class="kd">let</span> <span class="nx">codeMoreBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">codeMoreBtn</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;code-more-btn&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">codeMoreBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">codeBlock</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;code-show&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">codeMoreBox</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 触发resize事件，重新计算目录位置
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nb">window</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="k">new</span> <span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">))</span>
+</span></span></span><span class="line"><span class="cl">        <span class="nb">window</span><span class="p">.</span><span class="nx">dispatchEvent</span><span class="p">(</span><span class="k">new</span> <span class="nx">Event</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">      <span class="p">})</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// img
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kd">let</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">      <span class="kd">let</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">img</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;code-more-img&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="p">{{</span> <span class="p">(</span><span class="nx">resources</span><span class="p">.</span><span class="nx">Get</span> <span class="s2">&#34;icons/codeMore.png&#34;</span><span class="p">).</span><span class="nx">Permalink</span> <span class="p">}}</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// 元素添加
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">codeMoreBtn</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">codeMoreBtn</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">codeMoreBox</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">codeMoreBtn</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">codeBlock</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">codeMoreBox</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">})</span>
@@ -1446,7 +1446,7 @@ alert-error
         
         
             <div class="article-image">
-                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/1606179652749.8cad20bbb75b352e5290001bbc3cb9cf_hu_8300fa6f38eea17e.jpeg" 
+                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/1606179652749.8cad20bbb75b352e5290001bbc3cb9cf_hu_99dcdcb20ea3a97b.jpeg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1470,7 +1470,7 @@ alert-error
         
         
             <div class="article-image">
-                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/2077.a3585811714968d323afd0b16cfc6f48_hu_a8017fc742100d25.jpg" 
+                <img src="/p/hugo%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88%E9%87%8F%E7%BB%9F%E8%AE%A1/2077.a3585811714968d323afd0b16cfc6f48_hu_40c60db4d3933c87.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1494,7 +1494,7 @@ alert-error
         
         
             <div class="article-image">
-                <img src="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/6b951400bb98fd5fcd57d2c9599df286.7cd09a879ed8744e75e174bab0c937af_hu_eee817a63ee3812c.jpg" 
+                <img src="/p/hugo%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%B9%B6%E5%BC%95%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/6b951400bb98fd5fcd57d2c9599df286.7cd09a879ed8744e75e174bab0c937af_hu_ef3c65b578264b64.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1518,7 +1518,7 @@ alert-error
         
         
             <div class="article-image">
-                <img src="/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.60116b1ccfc8632e9a65f7d51df3efc2_hu_c1cfd6b8275d624a.jpg" 
+                <img src="/p/hugohugo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/the-creative-exchange-d2zvqp3fpro-unsplash.60116b1ccfc8632e9a65f7d51df3efc2_hu_cfdf11edc5d3ff36.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1542,7 +1542,7 @@ alert-error
         
         
             <div class="article-image">
-                <img src="/p/%E6%8B%93%E5%B1%95phpstorm/background.d30737834aaf1a5fac4188f490b075ee_hu_dbf2fc82f343466.jpg" 
+                <img src="/p/%E6%8B%93%E5%B1%95phpstorm/background.d30737834aaf1a5fac4188f490b075ee_hu_6ded73cb9777d390.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1590,7 +1590,9 @@ alert-error
     <section class="copyright">
         &copy; 
         
-        2025 Bright9911
+            2025 - 
+        
+        2026 Bright9911
     </section>
     
     <section class="powerby">
@@ -1675,7 +1677,7 @@ alert-error
             <span id="runningdays" class="running-days"></span>
         </section>
 
-        <p style="font-size: 13px;margin: 0px;">发布了 12 篇文章 | 共 18.2K 字</p>
+        <p style="font-size: 13px;margin: 0px;">发布了 12 篇文章 | 共 18.3K 字</p>
  
         <span id="busuanzi_container_site_pv" style='display:none;font-size: 13px;'> 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span> | 
         <span id="busuanzi_container_site_uv" style='display:none;font-size: 13px;'> 总访客数 <span id="busuanzi_value_site_uv"></span> 人</span>

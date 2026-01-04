@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dir="ltr">
+<html lang="en-us" dir="ltr">
 
 <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一、事件 事件系统允许你在应用中定义事件和监听器，当事件发生时，监听器会自动执行相应的操作。在文章管理系统中，你可以定义一些事件，如文章发布、文章更新、文章删除等。事件系统能够使代码更加模块化，主要用于解耦代码，使得文章发布操作与后续操作分离，便于维护和扩展。默认情况下，事件监听器是同步执行的。\n">
@@ -97,7 +97,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_2921f5624f4a6c6d.png" width="300"
+                        <img src="/img/avatar_hu_cee2b3bccd438fc8.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -362,8 +362,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/">
-                <img src="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/100_hu_8f303c8d9ff97536.jpg"
-                        srcset="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/100_hu_8f303c8d9ff97536.jpg 800w, /p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/100_hu_99542686bb2f0d5f.jpg 1600w"
+                <img src="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/100_hu_5e33ffe2773bd045.jpg"
+                        srcset="/p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/100_hu_5e33ffe2773bd045.jpg 800w, /p/laravel%E4%BA%8B%E4%BB%B6%E9%98%9F%E5%88%97/100_hu_cdd59bb0e1542eab.jpg 1600w"
                         width="800" 
                         height="450" 
                         loading="lazy"
@@ -566,12 +566,12 @@
 </span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">ArticlePublished</span> <span class="nv">$event</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 发送通知逻辑，例如发送邮件、短信等
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 这里可以调用邮件服务、短信服务等
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 我以邮件发送为例
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$email</span> <span class="o">=</span> <span class="s2">&#34;15060257172@163.com&#34;</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">        <span class="c1">// 这里可以调用邮件服务、短信服务等
+</span></span></span><span class="line"><span class="cl">        <span class="c1">// 我以邮件发送为例
+</span></span></span><span class="line"><span class="cl">        <span class="nv">$email</span> <span class="o">=</span> <span class="s2">&#34;15060257172@163.com&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="c1">// 发送纯文本邮件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">Mail</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;文章“</span><span class="si">{</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">article</span><span class="o">-&gt;</span><span class="na">title</span><span class="si">}</span><span class="s2">”发布成功！ -- 事件监听&#34;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">        <span class="nx">Mail</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;文章“</span><span class="si">{</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">article</span><span class="o">-&gt;</span><span class="na">title</span><span class="si">}</span><span class="s2">”发布成功！ -- 事件监听&#34;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">to</span><span class="p">(</span><span class="nv">$email</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">(</span><span class="s1">&#39;通知邮件 -- 事件&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="p">});</span>
 </span></span><span class="line"><span class="cl">        
@@ -628,9 +628,9 @@
 </span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">publish</span><span class="p">(</span><span class="nx">Article</span> <span class="nv">$article</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 发布文章的逻辑
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 触发事件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">event</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArticlePublished</span><span class="p">(</span><span class="nv">$article</span><span class="p">));</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nx">event</span><span class="p">(</span><span class="k">new</span> <span class="nx">ArticlePublished</span><span class="p">(</span><span class="nv">$article</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -733,10 +733,10 @@
 </span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 处理通知逻辑，例如发送邮件、短信等
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nv">$email</span> <span class="o">=</span> <span class="s2">&#34;15060257172@163.com&#34;</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">        <span class="nv">$email</span> <span class="o">=</span> <span class="s2">&#34;15060257172@163.com&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="c1">// 发送纯文本邮件
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">Mail</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;文章“</span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">article</span><span class="o">-&gt;</span><span class="na">title</span><span class="si">}</span><span class="s2">”发布成功！ -- 队列&#34;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">        <span class="nx">Mail</span><span class="o">::</span><span class="na">raw</span><span class="p">(</span><span class="s2">&#34;文章“</span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">article</span><span class="o">-&gt;</span><span class="na">title</span><span class="si">}</span><span class="s2">”发布成功！ -- 队列&#34;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">to</span><span class="p">(</span><span class="nv">$email</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">subject</span><span class="p">(</span><span class="s1">&#39;通知邮件 -- 队列&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="p">});</span>
 </span></span><span class="line"><span class="cl">        
@@ -756,9 +756,9 @@
 </span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">function</span> <span class="nf">failed</span><span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$exception</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 任务失败时的处理逻辑
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">\Log</span><span class="o">::</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;邮件发送失败: &#39;</span> <span class="o">.</span> <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+</span></span></span><span class="line"><span class="cl">        <span class="nx">\Log</span><span class="o">::</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;邮件发送失败: &#39;</span> <span class="o">.</span> <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">// 可以在这里发送通知、记录数据库等
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -783,10 +783,10 @@
 </span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="nf">publish</span><span class="p">(</span><span class="nx">Article</span> <span class="nv">$article</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 发布文章的逻辑
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;published&#39;</span><span class="p">]);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span><span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;published&#39;</span><span class="p">]);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// 分发队列任务
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">ProcessArticleNotification</span><span class="o">::</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$article</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="nx">ProcessArticleNotification</span><span class="o">::</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$article</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -842,7 +842,7 @@
         
         
             <div class="article-image">
-                <img src="/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/9ad3bf3c4aadf61bd96eebfc1f7f577e.2cbbb500aba2e4aab12e331969ffa85a_hu_ff82cd5f5ff03a5d.jpg" 
+                <img src="/p/laravel%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81/9ad3bf3c4aadf61bd96eebfc1f7f577e.2cbbb500aba2e4aab12e331969ffa85a_hu_a86a10f02f71c7c9.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -866,7 +866,7 @@
         
         
             <div class="article-image">
-                <img src="/p/%E6%8B%93%E5%B1%95phpstorm/background.d30737834aaf1a5fac4188f490b075ee_hu_dbf2fc82f343466.jpg" 
+                <img src="/p/%E6%8B%93%E5%B1%95phpstorm/background.d30737834aaf1a5fac4188f490b075ee_hu_6ded73cb9777d390.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -890,7 +890,7 @@
         
         
             <div class="article-image">
-                <img src="/p/%E6%8B%93%E5%B1%95docker/1.9c8a98109bc119e74016c429ceec1886_hu_b4ea7b9c366eb6a5.jpg" 
+                <img src="/p/%E6%8B%93%E5%B1%95docker/1.9c8a98109bc119e74016c429ceec1886_hu_3e15a1f4a631876d.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -914,7 +914,7 @@
         
         
             <div class="article-image">
-                <img src="/p/%E6%8B%93%E5%B1%95redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.c514d916917173a48a42e0114b469961_hu_12cb662251854034.jpg" 
+                <img src="/p/%E6%8B%93%E5%B1%95redis%E7%9A%84%E4%BD%BF%E7%94%A8/pawel-czerwinski-8uZPynIu-rQ-unsplash.c514d916917173a48a42e0114b469961_hu_cd6a07a0d3af7b3e.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -938,7 +938,7 @@
         
         
             <div class="article-image">
-                <img src="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46.b19eefbbc0dd033a15afee46324fd9e5_hu_aa070e38a06c2020.jpg" 
+                <img src="/p/laravel%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95/4ab9d960e5111d286f6396a8edee2b46.b19eefbbc0dd033a15afee46324fd9e5_hu_17eddbaadcd550eb.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -986,7 +986,9 @@
     <section class="copyright">
         &copy; 
         
-        2025 Bright9911
+            2025 - 
+        
+        2026 Bright9911
     </section>
     
     <section class="powerby">
@@ -1071,7 +1073,7 @@
             <span id="runningdays" class="running-days"></span>
         </section>
 
-        <p style="font-size: 13px;margin: 0px;">发布了 12 篇文章 | 共 18.2K 字</p>
+        <p style="font-size: 13px;margin: 0px;">发布了 12 篇文章 | 共 18.3K 字</p>
  
         <span id="busuanzi_container_site_pv" style='display:none;font-size: 13px;'> 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span> | 
         <span id="busuanzi_container_site_uv" style='display:none;font-size: 13px;'> 总访客数 <span id="busuanzi_value_site_uv"></span> 人</span>
